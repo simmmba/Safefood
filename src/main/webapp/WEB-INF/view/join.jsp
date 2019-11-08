@@ -78,8 +78,8 @@ body {
 
 			<nav class="main-nav float-right d-none d-lg-block">
 				<ul>
-					<li class="active"><a href="#intro">공지 사항</a></li>
-					<li><a href="#about">상품 정보</a></li>
+					<li><a href="notice.food">공지 사항</a></li>
+					<li><a href="read.food">상품 정보</a></li>
 					<li><a href="#services">베스트 섭취 정보</a></li>
 					<li><a href="#portfolio">내 섭취 정보</a></li>
 					<li><a href="#team">예상 섭취 정보</a></li>
