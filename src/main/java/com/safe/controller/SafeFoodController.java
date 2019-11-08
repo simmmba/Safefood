@@ -216,7 +216,6 @@ public class SafeFoodController extends HttpServlet {
 				sb.append(a).append(",");
 			}
 		}
-
 		return sb.toString();
 	}
 

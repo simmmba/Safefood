@@ -2,7 +2,6 @@ package com.safe.controller;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -73,13 +73,14 @@ public class MemberController extends HttpServlet {
 			HttpSession hs = req.getSession();
 			hs.setAttribute("member", m);
 			System.out.println("로그인 성공");
+			return "redirect:/main.food";
 		} else {
 			String msg = "아이디 또는 패스워드가 틀립니다.";
 			req.setAttribute("msg", msg);
 			System.out.println("로그인 실패");
+			return "loginFail";
 		}
 		
-		return "redirect:/main.food";
 	}
 
 	@GetMapping(value = "/logout.food")
@@ -181,7 +182,11 @@ public class MemberController extends HttpServlet {
 			
 			return "passSuccess";
 		}
-		
+	}
+	
+	@ExceptionHandler
+	public String exception() {
+		return "error";
 	}
 
 }
