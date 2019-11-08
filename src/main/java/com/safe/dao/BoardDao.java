@@ -13,5 +13,4 @@ public interface BoardDao {
     public List<Board> findByTitle(String title);
     public List<Board> findByName(String name);
     
-    public List<Board> findByTitle2(String title); // like 검색
 }

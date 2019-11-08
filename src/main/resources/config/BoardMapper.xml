@@ -30,6 +30,12 @@
 		select * from board where title like concat('%',#{title},'%')
 	</select>
 	
+		
+	<update id="updateCount"	parameterType="String">
+		update board set count = count+1 where num = #{num}
+	</update>
+	
+	
 </mapper>
 
 

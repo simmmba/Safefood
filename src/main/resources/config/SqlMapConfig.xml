@@ -3,12 +3,14 @@
 <configuration>
 	<!-- 1. typeAliases : VO에 대한 별칭 지정 -->
     <typeAliases>
+        <typeAlias alias="Board" type="com.safe.vo.Board"/>
         <typeAlias alias="Food" type="com.safe.vo.Food"/>
         <typeAlias alias="Member" type="com.safe.vo.Member"/>
     </typeAliases>
 	
     <!-- 3. mapper file: table&object mapping -->
 	<mappers>
+      <mapper resource="config/BoardMapper.xml" />
       <mapper resource="config/FoodMapper.xml" />
       <mapper resource="config/MemberMapper.xml" />
     </mappers>

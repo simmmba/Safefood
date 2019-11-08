@@ -22,7 +22,6 @@ public class MemberDAO implements IMemberDao {
 		pass = encode(pass);
 		m.put("id", id);
 		m.put("pass", pass);
-		
 		return session.selectOne("member.selectLogin",m);
 	}
 

@@ -19,6 +19,7 @@ public class BoardDaoImpl implements BoardDao {
     }
     @Override
     public Board selectOne(String num) {
+    	countUp(num);
         return session.selectOne("board.selectOne", num);
     }
     @Override
@@ -41,8 +42,8 @@ public class BoardDaoImpl implements BoardDao {
     public List<Board> findByName(String name) {
         return session.selectList("board.findByName", name);
     }
-    @Override
-    public List<Board> findByTitle2(String title) {
-        return session.selectList("board.findByTitle2", title);
+    
+    public void countUp(String num) {
+    	session.update("board.updateCount",num);
     }
 }

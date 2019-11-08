@@ -11,6 +11,4 @@ public interface BoardService {
     public void update(Board b);
     public List<Board> findByTitle(String title);
     public List<Board> findByName(String name);
-    // 과제
-    public List<Board> findByTitle2(String title); // like 검색
 }

@@ -1,11 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="com.safe.vo.Food, com.safe.vo.Member"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="com.safe.vo.Member"%>
+
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
+<meta charset="UTF-8">
 <meta charset="utf-8">
-<title>Notice</title>
+<title>notice</title>
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <meta content="" name="keywords">
 <meta content="" name="description">
@@ -30,11 +33,15 @@
 	rel="stylesheet">
 <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 
+<!-- bootswatch lib -->
+<link rel="stylesheet"
+	href="https://bootswatch.com/4/minty/bootstrap.css" media="screen">
+<link rel="stylesheet"
+	href="https://bootswatch.com/_assets/css/custom.min.css">
+
 <!-- Main Stylesheet File -->
 <link href="css/style.css" rel="stylesheet">
-
 <link href="css/mycss.css" rel="stylesheet">
-
 <style type="text/css">
 body {
 	background-color: white;
@@ -47,23 +54,20 @@ body {
     License: https://bootstrapmade.com/license/
   ======================================================= -->
 </head>
-
 <body>
-	<!--==========================
-  Header
-  ============================-->
+
 	<header id="header">
 		<div id="topbar">
 			<div class="container">
 				<div class="social-links">
-					
+
 					<c:if test="${empty member}">
 						<a class="member_join_login" href="joinForm.food" role="button">회원가입</a>
 						<a class="member_join_login" href="loginForm.food" role="button">로그인</a>
 					</c:if>
-					
+
 					<c:if test="${not empty member}">
-						<a class="member_join_login" href="memberinfo.food" role="button">회원정보</a>
+						<a class="member_join_login" href="#" role="button">회원정보</a>
 						<a class="member_join_login" href="logout.food" role="button">로그아웃</a>
 					</c:if>
 				</div>
@@ -79,12 +83,13 @@ body {
 						src="http://edu.ssafy.com/asset/images/header-logo.jpg" alt="로고"
 						height="400"> SAFE FOOD</a>
 				</h1>
+				<!-- <a href="#header" class="scrollto"><img src="img/logo.png" alt="" class="img-fluid"></a> -->
 			</div>
 
 			<nav
 				class="main-nav float-right d-none d-lg-block navbar navbar-fixed-top">
 				<ul>
-					<li class="active"><a href="notice.food">공지 사항</a></li>
+					<li><a href="notice.food">공지 사항</a></li>
 					<li><a href="read.food">상품 정보</a></li>
 					<li><a href="#about">베스트 섭취 정보</a></li>
 					<li><a href="#portfolio">내 섭취 정보</a></li>
@@ -101,65 +106,55 @@ body {
 
 	<section id="services" class="section-bg">
 		<div class="container">
-
 			<header class="section-header">
-				<h3>Notice</h3>
+				<h3>공지 사항</h3>
 			</header>
-
-			<div class="container">
-				<div class="col-lg-6">
-					<form action="noticeSearch.food" id="target" class="form-inline">
-						<div class="form-group">
-							<select class="form-control" id="key" name="condition">
-								<option value="제목" selected="selected">제목</option>
-								<option value="작성자">작성자</option>
-							</select>
-						</div>
-						<div class="form-group">
-							<input type="text" class="form-control" id="word" name="word"
-								placeholder="검색어를 입력하세요">
-						</div>
-						<div class="form-group">
-							<button type="submit" class="btn btn-primary">검색</button>
-							<span style="float:right"><button type="button" class="btn btn-primary" onclick = "location.href = 'noticeInsertForm.food'" >작성</button></span>
-						</div>
-					</form>
-					<!-- /input-group -->
-				</div>
-				<!-- /.col-lg-6 -->
-			</div>
-
-			<c:forEach items="${list}" var="b">
-				<div id="item_data" class="row"  style=" cursor: pointer;" onclick="location.href='noticeRead.food?num=${b.getNum()}';">
-					<div class='col-md-6 col-lg-12 wow' data-wow-duration='1.4s'>
-						<div class='box'>
-							<div>
-								<span class='title'> 
-									<a href='noticeRead.food?num=${b.getNum()}'> ${b.getNum()}</a>
-								</span>
-							</div>
-
-							<div class='div_info div_notice' style="padding-left: 0px;">
-								<span>제목 : ${b.getTitle()}</span>
-								<hr>
-								<span>작성일 : ${b.getWdate()}</span>
-								<hr>
-								<span>작성자 : ${b.getName()}</span>
-								<hr>
-							</div>
-						</div>
-					</div>
-				</div>
-			</c:forEach>
 		</div>
-	</section>
-	
-	<div class = "floating">
-		<label>인기 검색어</label>
-		<%@ include file="trends.jsp"%>
-	</div>
-	<!-- #services -->
+		<div class="container">
+			<table class="table table-hover">
+				<tbody>
+					<tr>
+						<th scope="row">제목</th>
+						<td>${b.title}</td>
+					</tr>
+					<tr>
+						<th scope="row">작성자</th>
+						<td>${b.name}</td>
+					</tr>
+					<tr>
+						<th scope="row">작성일</th>
+						<td>${b.wdate}</td>
+					</tr>
 
+					<tr>
+						<th scope="row">조회수</th>
+						<td>${b.count}</td>
+					</tr>
+
+					<tr>
+						<td colspan="2">${b.content}</td>
+					</tr>
+
+				</tbody>
+			</table>
+		</div>
+
+		<c:if test="${member.id == b.name}">
+			<div id="button_" class="container">
+				<button type="button" class="btn btn-success"
+					onclick="location.href='noticeEditForm.food?num=${b.num}'">수정</button>
+				<button type="button" class="btn btn-warning"
+					onclick="location.href='noticeDelete.food?num=${b.num}'">삭제</button>
+			</div>
+		</c:if>
+
+
+
+
+
+
+
+	</section>
 
 	<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 	<!-- Uncomment below i you want to use a preloader -->
@@ -178,11 +173,11 @@ body {
 	<script src="lib/isotope/isotope.pkgd.min.js"></script>
 	<script src="lib/lightbox/js/lightbox.min.js"></script>
 
-	<!-- Template Main Javascript File -->
-	<script src="js/main.js"></script>
 	<!-- Contact Form JavaScript File -->
 	<script src="contactform/contactform.js"></script>
-	<!--검색 -->
+
+	<!-- Template Main Javascript File -->
+	<script src="js/main.js"></script>
 
 </body>
 </html>

@@ -32,7 +32,6 @@ public class MemberController extends HttpServlet {
 	
 	@PostMapping(value = "/join.food")
 	public String join(HttpServletRequest req, HttpServletResponse res) {
-
 		String id = req.getParameter("id");
 		String pass = req.getParameter("pass");
 		String name = req.getParameter("name");

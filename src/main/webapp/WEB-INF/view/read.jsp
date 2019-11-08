@@ -131,7 +131,7 @@ body {
 			</div>
 
 			<c:forEach items="${list}" var="f">
-				<div id="item_data" class="row">
+				<div id="item_data" class="row" onclick="location.href='detail.food?code=${f.code}';">
 					<div class='col-md-6 col-lg-12 wow' data-wow-duration='1.4s'>
 						<div class='box'>
 							<div class='div_image'>

@@ -41,8 +41,4 @@ public class BoardServiceImpl implements BoardService {
     public List<Board> findByName(String name) {
         return boardDao.findByName(name);
     }
-    @Override
-    public List<Board> findByTitle2(String title) {
-        return boardDao.findByTitle2(title);
-    }
 }
