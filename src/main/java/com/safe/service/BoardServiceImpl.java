@@ -45,8 +45,4 @@ public class BoardServiceImpl implements BoardService {
     public List<Board> findByTitle2(String title) {
         return boardDao.findByTitle2(title);
     }
-    @Override
-    public void delete2(String[] nums) {
-        boardDao.delete2(nums);
-    }
 }

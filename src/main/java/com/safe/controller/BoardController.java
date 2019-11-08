@@ -4,74 +4,53 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.safe.service.BoardService;
 import com.safe.vo.Board;
 
-// @RestController: @Controller + @ResponseBody(java object -> json으로 변환)
-@RestController
+@Controller
 public class BoardController {
 	@Autowired
 	BoardService service;
 	
-//	@GetMapping("/customers")
-	@RequestMapping(value="/board", method=RequestMethod.GET)
-	public List<Board> selectAll(){
-		return service.selectAll();
+	@GetMapping(value = "/notice.food")
+	public String notice(Model model) {
+		List<Board> list = service.selectAll();
+		model.addAttribute("list", list);
+		
+		return "notice"; // 논리적인 view 이름
 	}
 	
-	// http://localhost:8080/rest/board/11
-	@RequestMapping(value="/board/{num}", method=RequestMethod.GET) // value에 num 바로 사용 가능!
-	public Board selectOne(@PathVariable String num){
-		return service.selectOne(num);
+	@GetMapping(value = "/noticeInsert.food")
+	public String noticeInsert() {
+		return "noticeInsert";
 	}
 	
-	@RequestMapping(value="/board", method=RequestMethod.POST) // insert 할때는 method로 POST 사용!
-	public Map insert(@RequestBody Board b){ // @RequestBody: REQUEST 안의 json -> java object로 변환
-		service.insert(b);
-		Map map = new HashMap();
-		map.put("result", "insert success!!!");
+	@PostMapping(value = "/noticeInsert.food")
+	public String noticeInsert2(Model model, Board c) {
+		model.addAttribute("c", c);
+		service.insert(c);
 		
-		return map;
-	}
-
-	@RequestMapping(value="/board/{num}", method=RequestMethod.DELETE) // method로 DELETE 사용!
-	public Map delete(@PathVariable String num){
-		service.delete(num);
-		Map map = new HashMap();
-		map.put("result", "delete success!!!");
-		
-		return map;
+		return "redirect:notice.food";
 	}
 	
-	@RequestMapping(value="/board", method=RequestMethod.PUT) // update 할때는 method로 PUT 사용!
-	public Map update(@RequestBody Board b){ // @RequestBody: REQUEST 안의 json -> java object로 변환
-		service.update(b);
-		Map map = new HashMap();
-		map.put("result", "update success!!!");
+	@GetMapping(value = "/noticeRead.food")
+	public String noticeRead(String num, Model model) {
+		Board c = service.selectOne(num);
+		model.addAttribute("c", c);
 		
-		return map;
-	}
-	
-	@RequestMapping(value="/board/{condition}/{word}", method=RequestMethod.GET)
-	public List<Board> search(@PathVariable String condition, @PathVariable String word){
-		
-		if(condition.equals("title"))
-			return service.findByTitle(word);
-
-		else if(condition.equals("name")) {
-			System.out.println(word);
-			return service.findByName(word);
-		}
-		
-		else
-			return null;
-		
+		return "noticeRead";
 	}
 }

@@ -13,5 +13,4 @@ public interface BoardService {
     public List<Board> findByName(String name);
     // 과제
     public List<Board> findByTitle2(String title); // like 검색
-    public void delete2(String[] nums); // 여러개의 글 한꺼번에 삭제
 }

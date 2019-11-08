@@ -45,10 +45,4 @@ public class BoardDaoImpl implements BoardDao {
     public List<Board> findByTitle2(String title) {
         return session.selectList("board.findByTitle2", title);
     }
-    @Override
-    public void delete2(String[] nums) {
-        for(String s : nums) {
-            session.delete("board.delete", s);
-        }
-    }
 }
