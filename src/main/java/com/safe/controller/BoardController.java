@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mybatis.service.BoardService;
-import com.mybatis.vo.Board;
+import com.safe.service.BoardService;
+import com.safe.vo.Board;
 
 // @RestController: @Controller + @ResponseBody(java object -> json으로 변환)
 @RestController

@@ -5,7 +5,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.mybatis.vo.Board;
+import com.safe.vo.Board;
 // dao 객체: CRUD 작업
 // sqlSession 객체를 주입 받아 CRUD 작업 수행
 @Component("boardDao")

@@ -1,9 +1,11 @@
 package com.safe.service;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import com.mybatis.dao.BoardDao;
-import com.mybatis.vo.Board;
+
+import com.safe.dao.BoardDao;
+import com.safe.vo.Board;
 // client(ClientApp.java)가 getBean해서 사용하는 객체
 // 서비스 객체
 // CustomerDaoImpl 객체를 주입받아 dao 작업 지시

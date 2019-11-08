@@ -1,6 +1,7 @@
 package com.safe.dao;
 import java.util.List;
-import com.mybatis.vo.Board;
+
+import com.safe.vo.Board;
 
 //client(BoardApp.java)를 위한 인터페이스
 public interface BoardDao {
