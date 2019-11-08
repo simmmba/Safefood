@@ -1,11 +1,5 @@
 package com.safe.dao;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,15 +18,12 @@ public class MemberDAO implements IMemberDao {
 
 	@Override
 	public Member login(String id, String pass) {
-		
-		
 		Map<String, String> m = new HashMap<String, String>();
 		pass = encode(pass);
 		m.put("id", id);
 		m.put("pass", pass);
 		
 		return session.selectOne("member.selectLogin",m);
-
 	}
 
 	@Override
@@ -101,15 +92,19 @@ public class MemberDAO implements IMemberDao {
 	}
 
 	public String newPass(String id, String name, String callnum) {
+		
 		Map<String, String> m = new HashMap<>();
-		String newPass = encode(makePass());
-		m.put("pass", newPass);
+		String newPass = makePass();
+		String encodePass =	encode(newPass);
+		m.put("pass", encodePass);
 		m.put("id", id);
 		m.put("name", name);
 		m.put("callnum", callnum);
+		System.out.println("왜 실행이 안될까");
+		int result = session.update("member.updatePass",m);
+		if(result == 0) newPass = null;
 		
-		session.update("member.updatePass",m);
-		
+		System.out.println(result);
 		return newPass;
 	}
 

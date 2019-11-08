@@ -54,7 +54,7 @@ public class MemberController extends HttpServlet {
 		Member m = new Member(id, pass, name, address, call, allegy);
 		System.out.println(m.toString());
 		service.join(m);
-		return "index";
+		return "redirect:/main.food";
 	}
 
 	
@@ -80,13 +80,13 @@ public class MemberController extends HttpServlet {
 			System.out.println("로그인 실패");
 		}
 		
-		return "index";
+		return "redirect:/main.food";
 	}
 
 	@GetMapping(value = "/logout.food")
 	public String logout(HttpServletRequest req) throws IOException, ServletException {
 		req.getSession().invalidate();
-		return "index";
+		return "redirect:/main.food";
 		
 	}
 
@@ -109,7 +109,10 @@ public class MemberController extends HttpServlet {
 		String callnum = req.getParameter("callnum");
 		String Opass=req.getParameter("Opass");
 		String Npass=req.getParameter("Npass");
-		if(Npass ==null) Npass = Opass;
+		
+		if(Npass =="") Npass = Opass;
+		System.out.println("n : "  + Npass );
+		System.out.println("o : "  + Opass );
 
 		String[] allegyArr = req.getParameterValues("allergy");
 		String allegy = null;
@@ -139,7 +142,7 @@ public class MemberController extends HttpServlet {
 		service.delete(id);
 		
 		req.getSession().invalidate();
-		return "index";
+		return "redirect:/main.food";
 	}
 	
 	
@@ -152,9 +155,8 @@ public class MemberController extends HttpServlet {
 		
 	}
 
-	@GetMapping(value = "/pass.food")
+	@PostMapping(value = "/pass.food")
 	public String pass(HttpServletRequest req, HttpServletResponse res) {
-		RequestDispatcher dis = req.getRequestDispatcher("/view/pass.jsp");
 		return "pass";
 	}
 
@@ -169,8 +171,8 @@ public class MemberController extends HttpServlet {
 		if(newPass==null) {
 			String msg = "회원정보가 없습니다.";
 			req.setAttribute("msg", msg);
-			System.out.println("임시 비밀번호 발급 성공");
-			return "index";
+			System.out.println("임시 비밀번호 발급 실패");
+			return "login";
 		}
 		else {
 			String msg = "임시 비밀번호를 발급했습니다.";
