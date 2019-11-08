@@ -9,7 +9,6 @@ public class SafeFoodSpringApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SafeFoodSpringApplication.class, args);
 		
-		// s;dlkjfs;aldkfja;skldfjdsa;lfjk
 	}
 
 }

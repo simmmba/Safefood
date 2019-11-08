@@ -1,0 +1,96 @@
+@charset "UTF-8";
+
+.member_join_login:hover{
+	text-decoration: none;
+}
+
+.item_image{
+	padding-bottom: 20px;
+	display:block;
+}
+
+.item_info{
+	padding-left: 200px;
+	text-align:left;
+}
+
+div h3{
+	 margin-top: 50pt;
+}
+
+#chartcanvas{
+
+}
+
+.pie_chart{
+	width: 500px;
+	margin: 0 auto;
+	float: left;
+}
+
+table{
+	caption-side:top;
+}
+table td{
+	padding 5px;
+}
+
+
+.div_info{
+	padding-left: 200px;
+	text-align:left;
+}
+
+.div_image{
+	float:left;
+}
+
+#item_data{
+	padding-top:20px;
+}
+
+.pinfo{
+	margin: 0 auto;
+	border-style:solid;
+	width:700px;
+	height: 400px;
+	text-align: center;
+}
+
+.pinfo tr{
+	margin: 0 auto;
+	border: 2px solid black;
+	font-weight: bold;
+}
+
+#button_{
+	width:500px;
+	text-align:center;
+	margin: 0 auto;
+	padding-bottom: 30px;
+	padding-top: 20px;
+}
+
+.pinfo_{
+	width:800px;
+	margin: 0 auto;
+	padding: 20px 20px 20px 20px;
+	/* background-color: #d5ddea; */
+}
+body{
+	padding-top: 0;
+}
+
+.floating 
+{ 
+	position: fixed;
+	right: 50%; 
+	top: 180px; 
+	margin-right: -740px; 
+	text-align:center; 
+	width: 180px; 
+}
+.trendTable 
+{ 
+	width: 180px;
+}

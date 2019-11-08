@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 실행할 query문이 들어있는 파일 -->
+<!-- namespace : 사용할 도메인(테이블)을 구분하기 위해서 붙이는 식별자 -->
+<mapper namespace="food">
+	<!-- 리절트 맵 정의 : select 후의 결과 처리를 위한 부분 -->
+	<!-- type에서 지정한 vo를 생성한 후 테이블의 컬럼에서 값을 뽑아 vo에 setting -->
+	<!-- vo는 List에 저장되어 리턴됨 -->
+	
+	<resultMap id="FoodResult" type="Food"/>
+
+	<select id="selectAll" resultMap="FoodResult" parameterType="java.util.HashMap">
+		SELECT * FROM fooddb<where>
+			<if test= "key !=null" >
+				<choose>
+					<when test ="key=='name'">
+						name like concat('%', #{word},'%')
+					</when>
+					<when test= "key == 'maker'">
+						maker like concat('%', #{word},'%')
+					</when>
+					<when test= "key == 'material'">
+						material like concat('%', #{word},'%')
+					</when>
+				</choose>
+			</if>
+		</where> 
+	</select>
+	
+	<select id="selectOne" parameterType="Integer"
+		resultMap="FoodResult">
+		select * from fooddb where code = #{code}
+	</select>
+
+</mapper>
