@@ -23,7 +23,7 @@ public class QnaRestController {
 	@Autowired
 	QnaService service;
 	
-	@RequestMapping(value = "/listQuestion.food", method=RequestMethod.GET)
+	@RequestMapping(value = "/listQuestion", method=RequestMethod.GET)
 	public List<Question> selectAll() {
 		return service.selectAll();
 	}

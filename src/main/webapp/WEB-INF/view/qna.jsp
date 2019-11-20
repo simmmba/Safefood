@@ -47,11 +47,10 @@ body {
     License: https://bootstrapmade.com/license/
   ======================================================= -->
     <!-- vue 추가 -->
-    <script src="https://unpkg.com/vue"></script>
-      <script src="https://unpkg.com/vue"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="https://unpkg.com/vue"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
@@ -183,29 +182,66 @@ body {
 
 
 	<script type="text/x-template" id="listQuestiontemplate">
-		<c:forEach items="${list}" var="b">
-			<div v-for="q" id="item_data" class="row"  style=" cursor: pointer;" @click='show_detail(q.num)';">
-				<div class='col-md-6 col-lg-12 wow' data-wow-duration='1.4s'>
-					<div class='box'>
-						<div>
-							<span class='title'> 
-								{{q.num}}
-							</span>
-						</div>
-							<div class='div_info div_notice' style="padding-left: 0px;">
-							<span>제목 : {{q.title}}</span>
-							<hr>
-							<span>작성일 : {{q.wdate}}</span>
-							<hr>
-							<span>작성자 : {{q.name}}</span>
-							<hr>
-						</div>
+		<div>	
+		<div v-for="q in info" @click ="show_detail(q.num)" >
+			<div class='col-md-6 col-lg-12 wow' data-wow-duration='1.4s'>
+				<div class='box'>
+					<div>
+						<span class='title'> 
+							{{q.num}}
+						</span>
+					</div>
+						<div class='div_info div_notice' style="padding-left: 0px;">
+						<span>제목 : {{q.title}}</span>
+						<hr>
+						<span>작성일 : {{q.wdate}}</span>
+						<hr>
+						<span>작성자 : {{q.name}}</span>
+						<hr>
 					</div>
 				</div>
 			</div>
-		</c:forEach>
+		</div>
+		</div>
 	</script>
+	
+	<script type="text/x-template" id="detailQuestiontemplate">
+		<div class="container">
+			<table class="table table-hover">
+				<tbody>
+					<tr>
+						<th scope="row">제목</th>
+						<td>{{question.title}}</td>
+					</tr>
+					<tr>
+						<th scope="row">작성자</th>
+						<td>{{question.name}}</td>
+					</tr>
+					<tr>
+						<th scope="row">작성일</th>
+						<td>${question.wdate}</td>
+					</tr>
+
+					<tr>
+						<th scope="row">조회수</th>
+						<td>${question.count}</td>
+					</tr>
+
+					<tr>
+						<td colspan="2">${question.content}</td>
+					</tr>
+
+				</tbody>
+			</table>
+		</div>
+	</script>
+	
+	
+	
+	
+	
 	<script>
+		//목록
 		var listQuestion = Vue.component('listQuestion',{
 	    template: '#listQuestiontemplate',
 	    data(){
@@ -225,13 +261,46 @@ body {
 	      },
 	      mounted () {
 	        axios
-	          .get('http://localhost:8080/safefood/listQuestion.food')
+	          .get('http://localhost:8080/safefood/listQuestion')
 	          //.get('./emp.json')
-	          .then(response => (this.info = response.data))
+	          .then(response => {
+					this.info = response.data;        	  
+	        	  })
 	          .catch(() => {
 	            this.errored = true
 	          })
-	          .finally(() => this.loading = false)
+	          .finally(() => this.loading = false);
+	      }
+		});
+		//상세보기
+		var detailQuestion = Vue.component('detailQuestion',{
+	    template: '#detailQuestiontemplate',
+	    data(){
+	        return {
+	          question: {},
+	          loading: true,
+	          errored: false 
+	        }
+	      },
+	      methods:{
+	    	  show_detail:function(questionNum){
+	    		  alert(questionNum+"상세보기");
+	    		  App.questionNum=questionNum;
+	    		  App.currentview = 'detailQuestion';
+	    		  App.showlist(1);
+	    		}  
+	      },
+	      mounted () {
+	        axios
+	          .get('http://localhost:8080/safefood/qna/'+App.questionNum)
+	          //.get('./emp.json')
+	          .then(response => {
+					this.question = response.data;        	  
+	        	  })
+	          .catch(() => {
+	            this.errored = true
+	          })
+	          .finally(() => this.loading = false);
 	      }
 		});
 	
@@ -248,8 +317,7 @@ body {
 		   },
 		   components: {
 			   listQuestion: listQuestion,
-			   /* detailQuestion: detailQuestion,
- */
+			   detailQuestion: detailQuestion
 		     },
 		     methods:{
 		    	 showlist: function (val) {

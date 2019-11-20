@@ -23,8 +23,6 @@ CREATE TABLE `answer` (
 select * from question;
 select * from answer;
 
-drop table question;
-drop table answer;
 
 INSERT INTO `question` (`NUM`,`PASS`,`NAME`,`WDATE`,`TITLE`,`CONTENT`,`COUNT`) VALUES (1,'guest','Mel Gibson','2019-09-25','lala','lala2',0);
 INSERT INTO `question` (`NUM`,`PASS`,`NAME`,`WDATE`,`TITLE`,`CONTENT`,`COUNT`) VALUES (2,'guest','Mel Gibson','2019-09-25','게시판 연습2','게시판연습입니다.',3);
