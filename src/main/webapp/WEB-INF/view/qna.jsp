@@ -46,11 +46,12 @@ body {
     Author: BootstrapMade.com
     License: https://bootstrapmade.com/license/
   ======================================================= -->
-    <!-- vue 추가 -->
-	<script src="https://unpkg.com/vue"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
-	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<!-- vue 추가 -->
+<script src="https://unpkg.com/vue"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
@@ -137,11 +138,11 @@ body {
 				</div>
 				<!-- /.col-lg-6 -->
 			</div>
-			
-			<div id = "app">
-				<component v-bind:is = "currentview"></component>  
-			
-			
+
+			<div id="app">
+				<component v-bind:is="currentview"></component>
+
+
 			</div>
 
 
@@ -204,7 +205,7 @@ body {
 		</div>
 		</div>
 	</script>
-	
+
 	<script type="text/x-template" id="detailQuestiontemplate">
 		<div class="container">
 			<table class="table table-hover">
@@ -219,27 +220,73 @@ body {
 					</tr>
 					<tr>
 						<th scope="row">작성일</th>
-						<td>${question.wdate}</td>
+						<td>{{question.wdate}}</td>
 					</tr>
 
 					<tr>
 						<th scope="row">조회수</th>
-						<td>${question.count}</td>
+						<td>{{question.count}}</td>
 					</tr>
 
 					<tr>
-						<td colspan="2">${question.content}</td>
+						<td colspan="2">{{question.content}}</td>
 					</tr>
 
 				</tbody>
 			</table>
 		</div>
 	</script>
-	
-	
-	
-	
-	
+
+	<script type="text/x-template" id="writeQuestiontemplate">
+		<form class="form-horizontal" action="noticeInsert.food" method="post">
+			<div class="form-group has-feedback row">
+				<label for="inputName"
+					class="col-md-3 control-label text-md-right col-form-label">제목
+					<span class="text-danger small">*</span>
+				</label>
+				<div class="col-md-8">
+					<input type="text" class="form-control" id="inputName"
+						placeholder="" required name="title"> <i
+						class="fa fa-pencil form-control-feedback pr-4"></i>
+				</div>
+			</div>
+			<div class="form-group has-feedback row">
+				<label for="inputLastName"
+					class="col-md-3 control-label text-md-right col-form-label">비밀번호
+					<span class="text-danger small">*</span>
+				</label>
+				<div class="col-md-8">
+					<input type="password" class="form-control" id="inputLastName"
+						placeholder="영문 숫자 포함 6자리 이상" required="required" name="pass"> <i
+						class="fa fa-pencil form-control-feedback pr-4"></i>
+				</div>
+			</div>
+			
+			<div class="form-group has-feedback row">
+				<label for="inputEmail"
+					class="col-md-3 control-label text-md-right col-form-label">내용
+					<span class="text-danger small">*</span>
+				</label>
+				<div class="col-md-8">
+					<textarea cols = "50" rows = "10" class="form-control" id="inputEmail"
+						placeholder="address" required="required" name="content">
+					</textarea> 
+					<i class="fa fa-envelope form-control-feedback pr-4"></i>
+					<input type="hidden" name = "name" value = "${member.id}">
+				</div>
+			</div>
+				<div class="form-group row">
+					<div class="ml-md-auto col-md-9">
+						<button type="submit" class="btn btn-group btn-default btn-animated">
+								등록 <i class="fa fa-check"></i>
+						</button>
+					</div>
+				</div>
+			</form>
+	</script>
+
+
+
 	<script>
 		//목록
 		var listQuestion = Vue.component('listQuestion',{
@@ -253,7 +300,6 @@ body {
 	      },
 	      methods:{
 	    	  show_detail:function(questionNum){
-	    		  alert(questionNum+"상세보기");
 	    		  App.questionNum=questionNum;
 	    		  App.currentview = 'detailQuestion';
 	    		  App.showlist(1);
@@ -272,12 +318,13 @@ body {
 	          .finally(() => this.loading = false);
 	      }
 		});
+		
 		//상세보기
 		var detailQuestion = Vue.component('detailQuestion',{
 	    template: '#detailQuestiontemplate',
 	    data(){
 	        return {
-	          question: {},
+	          question: [],
 	          loading: true,
 	          errored: false 
 	        }
@@ -295,12 +342,13 @@ body {
 	          .get('http://localhost:8080/safefood/qna/'+App.questionNum)
 	          //.get('./emp.json')
 	          .then(response => {
-					this.question = response.data;        	  
+					this.question = response.data;
 	        	  })
 	          .catch(() => {
 	            this.errored = true
 	          })
 	          .finally(() => this.loading = false);
+	        
 	      }
 		});
 	
@@ -321,7 +369,6 @@ body {
 		     },
 		     methods:{
 		    	 showlist: function (val) {
-		    		 //alert(val);
 					 this.currentview=this.allviews[val];
 		    		 this.currenttitle=this.cutt[val];
 		         }

@@ -137,8 +137,7 @@ body {
 						</label>
 						<div class="col-md-8">
 							<textarea cols = "50" rows = "10" class="form-control" id="inputEmail"
-								placeholder="address" required="required" name="content">
-							</textarea> 
+								placeholder="address" required="required" name="content"></textarea> 
 							<i class="fa fa-envelope form-control-feedback pr-4"></i>
 							<input type="hidden" name = "name" value = "${member.id}">
 						</div>
