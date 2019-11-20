@@ -84,6 +84,7 @@ body {
 				<ul>
 					<!-- <li class="active"><a href="#intro">공지 사항</a></li> -->
 					<li><a href="notice.food">공지 사항</a></li>
+					<li><a href="qna.food">QnA</a></li>
 					<li><a href="read.food">상품 정보</a></li>
 					<li><a href="#about">베스트 섭취 정보</a></li>
 					<li><a href="#portfolio">내 섭취 정보</a></li>
