@@ -1,34 +1,33 @@
-//package com.safe.controller;
-//
-//import java.util.List;
-//
-//import javax.servlet.http.HttpServletRequest;
-//import javax.servlet.http.HttpSession;
-//
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Controller;
-//import org.springframework.ui.Model;
-//import org.springframework.web.bind.annotation.GetMapping;
-//import org.springframework.web.bind.annotation.PostMapping;
-//
-//import com.safe.service.BoardService;
-//import com.safe.vo.Board;
-//import com.safe.vo.Member;
-//
-//@Controller
-//public class QnaController {
-//	
-//	@Autowired
-//	BoardService service;
-//	
-//	@GetMapping(value = "/notice.food")
-//	public String notice(Model model) {
-//		List<Board> list = service.selectAll();
-//		model.addAttribute("list", list);
-//		
-//		return "notice"; // 논리적인 view 이름
-//	}
-//	
+package com.safe.controller;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.safe.service.QnaService;
+import com.safe.vo.Board;
+import com.safe.vo.Member;
+import com.safe.vo.Question;
+
+@RestController
+public class QnaRestController {
+	@Autowired
+	QnaService service;
+	
+	@RequestMapping(value = "/listQuestion.food", method=RequestMethod.GET)
+	public List<Question> selectAll() {
+		return service.selectAll();
+	}
+	
 //	@GetMapping(value = "/noticeInsertForm.food")
 //	public String noticeInsert(HttpSession session) {
 //		Member m = (Member) session.getAttribute("member");
@@ -96,4 +95,4 @@
 //		m.addAttribute("list",list);
 //		return "notice";
 //	}
-//}
+}
