@@ -52,6 +52,25 @@ body {
 	src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<!-- JavaScript Libraries -->
+<script src="lib/jquery/jquery.min.js"></script>
+<script src="lib/jquery/jquery-migrate.min.js"></script>
+<script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/mobile-nav/mobile-nav.js"></script>
+<script src="lib/wow/wow.min.js"></script>
+<script src="lib/waypoints/waypoints.min.js"></script>
+<script src="lib/counterup/counterup.min.js"></script>
+<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="lib/isotope/isotope.pkgd.min.js"></script>
+<script src="lib/lightbox/js/lightbox.min.js"></script>
+
+<!-- Template Main Javascript File -->
+<script src="js/main.js"></script>
+<!-- Contact Form JavaScript File -->
+<script src="contactform/contactform.js"></script>
+<!--검색 -->
+
 </head>
 
 <body>
@@ -114,35 +133,16 @@ body {
 		<div class="container">
 
 
-			<div class="container">
-				<div class="col-lg-6">
-					<form action="noticeSearch.food" id="target" class="form-inline">
-						<div class="form-group">
-							<select class="form-control" id="key" name="condition">
-								<option value="제목" selected="selected">제목</option>
-								<option value="작성자">작성자</option>
-							</select>
-						</div>
-						<div class="form-group">
-							<input type="text" class="form-control" id="word" name="word"
-								placeholder="검색어를 입력하세요">
-						</div>
-						<div class="form-group">
-							<button type="submit" class="btn btn-primary">검색</button>
-							<span style="float: right"><button type="button"
-									class="btn btn-primary"
-									onclick="location.href = 'noticeInsertForm.food'">작성</button></span>
-						</div>
-					</form>
-					<!-- /input-group -->
-				</div>
-				<!-- /.col-lg-6 -->
-			</div>
 
 			<div id="app">
+				<div class="container">
+					<button type="button" class="btn btn-primary" @click="showlist(0)">모든사원
+						보기</button>
+					<button type="button" class="btn btn-primary" @click="showlist(2)">질문
+						작성</button>
+					<button type="button" class="btn btn-primary" @click="showlist(4)">검색</button>
+				</div>
 				<component v-bind:is="currentview"></component>
-
-
 			</div>
 
 
@@ -159,27 +159,8 @@ body {
 
 
 	<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-	<!-- Uncomment below i you want to use a preloader -->
-	<!-- <div id="preloader"></div> -->
 
-	<!-- JavaScript Libraries -->
-	<script src="lib/jquery/jquery.min.js"></script>
-	<script src="lib/jquery/jquery-migrate.min.js"></script>
-	<script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<script src="lib/easing/easing.min.js"></script>
-	<script src="lib/mobile-nav/mobile-nav.js"></script>
-	<script src="lib/wow/wow.min.js"></script>
-	<script src="lib/waypoints/waypoints.min.js"></script>
-	<script src="lib/counterup/counterup.min.js"></script>
-	<script src="lib/owlcarousel/owl.carousel.min.js"></script>
-	<script src="lib/isotope/isotope.pkgd.min.js"></script>
-	<script src="lib/lightbox/js/lightbox.min.js"></script>
 
-	<!-- Template Main Javascript File -->
-	<script src="js/main.js"></script>
-	<!-- Contact Form JavaScript File -->
-	<script src="contactform/contactform.js"></script>
-	<!--검색 -->
 
 
 	<script type="text/x-template" id="listQuestiontemplate">
@@ -234,20 +215,22 @@ body {
 
 				</tbody>
 			</table>
+			<button @click="updateQuestion" class="btn btn-primary">수정</button>
+			<button @click="deleteQuestion" class="btn btn-primary">삭제</button>
+
 		</div>
 	</script>
 
 	<script type="text/x-template" id="writeQuestiontemplate">
-		<form class="form-horizontal" action="noticeInsert.food" method="post">
+		<div class="form-horizontal">
 			<div class="form-group has-feedback row">
 				<label for="inputName"
 					class="col-md-3 control-label text-md-right col-form-label">제목
 					<span class="text-danger small">*</span>
 				</label>
 				<div class="col-md-8">
-					<input type="text" class="form-control" id="inputName"
-						placeholder="" required name="title"> <i
-						class="fa fa-pencil form-control-feedback pr-4"></i>
+					<input type="text"  v-model = "title" class="form-control" id="inputName"
+						placeholder="title" required name="title">
 				</div>
 			</div>
 			<div class="form-group has-feedback row">
@@ -256,9 +239,8 @@ body {
 					<span class="text-danger small">*</span>
 				</label>
 				<div class="col-md-8">
-					<input type="password" class="form-control" id="inputLastName"
-						placeholder="영문 숫자 포함 6자리 이상" required="required" name="pass"> <i
-						class="fa fa-pencil form-control-feedback pr-4"></i>
+					<input type="password" v-model = "pass" class="form-control" id="inputLastName"
+						placeholder="영문 숫자 포함 6자리 이상" required="required" name="pass"> 
 				</div>
 			</div>
 			
@@ -268,24 +250,97 @@ body {
 					<span class="text-danger small">*</span>
 				</label>
 				<div class="col-md-8">
-					<textarea cols = "50" rows = "10" class="form-control" id="inputEmail"
-						placeholder="address" required="required" name="content">
-					</textarea> 
-					<i class="fa fa-envelope form-control-feedback pr-4"></i>
-					<input type="hidden" name = "name" value = "${member.id}">
+					<textarea v-model = "content" cols = "50" rows = "10" class="form-control" id="inputEmail"
+						placeholder="content" required="required" name="content">
+					</textarea>
+					<input type="hidden" v-model ="name" name = "name" value = "${member.id}">
 				</div>
 			</div>
 				<div class="form-group row">
 					<div class="ml-md-auto col-md-9">
-						<button type="submit" class="btn btn-group btn-default btn-animated">
-								등록 <i class="fa fa-check"></i>
-						</button>
+						<button @click="write" class="btn btn-primary">등록</button>
 					</div>
 				</div>
-			</form>
+			</div>
 	</script>
 
+	<script type="text/x-template" id="updateQuestiontemplate">
+		<div class="form-horizontal">
+			<div class="form-group has-feedback row">
+				<label for="inputName"
+					class="col-md-3 control-label text-md-right col-form-label">제목
+					<span class="text-danger small">*</span>
+				</label>
+				<div class="col-md-8">
+					<input type="text"  v-model = "title" class="form-control" id="inputName"
+						placeholder="title" required name="title">
+				</div>
+			</div>
+			
+			<div class="form-group has-feedback row">
+				<label for="inputEmail"
+					class="col-md-3 control-label text-md-right col-form-label">내용
+					<span class="text-danger small">*</span>
+				</label>
+				<div class="col-md-8">
+					<textarea v-model = "content" cols = "50" rows = "10" class="form-control" id="inputEmail"
+						placeholder="content" required="required" name="content">
+					</textarea>
+					<input type="hidden" v-model ="name" name = "name" value = "${member.id}">
+				</div>
+			</div>
+				<div class="form-group row">
+					<div class="ml-md-auto col-md-9">
+						<button @click="write" class="btn btn-primary">수정</button>
+					</div>
+				</div>
+			</div>
+	</script>
 
+	<script type="text/x-template" id="searchQuestiontemplate">
+	<div>
+		<div class="container">
+			<div class="col-lg-6">
+				<div id="target" class="form-inline">
+					<div class="form-group">
+						<select v-model = "condition" class="form-control" id="key" name="condition">
+							<option value="제목" selected="selected">제목</option>
+							<option value="작성자">작성자</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<input v-model = "word" type="text" class="form-control" id="word" name="word"
+							placeholder="검색어를 입력하세요">
+					</div>
+					<div class="form-group">
+						<button @click="search" class="btn btn-primary">검색</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div v-for="q in info" @click ="show_detail(q.num)" >
+			<div class='col-md-6 col-lg-12 wow' data-wow-duration='1.4s'>
+				<div class='box'>
+					<div>
+						<span class='title'> 
+							{{q.num}}
+						</span>
+					</div>
+						<div class='div_info div_notice' style="padding-left: 0px;">
+						<span>제목 : {{q.title}}</span>
+						<hr>
+						<span>작성일 : {{q.wdate}}</span>
+						<hr>
+						<span>작성자 : {{q.name}}</span>
+						<hr>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</script>
 
 	<script>
 		//목록
@@ -330,12 +385,25 @@ body {
 	        }
 	      },
 	      methods:{
-	    	  show_detail:function(questionNum){
-	    		  alert(questionNum+"상세보기");
-	    		  App.questionNum=questionNum;
-	    		  App.currentview = 'detailQuestion';
-	    		  App.showlist(1);
-	    		}  
+	    		updateQuestion:function(){
+		    	  App.currentview = 'updateQuestion';
+		    	  App.showlist(3);
+		    	},
+		    	deleteQuestion:function(){
+			        axios
+			          .delete('http://localhost:8080/safefood/qna/'+App.questionNum)
+			          //.get('./emp.json')
+			          .then(response => {
+			        	  })
+			          .catch(() => {
+			            this.errored = true
+			          })
+			          .finally(() => this.loading = false);
+		    		
+		    		
+			      App.currentview = 'listQuestion';
+			      App.showlist(0);
+			    }
 	      },
 	      mounted () {
 	        axios
@@ -351,6 +419,113 @@ body {
 	        
 	      }
 		});
+		
+		
+		//작성
+		var writeQuestion = Vue.component('writeQuestion',{
+		    template: '#writeQuestiontemplate',
+		    data () {
+			    return {
+			      loading: true,
+			      errored: false,
+			      question:[],
+			      title :'',
+			      pass :'',
+			      name : '',
+			      content:''
+			    }
+			  },
+		 	 methods: {
+		 		write() {
+				  
+				  axios.post('http://localhost:8080/safefood/qna/', {
+			    	  title: this.title,
+			    	  pass:this.pass,
+			    	  content: this.content,
+			    	  name : this.name
+			    	} 
+			      ).then(function(response){
+		    		  App.currentview = 'listQuestion';
+		    		  App.showlist(0);
+			    	}
+			      )
+				}
+		 	 }
+		  });  
+		
+		//수정
+		var updateQuestion = Vue.component('updateQuestion',{
+		    template: '#updateQuestiontemplate',
+		    data () {
+			    return {
+			      loading: true,
+			      errored: false,
+			      title :'',
+			      content:''
+			    }
+			  },
+		 	 methods: {
+		 		write() {
+				  
+				  axios.put('http://localhost:8080/safefood/qna/', {
+			    	  title: this.title,
+			    	  content: this.content,
+			    	  num : App.questionNum
+			    	} 
+			      ).then(function(response){
+		    		  App.currentview = 'listQuestion';
+		    		  App.showlist(0);
+			    	}
+			      )
+				}
+		 	 },
+		     mounted () {
+				  axios
+			         .get('http://localhost:8080/safefood/qna/'+App.questionNum)
+			         .then(response => {
+						this.title = response.data.title;
+						this.content = response.data.content;
+			       	  })
+			         .catch(() => {
+			           this.errored = true
+			         })
+			         .finally(() => this.loading = false);
+			 }
+		  });
+		
+		
+		//검색
+		var searchQuestion = Vue.component('searchQuestion',{
+	    template: '#searchQuestiontemplate',
+	    data(){
+	        return {
+	          info: [],
+	          condition:'',
+	          word:'',
+	          loading: true,
+	          errored: false 
+	        }
+	      },
+	      methods:{
+	    	  search:function(){
+	  	        axios
+		          .get('http://localhost:8080/safefood/qna/'+this.condition+'/'+this.word)
+		          //.get('./emp.json')
+		          .then(response => {
+						this.info = response.data;        	  
+		        	  })
+		          .catch(() => {
+		            this.errored = true
+		          })
+		          .finally(() => this.loading = false);
+	    	  
+	    	  
+	    	  }  
+	      }
+		});
+		
+	
+		
 	
 	
 	
@@ -360,18 +535,19 @@ body {
 			  currenttitle:'SSAFY HRM LIST',
 			  questionNum:'',
 			  currentview: 'listQuestion',
-		      allviews:['listQuestion','detailQuestion'],
-		      cutt:['SSAFY HRM LIST','SSAFY HRM ADD EMPLOEE']
+		      allviews:['listQuestion','detailQuestion','writeQuestion','updateQuestion','searchQuestion'],
 		   },
 		   components: {
 			   listQuestion: listQuestion,
-			   detailQuestion: detailQuestion
+			   detailQuestion: detailQuestion,
+			   writeQuestion : writeQuestion,
+			   updateQuestion : updateQuestion,
+			   searchQuestion: searchQuestion
 		     },
 		     methods:{
 		    	 showlist: function (val) {
 					 this.currentview=this.allviews[val];
-		    		 this.currenttitle=this.cutt[val];
-		         }
+		        }
 		     }
 		})
 	
