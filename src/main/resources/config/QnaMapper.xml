@@ -26,6 +26,14 @@
 		update question set count = count+1 where num = #{num}
 	</update>
 	
+	<select id="findByTitle" resultType="question">
+		select * from question where title like concat('%',#{title},'%')
+	</select>
+	
+	<select id="findByName" resultType="question">
+		select * from question where name = #{name}
+	</select>
+	
 	<insert id="insertAnswer"	parameterType="answer">
 		insert into answer(qnum, pass, name, wdate, content) values(#{num}, #{pass}, #{name}, sysdate(), #{content})
 	</insert>
@@ -37,6 +45,7 @@
 	<update id="updateAnswer"	parameterType="java.util.HashMap">
 		update answer set content = #{content} where num = #{num}
 	</update>
+	
 </mapper>
 
 

@@ -4,22 +4,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.safe.service.QnaService;
-import com.safe.vo.Board;
-import com.safe.vo.Member;
+import com.safe.vo.Answer;
 import com.safe.vo.Question;
 
 @RestController
@@ -64,5 +57,46 @@ public class QnaRestController {
 		
 		return map;
 	}
+
+	@RequestMapping(value="/answer", method=RequestMethod.POST) // insert 할때는 method로 POST 사용!
+	public Map insertAnswer(@RequestBody Answer a){ // @RequestBody: REQUEST 안의 json -> java object로 변환
+		service.insertAnswer(a);
+		Map map = new HashMap();
+		map.put("result", "insert success!!!");
+		
+		return map;
+	}
+
+	@RequestMapping(value="/answer/{num}", method=RequestMethod.DELETE) // method로 DELETE 사용!
+	public Map deleteAnswer(@PathVariable String num){
+		service.deleteAnswer(num);
+		Map map = new HashMap();
+		map.put("result", "delete success!!!");
+		
+		return map;
+	}
 	
+	@RequestMapping(value="/answer", method=RequestMethod.PUT) // update 할때는 method로 PUT 사용!
+	public Map updateAnswer(@RequestBody Answer a){ // @RequestBody: REQUEST 안의 json -> java object로 변환
+		service.updateAnswer(a);
+		Map map = new HashMap();
+		map.put("result", "update success!!!");
+		
+		return map;
+	}
+	
+	@RequestMapping(value="/qna/{condition}/{word}", method=RequestMethod.GET)
+	public List<Question> search(@PathVariable String condition, @PathVariable String word){
+		
+		if(condition.equals("title"))
+			return service.findByTitle(word);
+
+		else if(condition.equals("name")) {
+//			System.out.println(word);
+			return service.findByName(word);
+		}
+		
+		else
+			return null;
+	}
 }

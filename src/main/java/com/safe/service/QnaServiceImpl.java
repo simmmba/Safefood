@@ -48,4 +48,12 @@ public class QnaServiceImpl implements QnaService {
 	public void updateAnswer(Answer a) {
 		qnaDao.updateAnswer(a);
 	}
+	@Override
+	public List<Question> findByTitle(String title) {
+        return qnaDao.findByTitle(title);
+	}
+	@Override
+	public List<Question> findByName(String name) {
+        return qnaDao.findByName(name);
+	}
 }
