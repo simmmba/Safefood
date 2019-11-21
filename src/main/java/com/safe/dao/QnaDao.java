@@ -13,4 +13,6 @@ public interface QnaDao {
     public void insertAnswer(Answer a);
     public void deleteAnswer(String num);
     public void updateAnswer(Answer a);
+    public List<Question> findByTitle(String title);
+    public List<Question> findByName(String name);
 }

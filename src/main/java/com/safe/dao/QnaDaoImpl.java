@@ -51,4 +51,12 @@ public class QnaDaoImpl implements QnaDao {
 	public void countUp(String num) {
     	session.update("qna.updateCount",num);
     }
+	@Override
+	public List<Question> findByTitle(String title) {
+        return session.selectList("qna.findByTitle", title);
+	}
+	@Override
+	public List<Question> findByName(String name) {
+        return session.selectList("qna.findByName", name);
+	}
 }
