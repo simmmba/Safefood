@@ -59,8 +59,15 @@ body {
 		<div id="topbar">
 			<div class="container">
 				<div class="social-links">
-					<a class="member_join_login" href="memberinfo.food" role="button">회원정보</a>
-					<a class="member_join_login" href="logout.food" role="button">logout</a>
+					<c:if test="${empty member}">
+						<a class="member_join_login" href="joinForm.food" role="button">회원가입</a>
+						<a class="member_join_login" href="loginForm.food" role="button">로그인</a>
+					</c:if>
+
+					<c:if test="${not empty member}">
+						<a class="member_join_login" href="memberinfo.food" role="button">회원정보</a>
+						<a class="member_join_login" href="logout.food" role="button">로그아웃</a>
+					</c:if>
 				</div>
 			</div>
 		</div>
