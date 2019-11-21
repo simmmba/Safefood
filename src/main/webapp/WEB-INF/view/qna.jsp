@@ -128,7 +128,7 @@ body {
 
 
 		<header class="section-header">
-			<h3>Notice</h3>
+			<h3>QnA</h3>
 		</header>
 		<div class="container">
 
@@ -164,7 +164,7 @@ body {
 
 
 	<script type="text/x-template" id="listQuestiontemplate">
-		<div>	
+	<div>	
 		<div v-for="q in info" @click ="show_detail(q.num)" >
 			<div class='col-md-6 col-lg-12 wow' data-wow-duration='1.4s'>
 				<div class='box'>
@@ -184,7 +184,7 @@ body {
 				</div>
 			</div>
 		</div>
-		</div>
+	</div>
 	</script>
 
 	<script type="text/x-template" id="detailQuestiontemplate">
@@ -231,6 +231,16 @@ body {
 				<div class="col-md-8">
 					<input type="text"  v-model = "title" class="form-control" id="inputName"
 						placeholder="title" required name="title">
+				</div>
+			</div>
+			<div class="form-group has-feedback row">
+				<label for="inputLastName"
+					class="col-md-3 control-label text-md-right col-form-label">작성자
+					<span class="text-danger small">*</span>
+				</label>
+				<div class="col-md-8">
+					<input type="text" v-model = "name" class="form-control" 
+						placeholder="author" required="required" > 
 				</div>
 			</div>
 			<div class="form-group has-feedback row">
@@ -304,8 +314,8 @@ body {
 				<div id="target" class="form-inline">
 					<div class="form-group">
 						<select v-model = "condition" class="form-control" id="key" name="condition">
-							<option value="제목" selected="selected">제목</option>
-							<option value="작성자">작성자</option>
+							<option value="title" selected="selected">제목</option>
+							<option value="name">작성자</option>
 						</select>
 					</div>
 					<div class="form-group">
@@ -436,13 +446,13 @@ body {
 			    }
 			  },
 		 	 methods: {
-		 		write() {
-				  
+		 		write() {				  
 				  axios.post('http://localhost:8080/safefood/qna/', {
 			    	  title: this.title,
 			    	  pass:this.pass,
 			    	  content: this.content,
 			    	  name : this.name
+			    	  
 			    	} 
 			      ).then(function(response){
 		    		  App.currentview = 'listQuestion';
@@ -508,8 +518,27 @@ body {
 	      },
 	      methods:{
 	    	  search:function(){
+	    		 
 	  	        axios
 		          .get('http://localhost:8080/safefood/qna/'+this.condition+'/'+this.word)
+		          //.get('./emp.json')
+		          .then(response => {
+						this.info = response.data;	  
+		        	  })
+		          .catch(() => {
+		            this.errored = true
+		          })
+		          .finally(() => this.loading = false);
+	    	  },
+	    	  show_detail:function(questionNum){
+	    		  App.questionNum=questionNum;
+	    		  App.currentview = 'detailQuestion';
+	    		  App.showlist(1);
+	    		}  
+	      },
+	      mounted () {
+		        axios
+		          .get('http://localhost:8080/safefood/listQuestion')
 		          //.get('./emp.json')
 		          .then(response => {
 						this.info = response.data;        	  
@@ -518,10 +547,7 @@ body {
 		            this.errored = true
 		          })
 		          .finally(() => this.loading = false);
-	    	  
-	    	  
-	    	  }  
-	      }
+		      }
 		});
 		
 	
