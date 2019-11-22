@@ -404,15 +404,15 @@ body {
 			          .delete('http://localhost:8080/safefood/qna/'+App.questionNum)
 			          //.get('./emp.json')
 			          .then(response => {
+			        	  App.showlist(0);
+			        	  
 			        	  })
 			          .catch(() => {
 			            this.errored = true
 			          })
 			          .finally(() => this.loading = false);
 		    		
-		    		
-			      App.currentview = 'listQuestion';
-			      App.showlist(0);
+			        location.href='./qna.food';
 			    }
 	      },
 	      mounted () {
