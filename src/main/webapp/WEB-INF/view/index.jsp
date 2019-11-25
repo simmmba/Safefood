@@ -107,7 +107,7 @@ body {
 			</header>
 
 			<div class="container">
-				<div class="col-lg-6">
+				<div class="col-lg-6 search_input">
 					<form action="search.food" id="target" class="form-inline">
 						<div class="form-group">
 							<select class="form-control" id="key" name="key">
@@ -135,7 +135,7 @@ body {
 			<div id=div_main class="row">
 				<c:forEach items="${list}" var="f">
 					<div class="col-md-6 col-lg-4 wow bounceInUp"
-						data-wow-duration="1.4s">
+						data-wow-duration="1.4s" onclick="location.href='detail.food?code=${f.code}';">
 						<div class="box">
 							<div>
 								<img src="${f.getImg()}" alt="로고" height="200">

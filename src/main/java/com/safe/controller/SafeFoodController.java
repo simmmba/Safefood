@@ -1,6 +1,5 @@
 package com.safe.controller;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -60,8 +59,6 @@ public class SafeFoodController extends HttpServlet {
 		}
 		model.addAttribute("list", list);//jsp에서 꺼내쓰도록 list 저장
 		return "index";
-		//jsp로 forward해서 넘어가기
-//		RequestDispatcher dis=req.getRequestDispatcher("/view/index.jsp");
 	}
 
 	@GetMapping(value = "/read.food")
@@ -80,7 +77,6 @@ public class SafeFoodController extends HttpServlet {
 		if(!key.equals("all") && word != null && !word.trim().equals("")) {
 			if(key.equals("칼로리")) {
 				try {
-//					res.sendRedirect("cal.food?word="+word);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -181,13 +177,17 @@ public class SafeFoodController extends HttpServlet {
 		model.addAttribute("f",f);
 		model.addAttribute("a",allergy);
 		
-//		RequestDispatcher dis = req.getRequestDispatcher("/view/detail.jsp");
 		return "detail";
 	}
 
 	@GetMapping(value = "/qna.food")
 	public String qna() {
 		return "qna";
+	}
+
+	@GetMapping(value = "/myintake.food")
+	public String myintake() {
+		return "myintake";
 	}
 
 	public void trendWord(String word) {
