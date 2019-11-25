@@ -30,14 +30,4 @@
 		update members set pass = #{pass} where id = #{id} and name = #{name} and callnum = #{callnum}
 	</update>
 
-
-	
-<!-- 
-	<insert id="insert" parameterType="Customer">
-		insert into customer values (#{num}, #{name}, #{address})
-	</insert>
-
-	<delete id="delete" parameterType="String">
-		delete from customer where num = #{num}
-	</delete> -->
 </mapper>

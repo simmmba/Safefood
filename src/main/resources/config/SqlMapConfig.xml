@@ -8,6 +8,7 @@
         <typeAlias alias="Member" type="com.safe.vo.Member"/>
         <typeAlias alias="Question" type="com.safe.vo.Question"/>
         <typeAlias alias="Answer" type="com.safe.vo.Answer"/>
+        <typeAlias alias="Intake" type="com.safe.vo.Intake"/>
     </typeAliases>
 	
     <!-- 3. mapper file: table&object mapping -->
@@ -16,6 +17,7 @@
       <mapper resource="config/FoodMapper.xml" />
       <mapper resource="config/MemberMapper.xml" />
       <mapper resource="config/QnaMapper.xml" />
+      <mapper resource="config/IntakeMapper.xml" />
     </mappers>
  
 </configuration>

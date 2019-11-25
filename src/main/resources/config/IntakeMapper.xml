@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+	
+<mapper namespace="intake">
+
+
+	<select id="selectAll" parameterType="String" resultType="intake">
+		select * from intakedb where id = #{id} order by count desc
+	</select>
+
+	<select id="selectOne" parameterType="java.util.HashMap" resultType="intake">
+		select * from intakedb where id = #{id} and code = #{code}
+	</select>
+	
+	<insert id="insert"	parameterType="java.util.HashMap">
+		insert into intakedb values(null,sysdate(),#{id},#{code},1)
+	</insert>
+	
+	
+	<update id="update" parameterType="java.util.HashMap">
+		update intakedb set count = count+1 where ino = #{ino} and id = #{id} and code = #{code}
+	</update>
+	
+	
+</mapper>
+
+
+
+
+
+

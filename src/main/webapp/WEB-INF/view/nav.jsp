@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="com.safe.vo.Food, com.safe.vo.Member"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="com.safe.vo.Food, com.safe.vo.Member"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -47,7 +46,7 @@
 					<li><a href="qna.food">QnA</a></li>
 					<li><a href="read.food">상품 정보</a></li>
 					<li><a href="#about">베스트 섭취 정보</a></li>
-					<li><a href="#portfolio">내 섭취 정보</a></li>
+					<li><a href="myintake.food">내 섭취 정보</a></li>
 					<li><a href="#team">예상 섭취 정보</a></li>
 
 				</ul>
