@@ -32,7 +32,7 @@
 	
 		
 	<update id="updateCount"	parameterType="String">
-		update board set count = count+1,`count` where num = #{num}
+		update board set count = count+1 where num = #{num}
 	</update>
 	
 	
