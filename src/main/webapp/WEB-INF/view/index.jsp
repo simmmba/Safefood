@@ -37,6 +37,14 @@
 body {
 	background-color: white;
 }
+.jumbotron {
+	width: 100%;
+	height: 350px;
+	background-image: url("https://cdn.pixabay.com/photo/2017/01/26/02/06/platter-2009590_960_720.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	color: white;
+}
 </style>
 </head>
 <body>
@@ -44,9 +52,15 @@ body {
 	
 	<section id="services" class="section-bg">
 		<div class="container">
-
 			<header class="section-header">
-				<h3>Main Page</h3>
+				<div class="jumbotron">
+					<div class="container text-center">
+						<br><br>
+						<h1><b>WHAT WE PROVIDE</b></h1>
+						<br>
+						<p style="color:white;">건강한 삶을 위한 먹거리 프로젝트</p>
+					</div>
+				</div>
 			</header>
 
 			<div class="container">

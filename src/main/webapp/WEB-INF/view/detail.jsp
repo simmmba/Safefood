@@ -39,20 +39,10 @@ body {
 }
 </style>
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js">
-	
-	
-	
-	</script>
-<!-- =======================================================
-    Theme Name: Rapid
-    Theme URL: https://bootstrapmade.com/rapid-multipurpose-bootstrap-business-template/
-    Author: BootstrapMade.com
-    License: https://bootstrapmade.com/license/
-  ======================================================= -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<!-- pie chart -->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 
 <body>
@@ -82,68 +72,13 @@ body {
 						<h5>알레르기</h5>
 						<p id="allergy">${a}</p>
 						<hr>
+						<h5>영양 정보</h5>
 						<center>
-							<div class="container">
-								<h5>영양 정보</h5>
-								<div class="pie_chart">
-									<canvas id="chartcanvas" width="500" height="300"></canvas>
-								</div>
-				
-								<div>
-									<table id="table_nutrition">
-										<tbody>
-											<tr>
-												<th>&nbsp;&nbsp;&nbsp;일일 제공량&nbsp;&nbsp;&nbsp;</th>
-												<th id = 'td1'>&nbsp;&nbsp;&nbsp;${f.getSupportpereat()}</th>
-											</tr>
-											<tr>
-												<th>&nbsp;&nbsp;&nbsp;칼로리&nbsp;&nbsp;&nbsp;</th>
-<!-- 												<th style="background-color: #ffe6e6">&nbsp;&nbsp;&nbsp;칼로리&nbsp;&nbsp;&nbsp;</th> -->
-												<th id = 'td2'>&nbsp;&nbsp;&nbsp;${f.getCalory()}</th>
-											</tr>
-											<tr>
-												<td style="background-color: #ffe6cc">&nbsp;&nbsp;&nbsp;탄수화물&nbsp;&nbsp;&nbsp;</td>
-												<td id = 'td3'>&nbsp;&nbsp;&nbsp;${f.getCarbo()}</td>
-											</tr>
-											<tr>
-												<td style="background-color: #ffffb3">&nbsp;&nbsp;&nbsp;단백질&nbsp;&nbsp;&nbsp;</td>
-												<td id = 'td4'>&nbsp;&nbsp;&nbsp;${f.getProtein()}</td>
-											</tr>
-											<tr>
-												<td style="background-color: #ecffb3">&nbsp;&nbsp;&nbsp;지방&nbsp;&nbsp;&nbsp;</td>
-												<td id = 'td5'>&nbsp;&nbsp;&nbsp;${f.getFat()}</td>
-											</tr>
-											<tr>
-												<td style="background-color: #b3ecff">&nbsp;&nbsp;&nbsp;당류&nbsp;&nbsp;&nbsp;</td>
-												<td id = 'td6'>&nbsp;&nbsp;&nbsp;${f.getSugar()}</td>
-											</tr>
-											<tr>
-												<td style="background-color: #d9b3ff">&nbsp;&nbsp;&nbsp;나트륨&nbsp;&nbsp;&nbsp;</td>
-												<td id = 'td7'>&nbsp;&nbsp;&nbsp;${f.getNatrium()}</td>
-											</tr>
-											<tr>
-												<td style="background-color: #ffb3c6">&nbsp;&nbsp;&nbsp;콜레스테롤&nbsp;&nbsp;&nbsp;</td>
-												<td id = 'td8'>&nbsp;&nbsp;&nbsp;${f.getChole()}</td>
-											</tr>
-											<tr>
-												<td style="background-color: #b3ffec">&nbsp;&nbsp;&nbsp;포화 지방산&nbsp;&nbsp;&nbsp;</td>
-												<td id = 'td9'>&nbsp;&nbsp;&nbsp;${f.getFattyacid()}</td>
-											</tr>
-											<tr>
-												<td style="background-color: #ffd966">&nbsp;&nbsp;&nbsp;트랜스지방&nbsp;&nbsp;&nbsp;</td>
-												<td id = 'td10'>&nbsp;&nbsp;&nbsp;${f.getTransfat()}</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</div>
+							<div id="piechart" style="width: 900px; height: 500px;"></div>
 						</center>
-						
 					</div>
 				</div>
 			</div>
-
-			
 		</div>
 	</section>
 		
@@ -173,78 +108,56 @@ body {
 	<!-- Template Main Javascript File -->
 	<script src="js/main.js"></script>
 	<script type="text/javascript">
-	
-		var canvas = document.getElementById("chartcanvas");
-		var context = canvas.getContext("2d");
-		var sw = canvas.width;
-		var sh = canvas.height;
-		var PADDING = 50;
-		
-		var temp3 = $('#td3').text();
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      var temp3 = ${f.getCarbo()};
 		if (temp3 == 'N/A')temp3 = 0;
 		
-		var temp4 = $('#td4').text();
+		var temp4 = ${f.getProtein()};
 		if (temp4 == 'N/A')temp4 = 0;
 		
-		var temp5 = $('#td5').text();
+		var temp5 = ${f.getFat()};
 		if (temp5 == 'N/A')temp5 = 0;
 		
-		var temp6 = $('#td6').text();
+		var temp6 = ${f.getSugar()};
 		if (temp6 == 'N/A')temp6 = 0;
 		
-		var temp7 = $('#td7').text();
+		var temp7 = ${f.getNatrium()};
 		if (temp7 == 'N/A')temp7 = 0;
 		
-		var temp8 = $('#td8').text();
+		var temp8 = ${f.getChole()};
 		if (temp8 == 'N/A')temp8 = 0;
 		
-		var temp9 = $('#td9').text();
+		var temp9 = ${f.getFattyacid()};
 		if (temp9 == 'N/A')temp9 = 0;
 		
-		var temp10 = $('#td10').text();
+		var temp10 = ${f.getTransfat()};
 		if (temp10 == 'N/A')temp10 = 0;
 		
-		var data = [
-		temp3 * 1,
-		temp4 * 1,
-		temp5 * 1,
-		temp6 * 1,
-		temp7 * 1,
-		temp8 * 1,
-		temp9 * 1,
-		temp10 * 1 ];
-		for ( var i in data)
-		console.log(data[i]);
-		
-		var colors=["#ffe6cc","#ffffb3","#ecffb3","#b3ecff","#d9b3ff", "#ffb3c6","#b3ffec","#ffd966"];
-		
-		var center_X = sw / 2;
-		var center_Y = sh / 2;
-		
-		var radius = Math.min(sw- (PADDING * 2), sh- (PADDING * 2)) / 2;
-		var angle = 0;
-		var total = 0;
-		for ( var i in data) {
-			total += data[i];
-		}
-		
-		function AddText(context,strN, strR, colors,text_xcoord,text_ycoord) {
-			context.textAlign = "left";
-			context.fillStyle = colors;
-			context.font = "12pt Century Gothic";
-			context.fillText(strN,text_xcoord,text_ycoord);
-			context.fillText(strR,text_xcoord,text_ycoord + 20);
-		};
-		
-		for (var i = 0; i < data.length; i++) {
-			context.fillStyle = colors[i];
-			context.beginPath();
-			context.moveTo(center_X, center_Y);
-			context.arc(center_X,center_Y,radius,angle,angle+ (Math.PI * 2 * (data[i] / total)));
-			context.lineTo(center_X,center_Y);
-			context.fill();
-			angle += Math.PI* 2* (data[i] / total);
-		}
-	</script>
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Kind', 'Value'],
+          ['탄수화물 : ' + temp3, temp3 * 1],
+          ['단백질 : ' + temp4, temp4 * 1],
+          ['지방 : ' + temp5, temp5 * 1],
+          ['당류 : ' + temp6, temp6 * 1],
+          ['나트륨 : ' + temp7, temp7 * 1],
+          ['콜레스테롤 : ' + temp8, temp8 * 1],
+          ['포화지방산 : ' + temp9, temp9 * 1],
+          ['트랜스지방 : ' + temp10, temp10 * 1]
+        ]);
+
+        var options = {
+          title: '일일 제공량 : ' + ${f.getSupportpereat()} + '\n칼로리 : ' + ${f.getCalory()}
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+	 	chart.draw(data, options);
+      }
+    </script>
+	
+	
 </body>
 </html>
