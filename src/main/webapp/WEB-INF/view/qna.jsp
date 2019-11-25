@@ -40,12 +40,6 @@ body {
 	background-color: white;
 }
 </style>
-<!-- =======================================================
-    Theme Name: Rapid
-    Theme URL: https://bootstrapmade.com/rapid-multipurpose-bootstrap-business-template/
-    Author: BootstrapMade.com
-    License: https://bootstrapmade.com/license/
-  ======================================================= -->
 <!-- vue 추가 -->
 <script src="https://unpkg.com/vue"></script>
 <script
@@ -79,29 +73,20 @@ body {
 
 	<section id="services" class="section-bg">
 
-
 		<header class="section-header">
 			<h3>QnA</h3>
 		</header>
 		<div class="container">
-
-
-
 			<div id="app">
 				<div class="container">
-					<button type="button" class="btn btn-primary" @click="showlist(0)">모든사원
-						보기</button>
-					<button type="button" class="btn btn-primary" @click="showlist(2)">질문
-						작성</button>
+					<button type="button" class="btn btn-primary" @click="showlist(0)">모든 글 보기</button>
+					<button type="button" class="btn btn-primary" @click="showlist(2)">질문 작성</button>
 					<button type="button" class="btn btn-primary" @click="showlist(4)">검색</button>
 				</div>
+				<br>
 				<component v-bind:is="currentview"></component>
 			</div>
-
-
 		</div>
-
-
 	</section>
 
 	<div class="floating">
@@ -112,12 +97,7 @@ body {
 	<jsp:include page="footer.jsp"></jsp:include>
 	
 	<!-- #services -->
-
-
 	<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-
-
-
 
 	<script type="text/x-template" id="listQuestiontemplate">
 	<div>	
@@ -129,7 +109,8 @@ body {
 							{{q.num}}
 						</span>
 					</div>
-						<div class='div_info div_notice' style="padding-left: 0px;">
+
+					<div class='div_info div_notice' style="padding-left: 0px;">
 						<span>제목 : {{q.title}}</span>
 						<hr>
 						<span>작성일 : {{q.wdate}}</span>
@@ -269,19 +250,20 @@ body {
 			<div class="col-lg-6">
 				<div id="target" class="form-inline">
 					<div class="form-group">
-						<select v-model = "condition" class="form-control" id="key" name="condition">
-							<option value="title" selected="selected">제목</option>
+						<select v-model = "condition" class="form-control" id="key" name="condition" >
+  							<option disabled value="">종류 선택</option>
+							<option value="title" selected>제목</option>
 							<option value="name">작성자</option>
 						</select>
 					</div>
 					<div class="form-group">
-						<input v-model = "word" type="text" class="form-control" id="word" name="word"
-							placeholder="검색어를 입력하세요">
+						<input v-model = "word" type="text" class="form-control" id="word" name="word" placeholder="검색어를 입력하세요">
 					</div>
 					<div class="form-group">
 						<button @click="search" class="btn btn-primary">검색</button>
 					</div>
 				</div>
+				<br>
 			</div>
 		</div>
 
@@ -495,7 +477,6 @@ body {
 	      mounted () {
 		        axios
 		          .get('http://localhost:8080/safefood/listQuestion')
-		          //.get('./emp.json')
 		          .then(response => {
 						this.info = response.data;        	  
 		        	  })

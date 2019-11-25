@@ -64,8 +64,7 @@ body {
 						</label>
 						<div class="col-md-8">
 							<input type="text" class="form-control" id="inputName"
-								placeholder="" required name="id"> <i
-								class="fa fa-pencil form-control-feedback pr-4"></i>
+								placeholder="" required name="id"> 
 						</div>
 					</div>
 					<div class="form-group has-feedback row">
@@ -75,8 +74,7 @@ body {
 						</label>
 						<div class="col-md-8">
 							<input type="text" class="form-control" id="inputUserName"
-								placeholder="User Name" required="required" name="name"> <i
-								class="fa fa-user form-control-feedback pr-4"></i>
+								placeholder="User Name" required="required" name="name"> 
 						</div>
 					</div>
 					<div class="form-group has-feedback row">
@@ -86,14 +84,12 @@ body {
 						</label>
 						<div class="col-md-8">
 							<input type="text" class="form-control" id="inputPassword"
-								placeholder="010-xxxx-xxxx" required="required" name="callnum"> <i
-								class="fa fa-lock form-control-feedback pr-4"></i>
+								placeholder="010-xxxx-xxxx" required="required" name="callnum"> 
 						</div>
 					</div>
 					<div class="form-group row">
 						<div class="ml-md-auto col-md-9">
-							<button type="submit"
-								class="btn btn-danger">
+							<button type="submit" class="btn btn-danger">
 								확인<i class="fa fa-check"></i>
 							</button>
 						</div>

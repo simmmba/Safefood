@@ -84,7 +84,7 @@ body {
 							<!-- <button type="submit" class="btn btn-group btn-default btn-animated" >
 								로그인 <i class="fa fa-check"></i>
 							</button> -->
-							<button type="submit" class="btn btn-secondary">
+							<button type="submit"  class="btn btn-danger">
 								로그인 &nbsp;&nbsp;<i class="fa fa-check"></i>
 							</button>
 						</div>
@@ -97,7 +97,7 @@ body {
 							<!-- <button type="submit" class="btn btn-group btn-default btn-animated" >
 								비밀번호 찾기 <i class="fa fa-check"></i>
 							</button> -->
-							<button type="submit" class="btn btn-secondary">
+							<button type="submit"  class="btn btn-primary">
 								비밀번호 찾기 &nbsp;&nbsp;<i class="fa fa-asterisk"></i>
 							</button>
 						</div>
