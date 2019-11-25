@@ -16,11 +16,10 @@ public class IntakeDaoImpl implements IntakeDao {
     SqlSession session; // SqlSessionTemplate이 실제로 주입됨
 
     @Override
-    public List<Intake> selectAll() {
-    	return session.selectList("intake.selectAll");
+    public List<Intake> selectAll(String id) {
+    	return session.selectList("intake.selectAll",id);
     }
 
-    
     @Override
 	public Intake selectOne(String code,String id) {
 		Map<String,String> m = new HashMap<>();

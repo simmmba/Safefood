@@ -9,28 +9,39 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 
-import com.safe.service.BoardService;
-import com.safe.vo.Board;
+import com.safe.service.IntakeService;
+import com.safe.vo.Intake;
 import com.safe.vo.Member;
 
 @Controller
 public class IntakeController {
 	
 	@Autowired
-//	IntakeService service;
+	IntakeService service;
 	
-	
-	public boolean isExist(String code) {
-		return false;
+	@GetMapping(value = "/myintake.food")
+	public String myintake(Model model, HttpSession session) {
+		Member m = (Member) session.getAttribute("member");
+		String id = m.getId();
+		List<Intake> list = service.selectAll(id);
+		
+		model.addAttribute("list",list);
+		
+		return "myintake";
 	}
 	
-	
 	@GetMapping(value = "/intake.food")
-	public void intake(HttpServletRequest req) {
+	public String intake(HttpServletRequest req, HttpSession session) {
 		String code = req.getParameter("code");
-		
+		Member m = (Member) session.getAttribute("member");
+		String id = m.getId();
+		service.update(code, id);
+		//		if(m == null) return "login";
+//		
+//		
+		return "main.food";
+//		
 	}
 	
 //	@GetMapping(value = "/noticeInsertForm.food")

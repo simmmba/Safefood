@@ -68,19 +68,19 @@ body {
 
 			<div class="container">
 				<div class="box">
-					<img id="image" src="${f.getImg()}" alt="" width="200px" height="200px">
+					<img id="image" src="${f.img}" alt="" width="200px" height="200px">
 					<div class="col-md-12">
-						<h3 id="name">${f.getName()}</h3>
+						<h3 id="name">${f.name}</h3>
 						<hr>
 						<h5>원재료</h5>
-						<p id="material">${f.getMaterial()}</p>
+						<p id="material">${f.material}</p>
 						<hr>
 						<h5>알레르기</h5>
 						<p id="allergy">${a}</p>
 						<hr>
 						
 						<div class="btn-group" role="group">
-							<a href="#" class="btn btn-primary btn-md active" role="button">추가</a>
+							<a href="intake.food?code=${f.code}" class="btn btn-primary btn-md active" role="button">추가</a>
 							<a href="#" class="btn btn-primary btn-md active" role="button">찜</a>
 						</div>
 					</div>
@@ -224,9 +224,7 @@ body {
 		for (var i = 0; i < data.length; i++) {
 		context.fillStyle = colors[i];
 		context.beginPath();
-		context.moveTo(
-			center_X,
-			center_Y);
+		context.moveTo(center_X,center_Y);
 		context.arc(center_X,center_Y,radius,angle,angle+ (Math.PI * 2 * (data[i] / total)));
 		context.lineTo(center_X,center_Y);
 		context.fill();

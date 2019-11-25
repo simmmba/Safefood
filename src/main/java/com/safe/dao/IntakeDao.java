@@ -7,7 +7,7 @@ import com.safe.vo.Intake;
 public interface IntakeDao {
 
 	public Intake selectOne(String code,String id);
-	public List<Intake> selectAll();
+	public List<Intake> selectAll(String id);
 	
 	public void insert(String code, String id);
 	public void update(String code, String id);

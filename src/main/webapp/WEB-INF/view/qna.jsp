@@ -477,7 +477,6 @@ body {
 	    		 
 	  	        axios
 		          .get('http://localhost:8080/safefood/qna/'+this.condition+'/'+this.word)
-		          //.get('./emp.json')
 		          .then(response => {
 						this.info = response.data;	  
 		        	  })

@@ -88,9 +88,9 @@ public class QnaRestController {
 	@RequestMapping(value="/qna/{condition}/{word}", method=RequestMethod.GET)
 	public List<Question> search(@PathVariable String condition, @PathVariable String word){
 		
-		if(condition.equals("title"))
+		if(condition.equals("title")) {
 			return service.findByTitle(word);
-
+		}
 		else if(condition.equals("name")) {
 //			System.out.println(word);
 			return service.findByName(word);

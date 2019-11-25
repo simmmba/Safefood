@@ -1,15 +1,14 @@
 package com.safe.vo;
 
 public class Intake {
-    private String ino,idate,id,code, name;
+    private String ino,idate,id,code; 
     private int count;
 	
-    public Intake(String ino, String idate, String id, String code, String name, int count) {
+    public Intake(String ino, String idate, String id, String code, int count) {
 		this.ino = ino;
 		this.idate = idate;
 		this.id = id;
 		this.code = code;
-		this.name = name;
 		this.count = count;
 	}
     
@@ -54,15 +53,6 @@ public class Intake {
 	}
 
 
-	public String getName() {
-		return name;
-	}
-
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
 
 	public int getCount() {
 		return count;
@@ -76,11 +66,7 @@ public class Intake {
 
 	@Override
 	public String toString() {
-		return "Intake [ino=" + ino + ", idate=" + idate + ", id=" + id + ", code=" + code + ", name=" + name
-				+ ", count=" + count + "]";
+		return "Intake [ino=" + ino + ", idate=" + idate + ", id=" + id + ", code=" + code + ", count=" + count + "]";
 	}
-    
-    
-    
     
 }
