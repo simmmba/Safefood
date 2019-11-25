@@ -5,12 +5,20 @@
 
 
 	<select id="selectAll" parameterType="String" resultType="intake">
-		select * from intakedb where id = #{id} order by count desc
+		select * from intakedb it join fooddb fd on(it.code = fd.code) where id = #{id} order by count desc
 	</select>
 
 	<select id="selectOne" parameterType="java.util.HashMap" resultType="intake">
 		select * from intakedb where id = #{id} and code = #{code}
 	</select>
+
+	<select id="select" parameterType="String" resultType="intake">
+		select * from intakedb where ino = #{ino}
+	</select>
+	
+	<delete id="delete" parameterType="String">
+		delete from intakedb where ino = #{ino}
+	</delete>
 	
 	<insert id="insert"	parameterType="java.util.HashMap">
 		insert into intakedb values(null,sysdate(),#{id},#{code},1)
@@ -19,6 +27,16 @@
 	
 	<update id="update" parameterType="java.util.HashMap">
 		update intakedb set count = count+1 where ino = #{ino} and id = #{id} and code = #{code}
+	</update>
+
+
+
+	<update id="add" parameterType="String">
+		update intakedb set count = count+1 where ino = #{ino}
+	</update>
+
+	<update id="del" parameterType="java.util.HashMap">
+		update intakedb set count = count-1 where ino = #{ino}
 	</update>
 	
 	

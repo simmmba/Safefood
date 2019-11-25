@@ -45,6 +45,12 @@ body {
     Author: BootstrapMade.com
     License: https://bootstrapmade.com/license/
   ======================================================= -->
+
+
+  
+  
+  
+  
 </head>
 
 <body>
@@ -56,14 +62,13 @@ body {
 			<header class="section-header">
 				<h3>Notice</h3>
 			</header>
-			<table>
-				<tr><th>코드</th><th>개수</th></tr>
-				<c:forEach items="${list}" var="i">
+			<table id = "intakeTable">
+				<%-- <c:forEach items="${list}" var="i">
 					<tr>
 						<td>${i.code}</td>
 						<td>${i.count}</td>
 					</tr>
-				</c:forEach>
+				</c:forEach> --%>
 			</table>
 		</div>
 	</section>
@@ -97,6 +102,107 @@ body {
 	<!-- Contact Form JavaScript File -->
 	<script src="contactform/contactform.js"></script>
 	<!--검색 -->
+	
+	<script type="text/javascript">
+	$(document).ready(function(){
+ 		intakeList();
+ 		intakeDel();
+ 		intakeAdd();
+	});
+	 
+	//모든 사용자 목록 조회 요청
+
+	
+	//사용자 조회 요청
+	function intake() {
+		// $(부모).on('click', 자식, function(){})
+		$('body').on('click', '#intakebtn', function(){
+			var code = $(this).val();
+			//ajax 요청
+			$.ajax({
+				url:'intake.food?code='+code,
+				type:'get',
+				success:function(){
+					alert("내 섭취 정보에 추가했습니다.")
+				},
+				error : function(xhr, status, msg){
+					alert("상태값 : " + status + "http 에러 메세지 : " + msg);
+				}
+			});
+		}); 
+	}//customerSelect
+	
+	//모든 사용자 목록 조회 요청
+	function intakeList() {//REST 서버에 모든 고객정보 ajax 요청 보내기
+			$.ajax({
+				url : 'myintake.food',
+				type : 'get',
+				dataType : 'json', //서버가 보내주는 데이터 타입
+				success : function(data){
+					intakeListResult(data);
+				},
+				error : function(xhr, status, msg){
+					alert("상태값 : " + status + "http 에러 메세지 : " + msg);
+				}
+				
+			});
+	}//customerList
+	
+	function intakeListResult(data){
+		$('#intakeTable').empty();
+		$('<tr>').append($('<th>').html("제품명"))
+			   .append($('<th>').html("섭취 갯수"))
+			   .appendTo('#intakeTable');
+		
+		$.each(data, function(idx,item){
+			$('<tr>').append($('<td>').html(item.name))
+					 .append($('<td>').html(item.count))
+					 .append($('<td>').html('<button id = "btnAdd">더하기</buttton>'))
+					 .append($('<td>').html('<button id = "btnDel">빼기</buttton>'))
+					 .append($('<input type="hidden" id ="hidden_ino">').val(item.ino))
+					 .appendTo('#intakeTable');
+		});
+	}
+	
+	//섭취 빼기 요청
+	 function intakeDel() {
+		$('body').on('click', '#btnDel', function(){
+			var ino = $(this).closest('tr').find('#hidden_ino').val();
+			$.ajax({
+				url:'intakeDel.food?ino='+ino,
+				type:'get',
+				success: function(){
+					intakeList();
+				},
+				error : function(xhr, status, msg){
+					alert("상태값 : " + status + "http 에러 메세지 : " + msg);
+				}
+			});
+		});
+	}
+	
+	//섭취 추가 요청
+	 function intakeAdd() {
+		$('body').on('click', '#btnAdd', function(){
+			var ino = $(this).closest('tr').find('#hidden_ino').val();
+			$.ajax({
+				url:'intakeAdd.food?ino='+ino,
+				type:'get',
+				success: function(){
+					intakeList();
+				},
+				error : function(xhr, status, msg){
+					alert("상태값 : " + status + "http 에러 메세지 : " + msg);
+				}
+			});
+		});
+	}//customerDelete
+	
+
+	
+
+	
+</script>
 
 </body>
 </html>
