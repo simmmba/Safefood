@@ -50,5 +50,21 @@ public class IntakeDaoImpl implements IntakeDao {
 		session.insert("intake.insert",m);
 	}
 
+	@Override
+	public void add(String ino) {
+		session.update("intake.add",ino);
+	}
+	
+	@Override
+	public void del(String ino) {
+		Intake intake = session.selectOne("intake.select", ino);
+		if(intake.getCount() == 1) {
+			session.delete("intake.delete",ino);
+		}else {
+			session.update("intake.del",ino);
+		}
+		
+	}
+
     
 }

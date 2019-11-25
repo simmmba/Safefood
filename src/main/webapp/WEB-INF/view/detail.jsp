@@ -72,8 +72,8 @@ body {
 					<div class="col-md-12">
 						<h3 id="name">${f.name}</h3>
 						<div class="btn-group" role="group">
-							<a href="intake.food?code=${f.code}" class="btn btn-primary btn-md active" role="button">추가</a>
-							<a href="#" class="btn btn-primary btn-md active" role="button">찜</a>
+							<button class="btn btn-primary btn-md active" role="button" id="intakebtn" value = "${f.code}">추가</button>
+							<button class="btn btn-primary btn-md active" role="button">찜</button>
 						</div>
 						<hr>
 						<h5>원재료</h5>
@@ -246,5 +246,122 @@ body {
 			angle += Math.PI* 2* (data[i] / total);
 		}
 	</script>
+	
+<script type="text/javascript">
+	$(document).ready(function(){
+/* 		 		   init();
+		   customerList(); //모든 사용자 정보 요청
+		 customerSelect(); //한사람 선택시 처리할 이벤트 등록
+		 customerDelete(); //한사람 삭제시 처리할 이벤트 등록
+		 customerUpdate(); //한사람 정보 수정시 처리할 이벤트 등록
+		 customerInsert(); //새 고객 정보 추가시 처리할 이벤트 등록
+ */
+ 		intake();
+	});
+	 
+	//모든 사용자 목록 조회 요청
+
+	
+	//사용자 조회 요청
+	function intake() {
+		// $(부모).on('click', 자식, function(){})
+		$('body').on('click', '#intakebtn', function(){
+			var code = $(this).val();
+			//ajax 요청
+			$.ajax({
+				url:'intake.food?code='+code,
+				type:'get',
+				success:function(){
+					alert("내 섭취 정보에 추가했습니다.")
+				},
+				error : function(xhr, status, msg){
+					alert("상태값 : " + status + "http 에러 메세지 : " + msg);
+				}
+			});
+		}); 
+	}//customerSelect
+	
+	//모든 사용자 목록 조회 요청
+	function intakeList() {//REST 서버에 모든 고객정보 ajax 요청 보내기
+			$.ajax({
+				url : 'myintake.food',
+				type : 'get',
+				dataType : 'json', //서버가 보내주는 데이터 타입
+				success : function(data){
+					alert("성공");
+					customerListResult(data);
+				},
+				error : function(xhr, status, msg){
+					alert("상태값 : " + status + "http 에러 메세지 : " + msg);
+				}
+				
+			});
+	}//customerList
+	
+	function intakeListResult(data){
+		alert("뿌리는중");
+		$('#intakeTable').empty();
+		$.each(data, function(idx,item){
+			$('<tr>').append($('<td>').html(item.code))
+					 .append($('<td>').html(item.count))
+					 .append($('<td>').html('<button id = "btnAdd">더하기</buttton>'))
+					 .append($('<td>').html('<button id = "btnMinus">빼기</buttton>'))
+					 .append($('<input type="hidden" id ="hidden_ino">').val(item.ino))
+					 .appendTo('#intakeTable');
+		});
+	}
+	
+
+	
+	
+	//사용자 삭제 요청
+	 function customerDelete() {
+		$('body').on('click', '#btnDelete', function(){
+			var num = $(this).closest('tr').find('#hidden_num').val();
+			$.ajax({
+				url:'customers/'+num,
+				type:'delete',
+				dataType:'json',
+				success:customerList //리스트를 다시 불러온다
+			});
+		});
+	}//customerDelete
+	
+	function customerDeleteResult(data){
+		$('#num').val(data.num);
+		$('#name').val(data.name);
+		$('#address').val(data.address);
+	}
+	
+	//사용자 수정 요청
+	function customerUpdate() {
+		$("#btnUpdate").on('click', function(){
+			var num = $("#num").val();
+			var name = $("#name").val();
+			var address = $("#address").val();
+			
+			$.ajax({
+				url:"customers",
+				type:"put",
+				dataType:"json",
+				data:JSON.stringify({
+					num : num,
+					name : name,
+					address : address
+				}),
+				contentType:'application/json',
+				success : function(){
+					customerList();
+					clear();
+				}
+				
+			});
+			
+		});
+	}
+	
+</script>
+	
+	
 </body>
 </html>

@@ -33,5 +33,15 @@ public class IntakeServiceImpl implements IntakeService{
 		intakeDao.insert(code,id);
 	}
 
+	@Override
+	public void add(String ino) {
+		intakeDao.add(ino);
+	}
+
+	@Override
+	public void del(String ino) {
+		intakeDao.del(ino);
+	}
+
     
 }
