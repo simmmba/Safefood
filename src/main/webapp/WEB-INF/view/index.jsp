@@ -33,18 +33,11 @@
 <!-- Main Stylesheet File -->
 <link href="css/style.css" rel="stylesheet">
 <link href="css/mycss.css" rel="stylesheet">
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <style type="text/css">
 body {
 	background-color: white;
 }
 </style>
-<!-- =======================================================
-    Theme Name: Rapid
-    Theme URL: https://bootstrapmade.com/rapid-multipurpose-bootstrap-business-template/
-    Author: BootstrapMade.com
-    License: https://bootstrapmade.com/license/
-  ======================================================= -->
 </head>
 <body>
 	<jsp:include page="nav.jsp"></jsp:include>

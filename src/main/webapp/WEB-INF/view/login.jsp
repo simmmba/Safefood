@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-
+	pageEncoding="UTF-8" import="com.safe.vo.Food, com.safe.vo.Member"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="utf-8">
 <title>Rapid Bootstrap Template</title>
@@ -38,18 +38,13 @@ body {
 	background-color: white;
 }
 </style>
-<link rel="stylesheet"
+<!-- <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-<!-- 부가적인 테마 -->
+
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
-<!-- =======================================================
-    Theme Name: Rapid
-    Theme URL: https://bootstrapmade.com/rapid-multipurpose-bootstrap-business-template/
-    Author: BootstrapMade.com
-    License: https://bootstrapmade.com/license/
-  ======================================================= -->
+ -->
 </head>
 
 <body>
@@ -68,8 +63,8 @@ body {
 						</label>
 						<div class="col-md-8">
 							<input type="text" class="form-control" id="inputName"
-								placeholder="" required name="id"> <i
-								class="fa fa-pencil form-control-feedback pr-4"></i>
+								placeholder="" required name="id">
+								<!-- <i class="fa fa-pencil form-control-feedback pr-4"></i> -->
 						</div>
 					</div>
 					<div class="form-group has-feedback row">
@@ -78,18 +73,19 @@ body {
 						</label>
 						<div class="col-md-8">
 							<input type="password" class="form-control" id="inputLastName"
-								placeholder="" required name="pass"> <i
-								class="fa fa-pencil form-control-feedback pr-4"></i>
+								placeholder="" required name="pass">
+								<!-- <i class="fa fa-pencil form-control-feedback pr-4"></i> -->
 						</div>
 					</div>
 
 
 					<div class="form-group row">
 						<div class="ml-md-auto col-md-9">
-							<button type="submit"
-								class="btn btn-group btn-default btn-animated"
-								>
+							<!-- <button type="submit" class="btn btn-group btn-default btn-animated" >
 								로그인 <i class="fa fa-check"></i>
+							</button> -->
+							<button type="submit" class="btn btn-secondary">
+								로그인 &nbsp;&nbsp;<i class="fa fa-check"></i>
 							</button>
 						</div>
 					</div>
@@ -98,10 +94,11 @@ body {
 				<form class="form-horizontal" action="pass.food" method="post">
 					<div class="form-group row">
 						<div class="ml-md-auto col-md-9">
-							<button type="submit"
-								class="btn btn-group btn-default btn-animated"
-								>
+							<!-- <button type="submit" class="btn btn-group btn-default btn-animated" >
 								비밀번호 찾기 <i class="fa fa-check"></i>
+							</button> -->
+							<button type="submit" class="btn btn-secondary">
+								비밀번호 찾기 &nbsp;&nbsp;<i class="fa fa-asterisk"></i>
 							</button>
 						</div>
 					</div>
@@ -114,9 +111,11 @@ body {
 		</div>
 	</section>
 	
+	
 	<jsp:include page="footer.jsp"></jsp:include>
 	
 	<!-- #services -->
+
 
 	<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 	<!-- Uncomment below i you want to use a preloader -->

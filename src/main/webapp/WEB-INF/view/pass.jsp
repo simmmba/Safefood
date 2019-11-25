@@ -39,18 +39,12 @@ body {
 	background-color: white;
 }
 </style>
-<link rel="stylesheet"
+<!-- <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-<!-- 부가적인 테마 -->
+부가적인 테마
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
-<!-- =======================================================
-    Theme Name: Rapid
-    Theme URL: https://bootstrapmade.com/rapid-multipurpose-bootstrap-business-template/
-    Author: BootstrapMade.com
-    License: https://bootstrapmade.com/license/
-  ======================================================= -->
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"> -->
 </head>
 
 <body>
@@ -99,7 +93,7 @@ body {
 					<div class="form-group row">
 						<div class="ml-md-auto col-md-9">
 							<button type="submit"
-								class="btn btn-group btn-default btn-animated">
+								class="btn btn-danger">
 								확인<i class="fa fa-check"></i>
 							</button>
 						</div>

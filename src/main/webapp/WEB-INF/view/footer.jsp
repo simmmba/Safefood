@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" import="com.safe.vo.Food, com.safe.vo.Member"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,12 +8,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-	
-	<!-- #services --> <!-- footer start (Add "dark" class to #footer in order to enable dark footer) -->
+	<!-- footer start (Add "dark" class to #footer in order to enable dark footer) -->
 	<!-- ================ -->
 	<footer id="footer" class="clearfix ">
-
 		<!-- .footer start -->
 		<!-- ================ -->
 		<div class="footer">
@@ -21,6 +19,7 @@
 					<div class="row">
 						<div class="col-lg-10">
 							<div class="footer-content">
+								<br>
 								<h2 class="title">Find Us</h2>
 								<div class="separator-2"></div>
 								<ul class="list-icons">
