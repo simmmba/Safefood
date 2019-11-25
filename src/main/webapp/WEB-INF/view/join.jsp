@@ -52,45 +52,8 @@ body {
 </head>
 
 <body>
-	<!--==========================
-  Header
-  ============================-->
-	<header id="header">
-
-		<div id="topbar">
-			<div class="container">
-				<div class="social-links">
-					<a class="member_join_login" href="joinForm.food" role="button">회원가입</a>
-					<a class="member_join_login" href="loginForm.food" role="button">로그인</a>
-				</div>
-			</div>
-		</div>
-
-		<div class="container">
-
-			<div class="logo float-left">
-				<!-- Uncomment below if you prefer to use an image logo -->
-				<h1><a href="main.food"><img
-					src="http://edu.ssafy.com/asset/images/header-logo.jpg" alt="로고"
-					height="400"> SAFE FOOD</a></h1>
-				<!-- <a href="#header" class="scrollto"><img src="img/logo.png" alt="" class="img-fluid"></a> -->
-			</div>
-
-			<nav class="main-nav float-right d-none d-lg-block">
-				<ul>
-					<li><a href="notice.food">공지 사항</a></li>
-					<li><a href="read.food">상품 정보</a></li>
-					<li><a href="#services">베스트 섭취 정보</a></li>
-					<li><a href="#portfolio">내 섭취 정보</a></li>
-					<li><a href="#team">예상 섭취 정보</a></li>
-
-				</ul>
-			</nav>
-			<!-- .main-nav -->
-		</div>
-
-	</header>
-	<!-- #header -->
+	
+	<jsp:include page="nav.jsp"></jsp:include>
 
 	<section id="services" class="section-bg">
 		<div class="container">
@@ -253,6 +216,9 @@ body {
 
 		</div>
 	</section>
+	
+	<jsp:include page="footer.jsp"></jsp:include>
+	
 	<!-- #services -->
 
 
