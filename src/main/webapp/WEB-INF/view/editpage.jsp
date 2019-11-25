@@ -39,18 +39,12 @@ body {
 	background-color: white;
 }
 </style>
-<link rel="stylesheet"
+<!-- <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-<!-- 부가적인 테마 -->
+부가적인 테마
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
-<!-- =======================================================
-    Theme Name: Rapid
-    Theme URL: https://bootstrapmade.com/rapid-multipurpose-bootstrap-business-template/
-    Author: BootstrapMade.com
-    License: https://bootstrapmade.com/license/
-  ======================================================= -->
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"> -->
 </head>
 
 <body>
@@ -71,8 +65,7 @@ body {
 						<div class="col-md-8">
 							<input type="text" readonly="readonly" value="${member.id}"
 								class="form-control" id="inputName" placeholder="" required
-								name="id"> <i
-								class="fa fa-pencil form-control-feedback pr-4"></i>
+								name="id"> 
 						</div>
 					</div>
 					
@@ -84,8 +77,7 @@ body {
 						<div class="col-md-8">
 							<input type="text" disabled="disabled" value="${member.name}"
 								class="form-control" id="inputUserName" placeholder="User Name"
-								required name="name"> <i
-								class="fa fa-user form-control-feedback pr-4"></i>
+								required name="name"> 
 						</div>
 					</div>
 					<div class="form-group has-feedback row">
@@ -95,8 +87,7 @@ body {
 						</label>
 						<div class="col-md-8">
 							<input type="password" class="form-control" id="inputLastName"
-								placeholder="영문 숫자 포함 6자리 이상" required="required" name="Opass"> <i
-								class="fa fa-pencil form-control-feedback pr-4"></i>
+								placeholder="영문 숫자 포함 6자리 이상" required="required" name="Opass"> 
 						</div>
 					</div>
 					<div class="form-group has-feedback row">
@@ -106,8 +97,7 @@ body {
 						</label>
 						<div class="col-md-8">
 							<input type="password" class="form-control" id="inputLastName"
-								placeholder="영문 숫자 포함 6자리 이상"  name="Npass"> <i
-								class="fa fa-pencil form-control-feedback pr-4"></i>
+								placeholder="영문 숫자 포함 6자리 이상"  name="Npass"> 
 						</div>
 					</div>
 					<div class="form-group has-feedback row">
@@ -118,7 +108,6 @@ body {
 						<div class="col-md-8">
 							<input type="text" value="${member.address}" class="form-control"
 								id="address" placeholder="address" required name="address">
-							<i class="fa fa-envelope form-control-feedback pr-4"></i>
 						</div>
 					</div>
 					<div class="form-group has-feedback row">
@@ -129,8 +118,7 @@ body {
 						<div class="col-md-8">
 							<input type="text" value="${member.callnum}" class="form-control"
 								id="inputPassword" placeholder="010-xxx-xxxx" required
-								name="callnum"> <i
-								class="fa fa-lock form-control-feedback pr-4"></i>
+								name="callnum"> 
 						</div>
 					</div>
 					<div class="form-group has-feedback row">
@@ -220,9 +208,8 @@ body {
 					</div>
 					<div class="form-group row">
 						<div class="ml-md-auto col-md-9">
-							<button type="submit"
-								class="btn btn-group btn-default btn-animated">
-								수정 <i class="fa fa-check"></i>
+							<button type="submit" class="btn btn-secondary">
+								수정 &nbsp;&nbsp;<i class="fa fa-check"></i>
 							</button>
 						</div>
 					</div>

@@ -38,19 +38,22 @@ public class MemberController extends HttpServlet {
 		String address = req.getParameter("address");
 		String call = req.getParameter("callnum");
 
-		String[] allegyArr = req.getParameterValues("allergy");
+		String[] allergyArr = req.getParameterValues("allergy");
 
-		String allegy = null;
+		String allergy = null;
 		StringBuilder sb = new StringBuilder();
 		
-		if (allegyArr != null) {
-			for (String str : allegyArr) {
-				sb.append(str + ",");
+		if (allergyArr != null) {
+			sb.append(allergyArr[0]);
+			if(allergyArr.length > 1) {
+				for(int i = 1; i < allergyArr.length-1; i++) {
+					sb.append("," + allergyArr[i]);
+				}
 			}
-			allegy = sb.toString();
+			allergy = sb.toString();
 		}
 
-		Member m = new Member(id, pass, name, address, call, allegy);
+		Member m = new Member(id, pass, name, address, call, allergy);
 		System.out.println(m.toString());
 		service.join(m);
 		return "redirect:/main.food";
@@ -114,23 +117,29 @@ public class MemberController extends HttpServlet {
 		System.out.println("n : "  + Npass );
 		System.out.println("o : "  + Opass );
 
-		String[] allegyArr = req.getParameterValues("allergy");
-		String allegy = null;
+		String[] allergyArr = req.getParameterValues("allergy");
+		String allergy = null;
 		StringBuilder sb = new StringBuilder();
-		if (allegyArr != null) {
-			for (String str : allegyArr) {
-				sb.append(str + ",");
+		if (allergyArr != null) {
+			sb.append(allergyArr[0]);
+			if(allergyArr.length > 1) {
+				for(int i = 1; i < allergyArr.length-1; i++) {
+					sb.append("," + allergyArr[i]);
+				}
 			}
-			allegy = sb.toString();
+//			for (String str : allergyArr) {
+//				sb.append(str + ",");
+//			}
+			allergy = sb.toString();
 		}
 		
-		service.update(id, Opass, Npass, address, callnum, allegy);
+		service.update(id, Opass, Npass, address, callnum, allergy);
 
 		HttpSession hs = req.getSession();
 		Member m = (Member) hs.getAttribute("member");
 		m.setAddress(address);
 		m.setCallnum(callnum);
-		m.setAllegy(allegy);
+		m.setAllegy(allergy);
 		
 		return "memberinfo";
 	}

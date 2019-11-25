@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" import="com.safe.vo.Food, com.safe.vo.Member"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="utf-8">
 <title>Rapid Bootstrap Template</title>
@@ -37,18 +38,13 @@ body {
 	background-color: white;
 }
 </style>
-<link rel="stylesheet"
+<!-- <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-<!-- 부가적인 테마 -->
+부가적인 테마
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
-<!-- =======================================================
-    Theme Name: Rapid
-    Theme URL: https://bootstrapmade.com/rapid-multipurpose-bootstrap-business-template/
-    Author: BootstrapMade.com
-    License: https://bootstrapmade.com/license/
-  ======================================================= -->
+  -->
 </head>
 
 <body>
@@ -60,162 +56,155 @@ body {
 			
 			<header class="section-header">
 				<h3>회원 가입</h3>
-				<form class="form-horizontal" action="join.food" method="post">
-					<div class="form-group has-feedback row">
-						<label for="inputName"
-							class="col-md-3 control-label text-md-right col-form-label">아이디
-							<span class="text-danger small">*</span>
-						</label>
-						<div class="col-md-8">
-							<input type="text" class="form-control" id="inputName"
-								placeholder="" required name="id"> <i
-								class="fa fa-pencil form-control-feedback pr-4"></i>
-						</div>
+			</header>
+			
+			<form class="form-horizontal" action="join.food" method="post">
+				<div class="form-group has-feedback row">
+					<label for="inputName" class="col-md-3 control-label text-md-right col-form-label">아이디
+						<span class="text-danger small">*</span>
+					</label>
+					<div class="col-md-8">
+						<input type="text" class="form-control" id="inputName" placeholder="" required name="id">
 					</div>
-					<div class="form-group has-feedback row">
-						<label for="inputLastName"
-							class="col-md-3 control-label text-md-right col-form-label">비밀번호
-							<span class="text-danger small">*</span>
-						</label>
-						<div class="col-md-8">
-							<input type="password" class="form-control" id="inputLastName"
-								placeholder="영문 숫자 포함 6자리 이상" required="required" name="pass"> <i
-								class="fa fa-pencil form-control-feedback pr-4"></i>
-						</div>
+				</div>
+				<div class="form-group has-feedback row">
+					<label for="inputLastName" class="col-md-3 control-label text-md-right col-form-label">비밀번호
+						<span class="text-danger small">*</span>
+					</label>
+					<div class="col-md-8">
+						<input type="password" class="form-control" id="inputLastName"
+							placeholder="영문 숫자 포함 6자리 이상" required="required" name="pass">
 					</div>
-					<div class="form-group has-feedback row">
-						<label for="inputUserName"
-							class="col-md-3 control-label text-md-right col-form-label">이름
-							<span class="text-danger small">*</span>
-						</label>
-						<div class="col-md-8">
-							<input type="text" class="form-control" id="inputUserName"
-								placeholder="User Name" required="required" name="name"> <i
-								class="fa fa-user form-control-feedback pr-4"></i>
-						</div>
+				</div>
+				<div class="form-group has-feedback row">
+					<label for="inputUserName"
+						class="col-md-3 control-label text-md-right col-form-label">이름
+						<span class="text-danger small">*</span>
+					</label>
+					<div class="col-md-8">
+						<input type="text" class="form-control" id="inputUserName"
+							placeholder="User Name" required="required" name="name">
 					</div>
-					<div class="form-group has-feedback row">
-						<label for="inputEmail"
-							class="col-md-3 control-label text-md-right col-form-label">주소
-							<span class="text-danger small">*</span>
-						</label>
-						<div class="col-md-8">
-							<input type="text" class="form-control" id="inputEmail"
-								placeholder="address" required="required" name="address"> <i
-								class="fa fa-envelope form-control-feedback pr-4"></i>
-						</div>
+				</div>
+				<div class="form-group has-feedback row">
+					<label for="inputEmail"
+						class="col-md-3 control-label text-md-right col-form-label">주소
+						<span class="text-danger small">*</span>
+					</label>
+					<div class="col-md-8">
+						<input type="text" class="form-control" id="inputEmail"
+							placeholder="address" required="required" name="address">
 					</div>
-					<div class="form-group has-feedback row">
-						<label for="inputPassword"
-							class="col-md-3 control-label text-md-right col-form-label">전화번호
-							<span class="text-danger small">*</span>
-						</label>
-						<div class="col-md-8">
-							<input type="text" class="form-control" id="inputPassword"
-								placeholder="010-xxx-xxxx" required="required" name="callnum"> <i
-								class="fa fa-lock form-control-feedback pr-4"></i>
-						</div>
+				</div>
+				<div class="form-group has-feedback row">
+					<label for="inputPassword"
+						class="col-md-3 control-label text-md-right col-form-label">전화번호
+						<span class="text-danger small">*</span>
+					</label>
+					<div class="col-md-8">
+						<input type="text" class="form-control" id="inputPassword"
+							placeholder="010-xxx-xxxx" required="required" name="callnum">
 					</div>
-					<div class="form-group has-feedback row">
-						<label for="inputPassword"
-							class="col-md-3 control-label text-md-right col-form-label">알레르기
-							<span class="text-danger small">*</span>
-						</label>
-						<div class="col-md-8">
-							<fieldset class="form-group">
-								<div class="row">
-									<div class="col-sm-4">
-										<div class="form-check form-check-inline">
-											<input name="allergy" class="form-check-input"
-												id='inlineCheckbox2' type="checkbox" value="대두"> <label
-												class="form-check-label">대두 </label>
-										</div>
-										<div class="form-check form-check-inline">
-											<input name="allergy" class="form-check-input"
-												id='inlineCheckbox2' type="checkbox" value="땅콩"> <label
-												class="form-check-label">땅콩 </label>
-										</div>
-										<div class="form-check form-check-inline">
-											<input name="allergy" class="form-check-input"
-												id='inlineCheckbox2' type="checkbox" value="우유"> <label
-												class="form-check-label">우유 </label>
-										</div>
-										<div class="form-check form-check-inline">
-											<input name="allergy" class="form-check-input"
-												id='inlineCheckbox2' type="checkbox" value="게"> <label
-												class="form-check-label">게</label>
-										</div>
-										<div class="form-check form-check-inline">
-											<input name="allergy" class="form-check-input"
-												id='inlineCheckbox2' type="checkbox" value="새우"> <label
-												class="form-check-label">새우</label>
-										</div>
-										<div class="form-check form-check-inline">
-											<input name="allergy" class="form-check-input"
-												id='inlineCheckbox2' type="checkbox" value="참치"> <label
-												class="form-check-label">참치</label>
-										</div>
-										<div class="form-check form-check-inline">
-											<input name="allergy" class="form-check-input"
-												id='inlineCheckbox2' type="checkbox" value="연어"> <label
-												class="form-check-label">연어</label>
-										</div>
-										<div class="form-check form-check-inline">
-											<input name="allergy" class="form-check-input"
-												id='inlineCheckbox2' type="checkbox" value="쑥"> <label
-												class="form-check-label">쑥 </label>
-										</div>
-										<div class="form-check form-check-inline">
-											<input name="allergy" class="form-check-input"
-												id='inlineCheckbox2' type="checkbox" value="소고기"> <label
-												class="form-check-label">소고기</label>
-										</div>
-										<div class="form-check form-check-inline">
-											<input name="allergy" class="form-check-input"
-												id='inlineCheckbox2' type="checkbox" value="닭고기"> <label
-												class="form-check-label">닭고기 </label>
-										</div>
-										<div class="form-check form-check-inline">
-											<input name="allergy" class="form-check-input"
-												id='inlineCheckbox2' type="checkbox" value="돼지고기"> <label
-												class="form-check-label">돼지고기</label>
-										</div>
-										<div class="form-check form-check-inline">
-											<input name="allergy" class="form-check-input"
-												id='inlineCheckbox2' type="checkbox" value="복숭아"> <label
-												class="form-check-label">복숭아 </label>
-										</div>
-										<div class="form-check form-check-inline">
-											<input name="allergy" class="form-check-input"
-												id='inlineCheckbox2' type="checkbox" value="민들레"> <label
-												class="form-check-label">민들레</label>
-										</div>
+				</div>
+				<div class="form-group has-feedback row">
+					<label for="inputPassword"
+						class="col-md-3 control-label text-md-right col-form-label">알레르기
+						<span class="text-danger small">*</span>
+					</label>
+					<div class="col-md-8">
+						<fieldset class="form-group">
+							<div class="row">
+								<div class="col-sm-4">
+									<div class="form-check form-check-inline">
+										<input name="allergy" class="form-check-input"
+											id='inlineCheckbox2' type="checkbox" value="대두"> <label
+											class="form-check-label">대두 </label>
+									</div>
+									<div class="form-check form-check-inline">
+										<input name="allergy" class="form-check-input"
+											id='inlineCheckbox2' type="checkbox" value="땅콩"> <label
+											class="form-check-label">땅콩 </label>
+									</div>
+									<div class="form-check form-check-inline">
+										<input name="allergy" class="form-check-input"
+											id='inlineCheckbox2' type="checkbox" value="우유">
+											<label class="form-check-label">우유 </label>
+									</div>
+									<div class="form-check form-check-inline">
+										<input name="allergy" class="form-check-input"
+											id='inlineCheckbox2' type="checkbox" value="게"> <label
+											class="form-check-label">게</label>
+									</div>
+									<div class="form-check form-check-inline">
+										<input name="allergy" class="form-check-input"
+											id='inlineCheckbox2' type="checkbox" value="새우"> <label
+											class="form-check-label">새우</label>
+									</div>
+									<div class="form-check form-check-inline">
+										<input name="allergy" class="form-check-input"
+											id='inlineCheckbox2' type="checkbox" value="참치"> <label
+											class="form-check-label">참치</label>
+									</div>
+									<div class="form-check form-check-inline">
+										<input name="allergy" class="form-check-input"
+											id='inlineCheckbox2' type="checkbox" value="연어"> <label
+											class="form-check-label">연어</label>
+									</div>
+									<div class="form-check form-check-inline">
+										<input name="allergy" class="form-check-input"
+											id='inlineCheckbox2' type="checkbox" value="쑥"> <label
+											class="form-check-label">쑥 </label>
+									</div>
+									<div class="form-check form-check-inline">
+										<input name="allergy" class="form-check-input"
+											id='inlineCheckbox2' type="checkbox" value="소고기"> <label
+											class="form-check-label">소고기</label>
+									</div>
+									<div class="form-check form-check-inline">
+										<input name="allergy" class="form-check-input"
+											id='inlineCheckbox2' type="checkbox" value="닭고기"> <label
+											class="form-check-label">닭고기 </label>
+									</div>
+									<div class="form-check form-check-inline">
+										<input name="allergy" class="form-check-input"
+											id='inlineCheckbox2' type="checkbox" value="돼지고기"> <label
+											class="form-check-label">돼지고기</label>
+									</div>
+									<div class="form-check form-check-inline">
+										<input name="allergy" class="form-check-input"
+											id='inlineCheckbox2' type="checkbox" value="복숭아"> <label
+											class="form-check-label">복숭아 </label>
+									</div>
+									<div class="form-check form-check-inline">
+										<input name="allergy" class="form-check-input"
+											id='inlineCheckbox2' type="checkbox" value="민들레"> <label
+											class="form-check-label">민들레</label>
+									</div>
 
-										<div class="form-check form-check-inline">
-											<input name="allergy" class="form-check-input"
-												id='inlineCheckbox2' type="checkbox" value="계란흰자"> <label
-												class="form-check-label">계란흰자 </label>
-										</div>
+									<div class="form-check form-check-inline">
+										<input name="allergy" class="form-check-input"
+											id='inlineCheckbox2' type="checkbox" value="계란흰자"> <label
+											class="form-check-label">계란흰자 </label>
 									</div>
 								</div>
-							</fieldset>
-						</div>
+							</div>
+						</fieldset>
 					</div>
-					<div class="form-group row">
-						<div class="ml-md-auto col-md-9">
-							<button type="submit"
-								class="btn btn-group btn-default btn-animated">
-								등록 <i class="fa fa-check"></i>
-							</button>
-						</div>
+				</div>
+				<div class="form-group row">
+					<div class="ml-md-auto col-md-9">
+						<button type="submit" class="btn btn-secondary">
+							등록 &nbsp;&nbsp;<i class="fa fa-check"></i>
+						</button>
 					</div>
-				</form>
-			</header>
+				</div>
+			</form>
 
 			<div class="row"></div>
 
 		</div>
 	</section>
+	
 	
 	<jsp:include page="footer.jsp"></jsp:include>
 	

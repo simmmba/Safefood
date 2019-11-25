@@ -39,18 +39,12 @@ body {
 	background-color: white;
 }
 </style>
-<link rel="stylesheet"
+<!-- <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-<!-- 부가적인 테마 -->
+부가적인 테마
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
-<!-- =======================================================
-    Theme Name: Rapid
-    Theme URL: https://bootstrapmade.com/rapid-multipurpose-bootstrap-business-template/
-    Author: BootstrapMade.com
-    License: https://bootstrapmade.com/license/
-  ======================================================= -->
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"> -->
 </head>
 
 <body>
@@ -70,8 +64,7 @@ body {
 						</label>
 						<div class="col-md-8">
 							<input type="text" class="form-control" id="inputName"
-								placeholder="" required name="id"> <i
-								class="fa fa-pencil form-control-feedback pr-4"></i>
+								placeholder="" required name="id"> 
 						</div>
 					</div>
 					<div class="form-group has-feedback row">
@@ -81,8 +74,7 @@ body {
 						</label>
 						<div class="col-md-8">
 							<input type="text" class="form-control" id="inputUserName"
-								placeholder="User Name" required="required" name="name"> <i
-								class="fa fa-user form-control-feedback pr-4"></i>
+								placeholder="User Name" required="required" name="name"> 
 						</div>
 					</div>
 					<div class="form-group has-feedback row">
@@ -92,14 +84,12 @@ body {
 						</label>
 						<div class="col-md-8">
 							<input type="text" class="form-control" id="inputPassword"
-								placeholder="010-xxxx-xxxx" required="required" name="callnum"> <i
-								class="fa fa-lock form-control-feedback pr-4"></i>
+								placeholder="010-xxxx-xxxx" required="required" name="callnum"> 
 						</div>
 					</div>
 					<div class="form-group row">
 						<div class="ml-md-auto col-md-9">
-							<button type="submit"
-								class="btn btn-group btn-default btn-animated">
+							<button type="submit" class="btn btn-danger">
 								확인<i class="fa fa-check"></i>
 							</button>
 						</div>

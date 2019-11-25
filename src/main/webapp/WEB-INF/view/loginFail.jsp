@@ -1,13 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" import="com.safe.vo.Food, com.safe.vo.Member"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <meta charset="utf-8">
-<title>Personal information</title>
+<title>Main Page</title>
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <meta content="" name="keywords">
 <meta content="" name="description">
@@ -32,15 +30,10 @@
 	rel="stylesheet">
 <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 
-<!-- bootswatch lib -->
-<link rel="stylesheet"
-	href="https://bootswatch.com/4/minty/bootstrap.css" media="screen">
-<link rel="stylesheet"
-	href="https://bootswatch.com/_assets/css/custom.min.css">
-
 <!-- Main Stylesheet File -->
 <link href="css/style.css" rel="stylesheet">
 <link href="css/mycss.css" rel="stylesheet">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <style type="text/css">
 body {
 	background-color: white;

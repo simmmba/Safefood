@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="com.safe.vo.Food, com.safe.vo.Member"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 </head>
 <body>
 	<!--========================== Header ============================-->
@@ -32,9 +32,9 @@
 			<div class="logo float-left">
 				<!-- Uncomment below if you prefer to use an image logo -->
 				<h1>
-					<a href="main.food"><img
-						src="http://edu.ssafy.com/asset/images/header-logo.jpg" alt="로고"
-						height="400"> SAFE FOOD</a>
+					<a href="main.food">
+					<!-- <img src="http://edu.ssafy.com/asset/images/header-logo.jpg" alt="로고" height="400"> -->
+					SAFE FOOD</a>
 				</h1>
 			</div>
 
