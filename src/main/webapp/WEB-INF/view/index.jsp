@@ -47,58 +47,8 @@ body {
   ======================================================= -->
 </head>
 <body>
-	<!--==========================
-  Header
-  ============================-->
-	<header id="header">
-		<div id="topbar">
-			<div class="container">
-				<div class="social-links">
-
-					<c:if test="${empty member}">
-						<a class="member_join_login" href="joinForm.food" role="button">회원가입</a>
-						<a class="member_join_login" href="loginForm.food" role="button">로그인</a>
-					</c:if>
-
-					<c:if test="${not empty member}">
-						<a class="member_join_login" href="memberinfo.food" role="button">회원정보</a>
-						<a class="member_join_login" href="logout.food" role="button">로그아웃</a>
-					</c:if>
-				</div>
-			</div>
-		</div>
-
-		<div class="container">
-
-			<div class="logo float-left">
-				<!-- Uncomment below if you prefer to use an image logo -->
-				<h1>
-					<a href="main.food"><img
-						src="http://edu.ssafy.com/asset/images/header-logo.jpg" alt="로고"
-						height="400"> SAFE FOOD</a>
-				</h1>
-			</div>
-
-			<nav
-				class="main-nav float-right d-none d-lg-block navbar navbar-fixed-top">
-				<ul>
-					<!-- <li class="active"><a href="#intro">공지 사항</a></li> -->
-					<li><a href="notice.food">공지 사항</a></li>
-					<li><a href="qna.food">QnA</a></li>
-					<li><a href="read.food">상품 정보</a></li>
-					<li><a href="#about">베스트 섭취 정보</a></li>
-					<li><a href="#portfolio">내 섭취 정보</a></li>
-					<li><a href="#team">예상 섭취 정보</a></li>
-
-				</ul>
-			</nav>
-			<!-- .main-nav -->
-		</div>
-
-	</header>
-	<!-- #header -->
-
-	<main id="main">
+	<jsp:include page="nav.jsp"></jsp:include>
+	
 	<section id="services" class="section-bg">
 		<div class="container">
 
@@ -151,59 +101,16 @@ body {
 
 		</div>
 
-			<div class = "floating">
-				<label>인기 검색어</label>
-				<%@ include file="trends.jsp"%>
-			</div>
-
 	</section>
+	
+	<div class = "floating">
+		<label>인기 검색어</label>
+		<%@ include file="trends.jsp"%>
+	</div>
 
+	<jsp:include page="footer.jsp"></jsp:include>
 
-	<!-- #services --> <!-- footer start (Add "dark" class to #footer in order to enable dark footer) -->
-	<!-- ================ --> <footer id="footer" class="clearfix ">
-
-		<!-- .footer start -->
-		<!-- ================ -->
-		<div class="footer">
-			<div class="container">
-				<div class="footer-inner">
-					<div class="row">
-						<div class="col-lg-10">
-							<div class="footer-content">
-								<h2 class="title">Find Us</h2>
-								<div class="separator-2"></div>
-								<ul class="list-icons">
-									<li><i class="fa fa-map-marker pr-2 text-default"></i>(SSAFY)
-										서울시 강남구 테헤란로 멀티스퀘어</li>
-									<li><i class="fa fa-phone pr-2 text-default"></i>
-										1544-9001</li>
-									<li><a href="#"><i class="fa fa-envelope-o pr-2"></i>admin@ssafy.com</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- .footer end -->
-
-		<!-- .subfooter start -->
-		<!-- ================ -->
-		<div class="subfooter">
-			<div class="container">
-				<div class="subfooter-inner">
-					<div class="row">
-						<div class="col-md-12">
-							<p class="text-center">Copyright by SSAFY. All rights
-								reserved.</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- .subfooter end -->
-
-	</footer> <!-- footer end --> <a href="#" class="back-to-top"><i
+	<a href="#" class="back-to-top"><i
 		class="fa fa-chevron-up"></i></a> <!-- Uncomment below i you want to use a preloader -->
 	<!-- <div id="preloader"></div> --> <!-- JavaScript Libraries --> <script
 		src="lib/jquery/jquery.min.js"></script> <script
