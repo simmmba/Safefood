@@ -71,6 +71,10 @@ body {
 					<img id="image" src="${f.getImg()}" alt="" width="200px" height="200px">
 					<div class="col-md-12">
 						<h3 id="name">${f.getName()}</h3>
+						<div class="btn-group" role="group">
+							<a href="#" class="btn btn-primary btn-md active" role="button">추가</a>
+							<a href="#" class="btn btn-primary btn-md active" role="button">찜</a>
+						</div>
 						<hr>
 						<h5>원재료</h5>
 						<p id="material">${f.getMaterial()}</p>
@@ -78,68 +82,68 @@ body {
 						<h5>알레르기</h5>
 						<p id="allergy">${a}</p>
 						<hr>
+						<center>
+							<div class="container">
+								<h5>영양 정보</h5>
+								<div class="pie_chart">
+									<canvas id="chartcanvas" width="500" height="300"></canvas>
+								</div>
+				
+								<div>
+									<table id="table_nutrition">
+										<tbody>
+											<tr>
+												<th>&nbsp;&nbsp;&nbsp;일일 제공량&nbsp;&nbsp;&nbsp;</th>
+												<th id = 'td1'>&nbsp;&nbsp;&nbsp;${f.getSupportpereat()}</th>
+											</tr>
+											<tr>
+												<th>&nbsp;&nbsp;&nbsp;칼로리&nbsp;&nbsp;&nbsp;</th>
+<!-- 												<th style="background-color: #ffe6e6">&nbsp;&nbsp;&nbsp;칼로리&nbsp;&nbsp;&nbsp;</th> -->
+												<th id = 'td2'>&nbsp;&nbsp;&nbsp;${f.getCalory()}</th>
+											</tr>
+											<tr>
+												<td style="background-color: #ffe6cc">&nbsp;&nbsp;&nbsp;탄수화물&nbsp;&nbsp;&nbsp;</td>
+												<td id = 'td3'>&nbsp;&nbsp;&nbsp;${f.getCarbo()}</td>
+											</tr>
+											<tr>
+												<td style="background-color: #ffffb3">&nbsp;&nbsp;&nbsp;단백질&nbsp;&nbsp;&nbsp;</td>
+												<td id = 'td4'>&nbsp;&nbsp;&nbsp;${f.getProtein()}</td>
+											</tr>
+											<tr>
+												<td style="background-color: #ecffb3">&nbsp;&nbsp;&nbsp;지방&nbsp;&nbsp;&nbsp;</td>
+												<td id = 'td5'>&nbsp;&nbsp;&nbsp;${f.getFat()}</td>
+											</tr>
+											<tr>
+												<td style="background-color: #b3ecff">&nbsp;&nbsp;&nbsp;당류&nbsp;&nbsp;&nbsp;</td>
+												<td id = 'td6'>&nbsp;&nbsp;&nbsp;${f.getSugar()}</td>
+											</tr>
+											<tr>
+												<td style="background-color: #d9b3ff">&nbsp;&nbsp;&nbsp;나트륨&nbsp;&nbsp;&nbsp;</td>
+												<td id = 'td7'>&nbsp;&nbsp;&nbsp;${f.getNatrium()}</td>
+											</tr>
+											<tr>
+												<td style="background-color: #ffb3c6">&nbsp;&nbsp;&nbsp;콜레스테롤&nbsp;&nbsp;&nbsp;</td>
+												<td id = 'td8'>&nbsp;&nbsp;&nbsp;${f.getChole()}</td>
+											</tr>
+											<tr>
+												<td style="background-color: #b3ffec">&nbsp;&nbsp;&nbsp;포화 지방산&nbsp;&nbsp;&nbsp;</td>
+												<td id = 'td9'>&nbsp;&nbsp;&nbsp;${f.getFattyacid()}</td>
+											</tr>
+											<tr>
+												<td style="background-color: #ffd966">&nbsp;&nbsp;&nbsp;트랜스지방&nbsp;&nbsp;&nbsp;</td>
+												<td id = 'td10'>&nbsp;&nbsp;&nbsp;${f.getTransfat()}</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</center>
 						
-						<div class="btn-group" role="group">
-							<a href="#" class="btn btn-primary btn-md active" role="button">추가</a>
-							<a href="#" class="btn btn-primary btn-md active" role="button">찜</a>
-						</div>
 					</div>
 				</div>
 			</div>
 
-			<div class="container">
-				<h3>영양 정보</h3>
-				<div class="pie_chart">
-					<canvas id="chartcanvas" width="500" height="300"></canvas>
-				</div>
-
-				<div>
-					<table id="table_nutrition">
-						<tbody>
-							<tr>
-								<td>일일 제공량</td>
-								<td id = 'td1'>${f.getSupportpereat()}</td>
-							</tr>
-							<tr>
-								<td style="background-color: #ffe6e6">칼로리</td>
-								<td id = 'td2'>${f.getCalory()}</td>
-							</tr>
-							<tr>
-								<td style="background-color: #ffe6cc">탄수화물</td>
-								<td id = 'td3'>${f.getCarbo()}</td>
-							</tr>
-							<tr>
-								<td style="background-color: #ffffb3">단백질</td>
-								<td id = 'td4'>${f.getProtein()}</td>
-							</tr>
-							<tr>
-								<td style="background-color: #ecffb3">지방</td>
-								<td id = 'td5'>${f.getFat()}</td>
-							</tr>
-							<tr>
-								<td style="background-color: #b3ecff">당류</td>
-								<td id = 'td6'>${f.getSugar()}</td>
-							</tr>
-							<tr>
-								<td style="background-color: #d9b3ff">나트륨</td>
-								<td id = 'td7'>${f.getNatrium()}</td>
-							</tr>
-							<tr>
-								<td style="background-color: #ffb3c6">콜레스테롤</td>
-								<td id = 'td8'>${f.getChole()}</td>
-							</tr>
-							<tr>
-								<td style="background-color: #b3ffec">포화 지방산</td>
-								<td id = 'td9'>${f.getFattyacid()}</td>
-							</tr>
-							<tr>
-								<td style="background-color: #ffd966">트랜스지방</td>
-								<td id = 'td10'>${f.getTransfat()}</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
+			
 		</div>
 	</section>
 		
@@ -176,8 +180,20 @@ body {
 		var sh = canvas.height;
 		var PADDING = 50;
 		
+		var temp3 = $('#td3').text();
+		if (temp3 == 'N/A')temp3 = 0;
+		
+		var temp4 = $('#td4').text();
+		if (temp4 == 'N/A')temp4 = 0;
+		
+		var temp5 = $('#td5').text();
+		if (temp5 == 'N/A')temp5 = 0;
+		
 		var temp6 = $('#td6').text();
 		if (temp6 == 'N/A')temp6 = 0;
+		
+		var temp7 = $('#td7').text();
+		if (temp7 == 'N/A')temp7 = 0;
 		
 		var temp8 = $('#td8').text();
 		if (temp8 == 'N/A')temp8 = 0;
@@ -189,19 +205,18 @@ body {
 		if (temp10 == 'N/A')temp10 = 0;
 		
 		var data = [
-		$('#td2').text() * 1,
-		$('#td3').text() * 1,
-		$('#td4').text() * 1,
-		$('#td5').text() * 1,
+		temp3 * 1,
+		temp4 * 1,
+		temp5 * 1,
 		temp6 * 1,
-		$('#td7').text() * 1,
+		temp7 * 1,
 		temp8 * 1,
 		temp9 * 1,
 		temp10 * 1 ];
 		for ( var i in data)
 		console.log(data[i]);
 		
-		var colors=["#ffe6e6","#ffe6cc","#ffffb3","#ecffb3","#b3ecff","#d9b3ff", "#ffb3c6","#b3ffec","#ffd966"];
+		var colors=["#ffe6cc","#ffffb3","#ecffb3","#b3ecff","#d9b3ff", "#ffb3c6","#b3ffec","#ffd966"];
 		
 		var center_X = sw / 2;
 		var center_Y = sh / 2;
@@ -222,15 +237,14 @@ body {
 		};
 		
 		for (var i = 0; i < data.length; i++) {
-		context.fillStyle = colors[i];
-		context.beginPath();
-		context.moveTo(
-			center_X,
-			center_Y);
-		context.arc(center_X,center_Y,radius,angle,angle+ (Math.PI * 2 * (data[i] / total)));
-		context.lineTo(center_X,center_Y);
-		context.fill();
-		angle += Math.PI* 2* (data[i] / total);}
+			context.fillStyle = colors[i];
+			context.beginPath();
+			context.moveTo(center_X, center_Y);
+			context.arc(center_X,center_Y,radius,angle,angle+ (Math.PI * 2 * (data[i] / total)));
+			context.lineTo(center_X,center_Y);
+			context.fill();
+			angle += Math.PI* 2* (data[i] / total);
+		}
 		
 	
 	</script>

@@ -216,9 +216,10 @@ public class SafeFoodController extends HttpServlet {
 
 	public String findAllergy(String meterial) {
 		StringBuilder sb = new StringBuilder();
+		
 		for (String a : allergy) {
 			if(meterial.contains(a)) {
-				sb.append(a).append(",");
+				sb.append(a).append("  ");
 			}
 		}
 		return sb.toString();
