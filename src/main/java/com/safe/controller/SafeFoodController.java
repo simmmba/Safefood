@@ -189,9 +189,15 @@ public class SafeFoodController extends HttpServlet {
 	public String qna() {
 		return "qna";
 	}
+	
 	@GetMapping(value = "/intakeinfo.food")
 	public String intake() {
 		return "myintake";
+	}
+
+	@GetMapping(value = "/bestintakeinfo.food")
+	public String bestintake() {
+		return "bestintake";
 	}
 
 	public void trendWord(String word) {

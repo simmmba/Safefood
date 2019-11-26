@@ -10,16 +10,11 @@ public interface IntakeDao {
 	public List<Intake> selectAll(String id, String state);
 	
 	public void insert(String code, String id);
-	public void update(String code, String id);
 	public void add(String code, String date, String id);
 	public void del(String code, String date, String id);
 	
-	//    public List<Board> selectAll();
-//    public Board selectOne(String num);
-//    public void insert(Board b);
-//    public void delete(String num);
-//    public void update(Board b); // 번호 기준으로 제목과 내용 수정
-//    public List<Board> findByTitle(String title);
-//    public List<Board> findByName(String name);
+	public List<Intake> bestselectAll( String state);
+	public void bestadd(String code,String id, String date);
+	public void bestdel(String code,String id, String date);
     
 }

@@ -10,4 +10,7 @@ CREATE TABLE `intakedb` (
 INSERT INTO intakedb VALUES (null,curdate(),'ssafy',1);
 INSERT INTO intakedb VALUES (null,curdate(),'ssafy',2);
 INSERT INTO intakedb VALUES (null,curdate(),'ssafy',3);
-INSERT INTO intakedb VALUES (null,curdate(),'ssafy',4);
+INSERT INTO intakedb VALUES (null,curdate(),'ssafy',4);	
+
+select * from intakedb;
+select ino from intakedb where code = 1 order by idate desc limit 1;
