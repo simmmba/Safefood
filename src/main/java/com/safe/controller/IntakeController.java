@@ -23,10 +23,11 @@ public class IntakeController {
 	@GetMapping(value = "/myintake.food")
 	public List<Intake> myintake(Model model, HttpSession session, HttpServletRequest req) {
 		String state = req.getParameter("state");
-		System.out.println(state);
 		Member m = (Member) session.getAttribute("member");
 		String id = m.getId();
+		
 		List<Intake> list = service.selectAll(id, state);
+		
 		
 		return list;
 	}
