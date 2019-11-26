@@ -30,9 +30,7 @@
 
 			<div class="logo float-left">
 				<h1><b>
-					<a href="main.food">
-					<!-- <img src="http://edu.ssafy.com/asset/images/header-logo.jpg" alt="로고" height="400"> -->
-					SAFE FOOD</a></b>
+					<a href="main.food"><img src="img/favicon.png" alt="로고" height="500">&nbsp;SAFE FOOD</a></b>
 				</h1>
 			</div>
 
