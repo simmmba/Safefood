@@ -58,21 +58,27 @@ body {
 
 			<div class="container">
 				<div class="box">
+					<br>
 					<img id="image" src="${f.img}" alt="" width="200px" height="200px">
 					<div class="col-md-12">
-						<h3 id="name">${f.name}</h3>
+						<h3><b>${f.name}</b></h3>
 						<div class="btn-group" role="group">
-							<button class="btn btn-primary btn-md active" role="button" id="intakebtn" value = "${f.code}">추가</button>
-							<button class="btn btn-primary btn-md active" role="button">찜</button>
+							<button class="btn btn-secondary btn-md active" role="button" id="intakebtn" value = "${f.code}">추가&nbsp;&nbsp;&nbsp;<i class="fa fa-plus pr-2 text-default"></i></button>
+							<button class="btn btn-secondary btn-md active" role="button">찜&nbsp;&nbsp;&nbsp;<i class="fa fa-cart-plus pr-2 text-default"></i></button>
 						</div>
+						<br>
+						<br>
 						<hr>
-						<h5>원재료</h5>
+						<h5><b>원재료</b></h5>
 						<p id="material">${f.material}</p>
 						<hr>
-						<h5>알레르기</h5>
-						<p id="allergy">${a}</p>
-						<hr>
-						<h5>영양 정보</h5>
+						<c:if test="${a != ''}">
+							<h5><b>알레르기</b></h5>
+							<p id="allergy">${a}</p>
+							<hr>
+						</c:if>
+							
+						<h5><b>영양 정보</b></h5>
 						<center>
 							<div id="piechart" style="width: 900px; height: 500px;"></div>
 						</center>

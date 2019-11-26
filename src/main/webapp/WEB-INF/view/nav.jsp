@@ -29,8 +29,10 @@
 		<div class="container">
 
 			<div class="logo float-left">
-				<h1><b>
-					<a href="main.food"><img src="img/favicon.png" alt="로고" height="500">&nbsp;SAFE FOOD</a></b>
+				<h1><!-- <i class="fa fa-plus pr-2 text-default"></i> --><b>
+					<a href="main.food">
+					<img src="img/favicon.png" alt="로고" height="500">&nbsp;
+					SAFE FOOD</a></b>
 				</h1>
 			</div>
 

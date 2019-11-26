@@ -78,10 +78,8 @@ body {
 		</div>
 	</section>
 	
-	<div class = "floating">
-		<label>인기 검색어</label>
-		<%@ include file="trends.jsp"%>
-	</div>
+	
+	<jsp:include page="trends.jsp"></jsp:include>
 	
 	<jsp:include page="footer.jsp"></jsp:include>
 

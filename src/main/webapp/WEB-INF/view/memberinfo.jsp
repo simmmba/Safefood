@@ -46,6 +46,12 @@
 body {
 	background-color: white;
 }
+.t th{
+	text-align: right;
+}
+.t td{
+	padding-left: 50px;
+}
 </style>
 <!-- =======================================================
     Theme Name: Rapid
@@ -65,30 +71,30 @@ body {
 			</header>
 		</div>
 		<div class="container">
-			<table class="table table-hover">
-				<tbody>
+			<center>
+				<table class="t table table-hover" style="width: 50%">
 					<tr>
-						<th scope="row">ID</th>
+						<th>ID</th>
 						<td>${member.id }</td>
 					</tr>
 					<tr>
-						<th scope="row">name</th>
+						<th>name</th>
 						<td>${member.name }</td>
 					</tr>
 					<tr>
-						<th scope="row">address</th>
+						<th>address</th>
 						<td>${member.address }</td>
 					</tr>
 					<tr>
-						<th scope="row">phone</th>
+						<th>phone</th>
 						<td>${member.callnum}</td>
 					</tr>
 					<tr>
-						<th scope="row">allergy</th>
+						<th>allergy</th>
 						<td>${member.allegy}</td>
 					</tr>
-				</tbody>
-			</table>
+				</table>
+			</center>
 		</div>
 		<div id="button_" class="container">
 			<button type="button" class="btn btn-success"

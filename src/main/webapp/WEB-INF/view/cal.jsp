@@ -107,6 +107,7 @@ body {
 		</div>
 	</section>
 	
+	<jsp:include page="trends.jsp"></jsp:include>
 	
 	<jsp:include page="footer.jsp"></jsp:include>
 	

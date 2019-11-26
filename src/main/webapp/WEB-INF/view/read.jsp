@@ -87,9 +87,9 @@ body {
 							</div>
 
 							<div class='div_info'>
-								<span>제조사: ${f.getMaker()}</span>
+								<span><b>제조사:</b> ${f.getMaker()}</span>
 								<hr>
-								<span>원재료: </span>
+								<span><b>원재료:</b> </span>
 								<p style='padding-top: 10px'>${f.getMaterial()}</p>
 							</div>
 						</div>
@@ -98,11 +98,8 @@ body {
 			</c:forEach>
 		</div>
 	</section>
-	<div class = "floating">
-		<label>인기 검색어</label>
-		<%@ include file="trends.jsp"%>
-	</div>
 	
+	<jsp:include page="trends.jsp"></jsp:include>
 	
 	<jsp:include page="footer.jsp"></jsp:include>
 	

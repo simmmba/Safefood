@@ -73,15 +73,16 @@ body {
 
 	<section id="services" class="section-bg">
 
-		<header class="section-header">
-			<h3>질문 게시판</h3>
-		</header>
+		
 		<div class="container">
+			<header class="section-header">
+				<h3>질문 게시판</h3>
+			</header>
 			<div id="app">
 				<div class="container">
-					<button type="button" class="btn btn-primary" @click="showlist(0)">모든 글 보기</button>
-					<button type="button" class="btn btn-primary" @click="showlist(2)">질문 작성</button>
-					<button type="button" class="btn btn-primary" @click="showlist(4)">검색</button>
+					<button type="button" class="btn btn-secondary" @click="showlist(0)"><i class="fa fa-list-ul pr-2 text-default"></i>&nbsp;전체 질문</button>
+					<button type="button" class="btn btn-secondary" @click="showlist(2)"><i class="fa fa-edit pr-2 text-default"></i>&nbsp;질문 작성</button>
+					<button type="button" class="btn btn-secondary" @click="showlist(4)"><i class="fa fa-search pr-2 text-default"></i>&nbsp;검색</button>
 				</div>
 				<br>
 				<component v-bind:is="currentview"></component>
@@ -89,10 +90,7 @@ body {
 		</div>
 	</section>
 
-	<div class="floating">
-		<label>인기 검색어</label>
-		<%@ include file="trends.jsp"%>
-	</div>
+	<jsp:include page="trends.jsp"></jsp:include>
 	
 	<jsp:include page="footer.jsp"></jsp:include>
 	
@@ -167,7 +165,7 @@ body {
 				</label>
 				<div class="col-md-8">
 					<input type="text"  v-model = "title" class="form-control" id="inputName"
-						placeholder="title" required name="title">
+						placeholder="'질문 제목'을 입력해주세요" required name="title">
 				</div>
 			</div>
 			<div class="form-group has-feedback row">
@@ -177,7 +175,7 @@ body {
 				</label>
 				<div class="col-md-8">
 					<input type="text" v-model = "name" class="form-control" 
-						placeholder="author" required="required" > 
+						placeholder="'질문자명'을 입력해주세요" required="required" > 
 				</div>
 			</div>
 			<div class="form-group has-feedback row">
@@ -187,7 +185,7 @@ body {
 				</label>
 				<div class="col-md-8">
 					<input type="password" v-model = "pass" class="form-control" id="inputLastName"
-						placeholder="영문 숫자 포함 6자리 이상" required="required" name="pass"> 
+						placeholder="'영문 숫자 포함 6자리 이상' 입력해주세요" required="required" name="pass"> 
 				</div>
 			</div>
 			
@@ -198,14 +196,14 @@ body {
 				</label>
 				<div class="col-md-8">
 					<textarea v-model = "content" cols = "50" rows = "10" class="form-control" id="inputEmail"
-						placeholder="content" required="required" name="content">
+						placeholder="'질문 내용'을 입력해주세요" required="required" name="content">
 					</textarea>
 					<input type="hidden" v-model ="name" name = "name" value = "${member.id}">
 				</div>
 			</div>
 				<div class="form-group row">
 					<div class="ml-md-auto col-md-9">
-						<button @click="write" class="btn btn-primary">등록</button>
+						<button @click="write" class="btn btn-secondary">등록</button>
 					</div>
 				</div>
 			</div>
@@ -251,16 +249,16 @@ body {
 				<div id="target" class="form-inline">
 					<div class="form-group">
 						<select v-model = "condition" class="form-control" id="key" name="condition" >
-  							<option disabled value="">종류 선택</option>
-							<option value="title" selected>제목</option>
+  							<option disabled value="">--선택--</option>
+							<option value="title">제목</option>
 							<option value="name">작성자</option>
 						</select>
 					</div>
 					<div class="form-group">
-						<input v-model = "word" type="text" class="form-control" id="word" name="word" placeholder="검색어를 입력하세요">
+						<input v-model = "word" type="text" class="form-control" id="word" name="word" @keyup.enter="search" placeholder="검색어를 입력하세요">
 					</div>
 					<div class="form-group">
-						<button @click="search" class="btn btn-primary">검색</button>
+						<button @click="search" class="btn btn-secondary">검색</button>
 					</div>
 				</div>
 				<br>
