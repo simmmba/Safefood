@@ -21,10 +21,12 @@ public class IntakeController {
 	IntakeService service;
 	
 	@GetMapping(value = "/myintake.food")
-	public List<Intake> myintake(Model model, HttpSession session) {
+	public List<Intake> myintake(Model model, HttpSession session, HttpServletRequest req) {
+		String state = req.getParameter("state");
+		System.out.println(state);
 		Member m = (Member) session.getAttribute("member");
 		String id = m.getId();
-		List<Intake> list = service.selectAll(id);
+		List<Intake> list = service.selectAll(id, state);
 		return list;
 	}
 	
@@ -33,7 +35,9 @@ public class IntakeController {
 		String code = req.getParameter("code");
 		Member m = (Member) session.getAttribute("member");
 		String id = m.getId();
-		service.update(code, id);
+		System.out.println(code + "  "  + id);
+		
+		service.insert(code, id);
 
 	}
 	

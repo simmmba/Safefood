@@ -74,7 +74,7 @@ body {
 	<section id="services" class="section-bg">
 
 		<header class="section-header">
-			<h3>QnA</h3>
+			<h3>질문 게시판</h3>
 		</header>
 		<div class="container">
 			<div id="app">

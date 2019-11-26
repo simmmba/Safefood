@@ -4,11 +4,16 @@
 <mapper namespace="intake">
 
 
-	<select id="selectAll" parameterType="String" resultType="intake">
-		select * from intakedb it join fooddb fd on(it.code = fd.code) where id = #{id} order by count desc
+	<select id="selectAll" parameterType="java.util.HashMap" resultType="intake">
+ 		select id, it.code, name, supportpereat, calory, carbo, protein, fat, sugar, natrium, chole, fattyacid, transfat, img, allergy, 
+ 		count(*) count from intakedb it join fooddb fd on (it.code = fd.code)
+		where id = #{id} and idate between date_sub(sysdate(), interval #{state} day) and sysdate()
+		group by code
+		order by count desc 
+		<!-- select * ,count(*) from intakedb it join fooddb fd on(it.code = fd.code) group by it.code; -->
 	</select>
 
-	<select id="selectOne" parameterType="java.util.HashMap" resultType="intake">
+	<select id="selectOne" parameterType="java.util.HashMap" resultType="String">
 		select * from intakedb where id = #{id} and code = #{code}
 	</select>
 
@@ -21,7 +26,7 @@
 	</delete>
 	
 	<insert id="insert"	parameterType="java.util.HashMap">
-		insert into intakedb values(null,sysdate(),#{id},#{code},1)
+		insert into intakedb values(null,sysdate(),#{id},#{code})
 	</insert>
 	
 	

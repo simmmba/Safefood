@@ -16,8 +16,8 @@ public class IntakeServiceImpl implements IntakeService{
     IntakeDao intakeDao; // SqlintakeDaoTemplate이 실제로 주입됨
 
     @Override
-    public List<Intake> selectAll(String id) {
-    	return intakeDao.selectAll(id);
+    public List<Intake> selectAll(String id, String state) {
+    	return intakeDao.selectAll(id, state);
     }
     
     @Override

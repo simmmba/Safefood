@@ -16,8 +16,16 @@ public class IntakeDaoImpl implements IntakeDao {
     SqlSession session; // SqlSessionTemplate이 실제로 주입됨
 
     @Override
-    public List<Intake> selectAll(String id) {
-    	return session.selectList("intake.selectAll",id);
+    public List<Intake> selectAll(String id, String state) {
+    	Map<String,String> m = new HashMap<String, String>();
+    	if(state.equals("day")) state = "1";
+    	else if(state.equals("week")) state = "7";
+    	else state = "31";
+    	m.put("id", id);
+    	m.put("state", state);
+    	
+    	
+    	return session.selectList("intake.selectAll",m);
     }
 
     @Override

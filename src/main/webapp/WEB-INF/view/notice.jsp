@@ -55,7 +55,7 @@ body {
 		<div class="container">
 
 			<header class="section-header">
-				<h3>Notice</h3>
+				<h3>공지사항</h3>
 			</header>
 
 			<div class="container">

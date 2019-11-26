@@ -46,7 +46,6 @@ body {
 		<div class="container">
 
 			<header class="section-header">
-				<h3>Main Page</h3>
 			</header>
 
 			<div class="container">

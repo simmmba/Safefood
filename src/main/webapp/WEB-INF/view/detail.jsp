@@ -63,7 +63,7 @@ body {
 		<div class="container">
 
 			<header class="section-header">
-				<h3>Detail</h3>
+				<h3>상세 식품 정보</h3>
 			</header>
 
 			<div class="container">
@@ -249,13 +249,7 @@ body {
 	
 <script type="text/javascript">
 	$(document).ready(function(){
-/* 		 		   init();
-		   customerList(); //모든 사용자 정보 요청
-		 customerSelect(); //한사람 선택시 처리할 이벤트 등록
-		 customerDelete(); //한사람 삭제시 처리할 이벤트 등록
-		 customerUpdate(); //한사람 정보 수정시 처리할 이벤트 등록
-		 customerInsert(); //새 고객 정보 추가시 처리할 이벤트 등록
- */
+
  		intake();
 	});
 	 
@@ -281,39 +275,11 @@ body {
 		}); 
 	}//customerSelect
 	
-	//모든 사용자 목록 조회 요청
-	function intakeList() {//REST 서버에 모든 고객정보 ajax 요청 보내기
-			$.ajax({
-				url : 'myintake.food',
-				type : 'get',
-				dataType : 'json', //서버가 보내주는 데이터 타입
-				success : function(data){
-					alert("성공");
-					customerListResult(data);
-				},
-				error : function(xhr, status, msg){
-					alert("상태값 : " + status + "http 에러 메세지 : " + msg);
-				}
-				
-			});
-	}//customerList
-	
-	function intakeListResult(data){
-		alert("뿌리는중");
-		$('#intakeTable').empty();
-		$.each(data, function(idx,item){
-			$('<tr>').append($('<td>').html(item.code))
-					 .append($('<td>').html(item.count))
-					 .append($('<td>').html('<button id = "btnAdd">더하기</buttton>'))
-					 .append($('<td>').html('<button id = "btnMinus">빼기</buttton>'))
-					 .append($('<input type="hidden" id ="hidden_ino">').val(item.ino))
-					 .appendTo('#intakeTable');
-		});
-	}
+
 	
 
 	
-	
+	/* 
 	//사용자 삭제 요청
 	 function customerDelete() {
 		$('body').on('click', '#btnDelete', function(){
@@ -357,7 +323,7 @@ body {
 				
 			});
 			
-		});
+		}); */
 	}
 	
 </script>

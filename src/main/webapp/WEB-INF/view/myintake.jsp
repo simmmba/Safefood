@@ -60,8 +60,14 @@ body {
 		<div class="container">
 
 			<header class="section-header">
-				<h3>Notice</h3>
+				<h3>내 섭취 정보</h3>
 			</header>
+
+			<div class="container">
+				<button class="btn btn-warning statebtn" value = "day">일간</button>
+				<button class="btn btn-success statebtn" value = "week">주간</button>
+				<button class="btn btn-primary statebtn" value = "month">월간</button>
+			</div>
 			<table id = "intakeTable">
 				<%-- <c:forEach items="${list}" var="i">
 					<tr>
@@ -104,38 +110,22 @@ body {
 	<!--검색 -->
 	
 	<script type="text/javascript">
+
+	
 	$(document).ready(function(){
- 		intakeList();
+ 		intakeList("day");
+ 		intakeState();
  		intakeDel();
  		intakeAdd();
 	});
 	 
-	//모든 사용자 목록 조회 요청
 
 	
-	//사용자 조회 요청
-	function intake() {
-		// $(부모).on('click', 자식, function(){})
-		$('body').on('click', '#intakebtn', function(){
-			var code = $(this).val();
-			//ajax 요청
-			$.ajax({
-				url:'intake.food?code='+code,
-				type:'get',
-				success:function(){
-					alert("내 섭취 정보에 추가했습니다.")
-				},
-				error : function(xhr, status, msg){
-					alert("상태값 : " + status + "http 에러 메세지 : " + msg);
-				}
-			});
-		}); 
-	}//customerSelect
-	
+
 	//모든 사용자 목록 조회 요청
-	function intakeList() {//REST 서버에 모든 고객정보 ajax 요청 보내기
+	function intakeList(state) {//REST 서버에 모든 고객정보 ajax 요청 보내기
 			$.ajax({
-				url : 'myintake.food',
+				url : 'myintake.food?state='+state,
 				type : 'get',
 				dataType : 'json', //서버가 보내주는 데이터 타입
 				success : function(data){
@@ -159,7 +149,7 @@ body {
 					 .append($('<td>').html(item.count))
 					 .append($('<td>').html('<button id = "btnAdd">더하기</buttton>'))
 					 .append($('<td>').html('<button id = "btnDel">빼기</buttton>'))
-					 .append($('<input type="hidden" id ="hidden_ino">').val(item.ino))
+					 .append($('<input type="hidden" id ="hidden_code">').val(item.code))
 					 .appendTo('#intakeTable');
 		});
 	}
@@ -172,7 +162,7 @@ body {
 				url:'intakeDel.food?ino='+ino,
 				type:'get',
 				success: function(){
-					intakeList();
+					intakeList(state);
 				},
 				error : function(xhr, status, msg){
 					alert("상태값 : " + status + "http 에러 메세지 : " + msg);
@@ -182,14 +172,14 @@ body {
 	}
 	
 	//섭취 추가 요청
-	 function intakeAdd() {
+	function intakeAdd() {
 		$('body').on('click', '#btnAdd', function(){
-			var ino = $(this).closest('tr').find('#hidden_ino').val();
+			var code = $(this).closest('tr').find('#hidden_code').val();
 			$.ajax({
-				url:'intakeAdd.food?ino='+ino,
+				url:'intake.food?code='+code,
 				type:'get',
 				success: function(){
-					intakeList();
+					intakeList(state);
 				},
 				error : function(xhr, status, msg){
 					alert("상태값 : " + status + "http 에러 메세지 : " + msg);
@@ -198,6 +188,12 @@ body {
 		});
 	}//customerDelete
 	
+	function intakeState() {
+		$('body').on('click', '.statebtn', function(){
+			var val = $(this).val();
+			intakeList(val);
+		});
+	}
 
 	
 
