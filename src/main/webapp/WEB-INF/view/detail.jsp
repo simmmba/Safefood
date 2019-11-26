@@ -53,7 +53,7 @@ body {
 		<div class="container">
 
 			<header class="section-header">
-				<h3>상세 식품 정보</h3>
+				<h3>식품 상세 정보</h3>
 			</header>
 
 			<div class="container">
@@ -108,10 +108,10 @@ body {
 	<!-- Template Main Javascript File -->
 	<script src="js/main.js"></script>
 	<script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
-
-      var temp3 = ${f.getCarbo()};
+	    google.charts.load('current', {'packages':['corechart']});
+	    google.charts.setOnLoadCallback(drawChart);
+	
+	    var temp3 = ${f.getCarbo()};
 		if (temp3 == 'N/A')temp3 = 0;
 		
 		var temp4 = ${f.getProtein()};
@@ -135,27 +135,27 @@ body {
 		var temp10 = ${f.getTransfat()};
 		if (temp10 == 'N/A')temp10 = 0;
 		
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Kind', 'Value'],
-          ['탄수화물 : ' + temp3, temp3 * 1],
-          ['단백질 : ' + temp4, temp4 * 1],
-          ['지방 : ' + temp5, temp5 * 1],
-          ['당류 : ' + temp6, temp6 * 1],
-          ['나트륨 : ' + temp7, temp7 * 1],
-          ['콜레스테롤 : ' + temp8, temp8 * 1],
-          ['포화지방산 : ' + temp9, temp9 * 1],
-          ['트랜스지방 : ' + temp10, temp10 * 1]
-        ]);
-
-        var options = {
-          title: '일일 제공량 : ' + ${f.getSupportpereat()} + '\n칼로리 : ' + ${f.getCalory()}
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-	 	chart.draw(data, options);
-      }
+      	function drawChart() {
+	        var data = google.visualization.arrayToDataTable([
+			   ['Kind', 'Value'],
+			   ['탄수화물 : ' + temp3, temp3 * 1],
+			   ['단백질 : ' + temp4, temp4 * 1],
+			   ['지방 : ' + temp5, temp5 * 1],
+			   ['당류 : ' + temp6, temp6 * 1],
+			   ['나트륨 : ' + temp7, temp7 * 1],
+			   ['콜레스테롤 : ' + temp8, temp8 * 1],
+			   ['포화지방산 : ' + temp9, temp9 * 1],
+			   ['트랜스지방 : ' + temp10, temp10 * 1]
+	        ]);
+	
+	        var options = {
+	          title: '일일 제공량 : ' + ${f.getSupportpereat()} + '\n칼로리 : ' + ${f.getCalory()}
+	        };
+	
+	        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+	
+		 	chart.draw(data, options);
+      	}
     </script>
 	
 

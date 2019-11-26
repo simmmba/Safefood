@@ -58,18 +58,18 @@ body {
 					<form action="searchRead.food" id="target" class="form-inline">
 						<div class="form-group">
 							<select class="form-control" id="key" name="key">
+								<option value="" selected="selected">--선택--</option>
 								<option value="상품명">상품명</option>
 								<option value="제조사">제조사</option>
 								<option value="재료명">재료명</option>
-								<option value="칼로리" selected="selected">칼로리</option>
+								<option value="칼로리">칼로리 계산</option>
 							</select>
 						</div>
 						<div class="form-group">
-							<input type="text" class="form-control" id="word" name="word"
-								placeholder="검색어를 입력하세요">
+							<input type="text" class="form-control" id="word" name="word" placeholder="검색어를 입력하세요">
 						</div>
 						<div class="form-group">
-							<button type="submit" class="btn btn-primary">검색</button>
+							<button type="submit" class="btn btn-secondary">검색</button>
 						</div>
 					</form>
 					<!-- /input-group -->
@@ -86,14 +86,12 @@ body {
 				</div>
 			</div>
 			<c:forEach items="${list}" var="f">
-				<div id="item_data" class="row">
+				<div id="item_data" class="row" onclick="location.href='detail.food?code=${f.code}';">
 					<div class='col-md-6 col-lg-12 wow' data-wow-duration='1.4s'>
 						<div class='box'>
 							<div class='div_image'>
 								<img class='item_image' src="${f.getImg()}" height="200px">
-								<span class='title'> 
-									<a href='detail.food?code=${f.getCode()}'> ${f.getName()}</a>
-								</span>
+								<span class='title'>${f.getName()}</span>
 							</div>
 
 							<div class='div_info'>
