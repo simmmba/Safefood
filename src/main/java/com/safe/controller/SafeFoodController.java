@@ -38,7 +38,10 @@ public class SafeFoodController extends HttpServlet {
 		if (key == null)	key = "all";
 		String word = req.getParameter("word");
 
-		if (word != null)	trendWord(word);
+		if (word != null  && word!="") {
+			System.out.println("???");
+			trendWord(word);
+		}
 		app.setAttribute("trends", trends);
 
 		List<Food> list = new ArrayList<Food>();
@@ -69,7 +72,7 @@ public class SafeFoodController extends HttpServlet {
 		String word = req.getParameter("word");
 		ServletContext app = req.getServletContext();
 
-		if (word != null)
+		if (word != null  && word!="")
 			trendWord(word);
 		app.setAttribute("trends", trends);
 
@@ -99,7 +102,9 @@ public class SafeFoodController extends HttpServlet {
 		String word = req.getParameter("word");
 		ServletContext app = req.getServletContext();
 		
-		if (word != null)	trendWord(word);
+		if (word != null && word!="")	{
+			trendWord(word);
+		}
 		app.setAttribute("trends", trends);
 		
 		List<Food> list = new ArrayList<Food>();
@@ -205,7 +210,6 @@ public class SafeFoodController extends HttpServlet {
 		}
 
 		trends.sort(new Comparator<Word>() {
-
 			@Override
 			public int compare(Word o1, Word o2) {
 				return Integer.compare(o2.cnt, o1.cnt);

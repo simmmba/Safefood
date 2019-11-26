@@ -15,9 +15,7 @@
 <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
 
 <!-- Google Fonts -->
-<link
-	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,500,600,700,700i|Montserrat:300,400,500,600,700"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,500,600,700,700i|Montserrat:300,400,500,600,700" rel="stylesheet">
 
 <!-- Bootstrap CSS File -->
 <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -37,6 +35,14 @@
 body {
 	background-color: white;
 }
+.jumbotron {
+	width: 100%;
+	height: 350px;
+	background-image: url("https://cdn.pixabay.com/photo/2017/01/26/02/06/platter-2009590_960_720.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	color: white;
+}
 </style>
 </head>
 <body>
@@ -44,8 +50,17 @@ body {
 	
 	<section id="services" class="section-bg">
 		<div class="container">
-
 			<header class="section-header">
+
+				<div class="jumbotron">
+					<div class="container text-center">
+						<br><br>
+						<h1><b>WHAT WE PROVIDE</b></h1>
+						<br>
+						<p style="color:white;">건강한 삶을 위한 먹거리 프로젝트</p>
+					</div>
+				</div>
+
 			</header>
 
 			<div class="container">
@@ -56,7 +71,6 @@ body {
 								<option value="상품명" selected="selected">상품명</option>
 								<option value="제조사">제조사</option>
 								<option value="재료명">재료명</option>
-								<option value="칼로리">칼로리</option>
 							</select>
 						</div>
 						<div class="form-group">
@@ -64,15 +78,13 @@ body {
 								placeholder="검색어를 입력하세요">
 						</div>
 						<div class="form-group">
-							<button type="submit" class="btn btn-primary">검색</button>
+							<button type="submit" class="btn btn-secondary">검색</button>
 						</div>
 					</form>
 					<!-- /input-group -->
 				</div>
 				<!-- /.col-lg-6 -->
 			</div>
-
-
 
 			<div id=div_main class="row">
 				<c:forEach items="${list}" var="f">
@@ -95,10 +107,11 @@ body {
 
 	</section>
 	
-	<div class = "floating">
+	<%-- <div class = "floating">
 		<label>인기 검색어</label>
 		<%@ include file="trends.jsp"%>
-	</div>
+	</div>  --%>
+	<jsp:include page="trends.jsp"></jsp:include>
 
 	<jsp:include page="footer.jsp"></jsp:include>
 

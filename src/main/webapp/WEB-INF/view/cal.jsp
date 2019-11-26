@@ -40,12 +40,6 @@ body {
 	background-color: white;
 }
 </style>
-<!-- =======================================================
-    Theme Name: Rapid
-    Theme URL: https://bootstrapmade.com/rapid-multipurpose-bootstrap-business-template/
-    Author: BootstrapMade.com
-    License: https://bootstrapmade.com/license/
-  ======================================================= -->
 </head>
 
 <body>
@@ -64,10 +58,10 @@ body {
 					<form action="searchRead.food" id="target" class="form-inline">
 						<div class="form-group">
 							<select class="form-control" id="key" name="key">
-								<option value="상품명" selected="selected">상품명</option>
+								<option value="상품명">상품명</option>
 								<option value="제조사">제조사</option>
 								<option value="재료명">재료명</option>
-								<option value="칼로리">칼로리</option>
+								<option value="칼로리" selected="selected">칼로리</option>
 							</select>
 						</div>
 						<div class="form-group">

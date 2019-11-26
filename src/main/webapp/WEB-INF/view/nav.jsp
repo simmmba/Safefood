@@ -5,7 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
 </head>
 <body>
 	<!--========================== Header ============================-->
@@ -30,24 +29,22 @@
 		<div class="container">
 
 			<div class="logo float-left">
-				<!-- Uncomment below if you prefer to use an image logo -->
-				<h1>
+				<h1><b>
 					<a href="main.food">
 					<!-- <img src="http://edu.ssafy.com/asset/images/header-logo.jpg" alt="로고" height="400"> -->
-					SAFE FOOD</a>
+					SAFE FOOD</a></b>
 				</h1>
 			</div>
 
-			<nav
-				class="main-nav float-right d-none d-lg-block navbar navbar-fixed-top">
+			<nav class="main-nav float-right d-none d-lg-block navbar navbar-fixed-top">
 				<ul>
 					<!-- <li class="active"><a href="#intro">공지 사항</a></li> -->
-					<li><a href="notice.food">공지 사항</a></li>
-					<li><a href="qna.food">QnA</a></li>
 					<li><a href="read.food">상품 정보</a></li>
 					<li><a href="#about">베스트 섭취 정보</a></li>
 					<li><a href="intakeinfo.food">내 섭취 정보</a></li>
 					<li><a href="#team">예상 섭취 정보</a></li>
+					<li><u><a href="qna.food">QnA</a></u></li>
+					<li><u><a href="notice.food">공지 사항</a></u></li>
 
 				</ul>
 			</nav>
@@ -56,7 +53,6 @@
 
 	</header>
 	<!-- #header -->
-	
 
 </body>
 </html>
