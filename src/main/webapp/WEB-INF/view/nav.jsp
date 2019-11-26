@@ -41,8 +41,10 @@
 					<!-- <li class="active"><a href="#intro">공지 사항</a></li> -->
 					<li><a href="read.food">상품 정보</a></li>
 					<li><a href="#about">베스트 섭취 정보</a></li>
-					<li><a href="intakeinfo.food">내 섭취 정보</a></li>
-					<li><a href="#team">예상 섭취 정보</a></li>
+					<c:if test="${not empty member}">
+						<li><a href="intakeinfo.food">내 섭취 정보</a></li>
+						<li><a href="#team">예상 섭취 정보</a></li>
+					</c:if>
 					<li><u><a href="qna.food">QnA</a></u></li>
 					<li><u><a href="notice.food">공지 사항</a></u></li>
 

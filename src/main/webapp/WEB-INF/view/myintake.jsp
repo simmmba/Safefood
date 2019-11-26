@@ -69,13 +69,12 @@ body {
 				<button class="btn btn-primary statebtn" value = "month">월간</button>
 			</div>
 			<table id = "intakeTable">
-				<%-- <c:forEach items="${list}" var="i">
-					<tr>
-						<td>${i.code}</td>
-						<td>${i.count}</td>
-					</tr>
-				</c:forEach> --%>
+
 			</table>
+			<h5 id = "intakeinfo">영양 정보</h5>
+				<center>
+					<div id="piechart" style="width: 900px; height: 500px;"></div>
+				</center>
 		</div>
 	</section>
 	
@@ -107,6 +106,7 @@ body {
 	<script src="js/main.js"></script>
 	<!-- Contact Form JavaScript File -->
 	<script src="contactform/contactform.js"></script>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<!--검색 -->
 	
 	<script type="text/javascript">
@@ -140,18 +140,33 @@ body {
 	
 	function intakeListResult(data){
 		$('#intakeTable').empty();
+		$('#piechart').empty();
+		$('#intakeinfo').empty();
+		
 		
 		if(data == ""){
 			$('<h2>').html("해당 기간에 섭취한 식품이 없습니다.")
 					 .appendTo('#intakeTable');
 		
 		}else{
+			$('#intakeinfo').html("영양정보");
 		
 			$('<tr>').append($('<th>').html("섭취일자"))
 					 .append($('<th>').html("제품명"))
 					 .append($('<th>').html("섭취 칼로리"))
 				     .append($('<th>').html("섭취 갯수"))
 				     .appendTo('#intakeTable');
+			
+			var temp2 = 0;
+	     	var temp3 = 0;
+			var temp4 = 0;
+			var temp5 = 0;
+			var temp6 = 0;
+			var temp7 = 0;
+			var temp8 = 0;
+			var temp9 = 0;
+			var temp10 = 0;
+			
 			
 			$.each(data, function(idx,item){
 				$('<tr>').append($('<td>').html(item.idate))
@@ -163,7 +178,51 @@ body {
 						 .append($('<input type="hidden" id ="hidden_code">').val(item.code))
 						 .append($('<input type="hidden" id ="hidden_date">').val(item.idate))
 						 .appendTo('#intakeTable');
+		     	
+				temp2 += item.calory
+				temp3 += item.carbo * item.count;
+				temp4 += item.protein * item.count;
+				temp5 += item.fat * item.count;
+				temp6 += item.sugar * item.count;
+				temp7 += item.natrium * item.count;
+				temp8 += item.getchole * item.count;
+				temp9 += item.fattyacid * item.count;
+				temp10 += item.transfat * item.count;
 			});
+			
+			temp2 = temp2.toFixed(2);
+			temp3 = temp3.toFixed(2);
+			temp4 = temp4.toFixed(2);
+			temp5 = temp5.toFixed(2);
+			temp6 = temp6.toFixed(2);
+			temp7 = temp7.toFixed(2);
+			temp8 = temp8.toFixed(2);
+			temp9 = temp9.toFixed(2);
+			temp10 = temp10.toFixed(2);
+			
+		    google.charts.load('current', {'packages':['corechart']});
+		    google.charts.setOnLoadCallback(drawChart);
+			
+			function drawChart() {
+		        var data = google.visualization.arrayToDataTable([
+		          ['Kind', 'Value'],
+		          ['탄수화물 : ' + temp3, temp3 * 1],
+		          ['단백질 : ' + temp4, temp4 * 1],
+		          ['지방 : ' + temp5, temp5 * 1],
+		          ['당류 : ' + temp6, temp6 * 1],
+		          ['나트륨 : ' + temp7, temp7 * 1],
+		          ['콜레스테롤 : ' + temp8, temp8 * 1],
+		          ['포화지방산 : ' + temp9, temp9 * 1],
+		          ['트랜스지방 : ' + temp10, temp10 * 1]
+		        ]);
+	
+		        var options = {
+		          title: '총 섭취 칼로리 : ' + temp2
+		        };
+	
+		        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+			 		chart.draw(data, options);
+				}
 		}
 	}
 	
