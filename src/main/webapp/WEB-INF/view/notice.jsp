@@ -40,12 +40,6 @@ body {
 	background-color: white;
 }
 </style>
-<!-- =======================================================
-    Theme Name: Rapid
-    Theme URL: https://bootstrapmade.com/rapid-multipurpose-bootstrap-business-template/
-    Author: BootstrapMade.com
-    License: https://bootstrapmade.com/license/
-  ======================================================= -->
 </head>
 
 <body>
@@ -72,8 +66,8 @@ body {
 								placeholder="검색어를 입력하세요">
 						</div>
 						<div class="form-group">
-							<button type="submit" class="btn btn-primary">검색</button>
-							<span style="float:right"><button type="button" class="btn btn-primary" onclick = "location.href = 'noticeInsertForm.food'" >작성</button></span>
+							<button type="submit" class="btn btn-secondary">검색</button>
+							<span style="float:right"><button type="button" class="btn btn-secondary" onclick = "location.href = 'noticeInsertForm.food'" >작성</button></span>
 						</div>
 					</form>
 					<!-- /input-group -->
@@ -106,10 +100,7 @@ body {
 		</div>
 	</section>
 	
-	<div class = "floating">
-		<label>인기 검색어</label>
-		<%@ include file="trends.jsp"%>
-	</div>
+	<jsp:include page="trends.jsp"></jsp:include>
 	
 	<jsp:include page="footer.jsp"></jsp:include>
 
