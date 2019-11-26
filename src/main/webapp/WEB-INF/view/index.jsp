@@ -15,9 +15,7 @@
 <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
 
 <!-- Google Fonts -->
-<link
-	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,500,600,700,700i|Montserrat:300,400,500,600,700"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,500,600,700,700i|Montserrat:300,400,500,600,700" rel="stylesheet">
 
 <!-- Bootstrap CSS File -->
 <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -71,7 +69,6 @@ body {
 								<option value="상품명" selected="selected">상품명</option>
 								<option value="제조사">제조사</option>
 								<option value="재료명">재료명</option>
-								<option value="칼로리">칼로리</option>
 							</select>
 						</div>
 						<div class="form-group">
@@ -79,15 +76,13 @@ body {
 								placeholder="검색어를 입력하세요">
 						</div>
 						<div class="form-group">
-							<button type="submit" class="btn btn-primary">검색</button>
+							<button type="submit" class="btn btn-secondary">검색</button>
 						</div>
 					</form>
 					<!-- /input-group -->
 				</div>
 				<!-- /.col-lg-6 -->
 			</div>
-
-
 
 			<div id=div_main class="row">
 				<c:forEach items="${list}" var="f">
@@ -110,10 +105,11 @@ body {
 
 	</section>
 	
-	<div class = "floating">
+	<%-- <div class = "floating">
 		<label>인기 검색어</label>
 		<%@ include file="trends.jsp"%>
-	</div>
+	</div>  --%>
+	<jsp:include page="trends.jsp"></jsp:include>
 
 	<jsp:include page="footer.jsp"></jsp:include>
 

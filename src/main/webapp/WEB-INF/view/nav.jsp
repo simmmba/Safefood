@@ -29,7 +29,6 @@
 		<div class="container">
 
 			<div class="logo float-left">
-				<!-- Uncomment below if you prefer to use an image logo -->
 				<h1><b>
 					<a href="main.food">
 					<!-- <img src="http://edu.ssafy.com/asset/images/header-logo.jpg" alt="로고" height="400"> -->
@@ -54,7 +53,6 @@
 
 	</header>
 	<!-- #header -->
-	
 
 </body>
 </html>
