@@ -110,7 +110,7 @@ body {
 	<!--검색 -->
 	
 	<script type="text/javascript">
-
+	var state = "day";
 	
 	$(document).ready(function(){
  		intakeList("day");
@@ -140,26 +140,40 @@ body {
 	
 	function intakeListResult(data){
 		$('#intakeTable').empty();
-		$('<tr>').append($('<th>').html("제품명"))
-			   .append($('<th>').html("섭취 갯수"))
-			   .appendTo('#intakeTable');
 		
-		$.each(data, function(idx,item){
-			$('<tr>').append($('<td>').html(item.name))
-					 .append($('<td>').html(item.count))
-					 .append($('<td>').html('<button id = "btnAdd">더하기</buttton>'))
-					 .append($('<td>').html('<button id = "btnDel">빼기</buttton>'))
-					 .append($('<input type="hidden" id ="hidden_code">').val(item.code))
+		if(data == ""){
+			$('<h2>').html("해당 기간에 섭취한 식품이 없습니다.")
 					 .appendTo('#intakeTable');
-		});
+		
+		}else{
+		
+			$('<tr>').append($('<th>').html("섭취일자"))
+					 .append($('<th>').html("제품명"))
+					 .append($('<th>').html("섭취 칼로리"))
+				     .append($('<th>').html("섭취 갯수"))
+				     .appendTo('#intakeTable');
+			
+			$.each(data, function(idx,item){
+				$('<tr>').append($('<td>').html(item.idate))
+						 .append($('<td>').html(item.name))
+						 .append($('<td>').html(item.calory))
+						 .append($('<td>').html(item.count))
+						 .append($('<td>').html('<button id = "btnAdd">+</buttton>'))
+						 .append($('<td>').html('<button id = "btnDel">-</buttton>'))
+						 .append($('<input type="hidden" id ="hidden_code">').val(item.code))
+						 .append($('<input type="hidden" id ="hidden_date">').val(item.idate))
+						 .appendTo('#intakeTable');
+			});
+		}
 	}
 	
 	//섭취 빼기 요청
 	 function intakeDel() {
 		$('body').on('click', '#btnDel', function(){
-			var ino = $(this).closest('tr').find('#hidden_ino').val();
+			var code = $(this).closest('tr').find('#hidden_code').val();
+			var date = $(this).closest('tr').find('#hidden_date').val();
 			$.ajax({
-				url:'intakeDel.food?ino='+ino,
+				url:'intakeDel.food?code='+code +'&date='+date,
 				type:'get',
 				success: function(){
 					intakeList(state);
@@ -175,11 +189,12 @@ body {
 	function intakeAdd() {
 		$('body').on('click', '#btnAdd', function(){
 			var code = $(this).closest('tr').find('#hidden_code').val();
+			var date = $(this).closest('tr').find('#hidden_date').val();
 			$.ajax({
-				url:'intake.food?code='+code,
+				url:'intakeAdd.food?code='+code +'&date='+date,
 				type:'get',
 				success: function(){
-					intakeList(state);
+					intakeList(state); 
 				},
 				error : function(xhr, status, msg){
 					alert("상태값 : " + status + "http 에러 메세지 : " + msg);
@@ -191,6 +206,7 @@ body {
 	function intakeState() {
 		$('body').on('click', '.statebtn', function(){
 			var val = $(this).val();
+			state = val;
 			intakeList(val);
 		});
 	}

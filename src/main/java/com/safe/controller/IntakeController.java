@@ -27,6 +27,7 @@ public class IntakeController {
 		Member m = (Member) session.getAttribute("member");
 		String id = m.getId();
 		List<Intake> list = service.selectAll(id, state);
+		
 		return list;
 	}
 	
@@ -35,7 +36,6 @@ public class IntakeController {
 		String code = req.getParameter("code");
 		Member m = (Member) session.getAttribute("member");
 		String id = m.getId();
-		System.out.println(code + "  "  + id);
 		
 		service.insert(code, id);
 
@@ -43,16 +43,23 @@ public class IntakeController {
 	
 	@GetMapping(value = "/intakeDel.food")
 	public void intakeDel(HttpServletRequest req, HttpSession session) {
-		String ino = req.getParameter("ino");
+		Member m = (Member) session.getAttribute("member");
 		
-		service.del(ino);
-		
+		String id = m.getId();
+		String code = req.getParameter("code");
+		String date = req.getParameter("date");
+		service.del(code,date,id);
 	}
 	
 	@GetMapping(value = "/intakeAdd.food")
 	public void intakeAdd(HttpServletRequest req, HttpSession session) {
-		String ino = req.getParameter("ino");
-		service.add(ino);
+		Member m = (Member) session.getAttribute("member");
+
+		String id = m.getId();
+		String code = req.getParameter("code");
+		String date = req.getParameter("date");
+
+		service.add(code,date, id);
 		
 	}
 	
