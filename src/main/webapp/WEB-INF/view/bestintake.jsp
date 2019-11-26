@@ -60,7 +60,7 @@ body {
 		<div class="container">
 
 			<header class="section-header">
-				<h3>내 섭취 정보</h3>
+				<h3>베스트 섭취 정보</h3>
 			</header>
 
 			<div class="container">
@@ -113,32 +113,31 @@ body {
 	var state = "day";
 	
 	$(document).ready(function(){
- 		intakeList("day");
- 		intakeState();
- 		intakeDel();
- 		intakeAdd();
+		bestintakeList("day");
+		bestintakeState();
+		bestintakeDel();
+		bestintakeAdd();
 	});
 	 
 
 	
 
-	//모든 사용자 목록 조회 요청
-	function intakeList(state) {//REST 서버에 모든 고객정보 ajax 요청 보내기
+	//모든 섭취 정보 중 10개
+	function bestintakeList(state) {//REST 서버에 모든 고객정보 ajax 요청 보내기
 			$.ajax({
-				url : 'myintake.food?state='+state,
+				url : 'bestintake.food?state='+state,
 				type : 'get',
 				dataType : 'json', //서버가 보내주는 데이터 타입
 				success : function(data){
-					intakeListResult(data);
+					bestintakeListResult(data);
 				},
 				error : function(xhr, status, msg){
 					alert("상태값 : " + status + "http 에러 메세지 : " + msg);
 				}
-				
 			});
-	}//customerList
+	}
 	
-	function intakeListResult(data){
+	function bestintakeListResult(data){
 		$('#intakeTable').empty();
 		$('#piechart').empty();
 		$('#intakeinfo').empty();
@@ -151,7 +150,7 @@ body {
 		}else{
 			$('#intakeinfo').html("영양정보");
 		
-			$('<tr>').append($('<th>').html("섭취일자"))
+			$('<tr>').append($('<th>').html("순위"))
 					 .append($('<th>').html("제품명"))
 					 .append($('<th>').html("섭취 칼로리"))
 				     .append($('<th>').html("섭취 갯수"))
@@ -227,15 +226,15 @@ body {
 	}
 	
 	//섭취 빼기 요청
-	 function intakeDel() {
+	 function bestintakeDel() {
 		$('body').on('click', '#btnDel', function(){
 			var code = $(this).closest('tr').find('#hidden_code').val();
 			var date = $(this).closest('tr').find('#hidden_date').val();
 			$.ajax({
-				url:'intakeDel.food?code='+code +'&date='+date,
+				url:'bestintakeDel.food?code='+code + '&date='+date,
 				type:'get',
 				success: function(){
-					intakeList(state);
+					bestintakeList(state);
 				},
 				error : function(xhr, status, msg){
 					alert("상태값 : " + status + "http 에러 메세지 : " + msg);
@@ -245,33 +244,30 @@ body {
 	}
 	
 	//섭취 추가 요청
-	function intakeAdd() {
+	function bestintakeAdd() {
 		$('body').on('click', '#btnAdd', function(){
 			var code = $(this).closest('tr').find('#hidden_code').val();
 			var date = $(this).closest('tr').find('#hidden_date').val();
 			$.ajax({
-				url:'intakeAdd.food?code='+code +'&date='+date,
+				url:'bestintakeAdd.food?code='+code + '&date='+date,
 				type:'get',
 				success: function(){
-					intakeList(state); 
+					bestintakeList(state); 
 				},
 				error : function(xhr, status, msg){
 					alert("상태값 : " + status + "http 에러 메세지 : " + msg);
 				}
 			});
 		});
-	}//customerDelete
+	}
 	
-	function intakeState() {
+	function bestintakeState() {
 		$('body').on('click', '.statebtn', function(){
 			var val = $(this).val();
 			state = val;
-			intakeList(val);
+			bestintakeList(val);
 		});
 	}
-
-	
-
 	
 </script>
 

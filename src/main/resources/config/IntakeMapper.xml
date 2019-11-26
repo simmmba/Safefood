@@ -3,24 +3,19 @@
 	
 <mapper namespace="intake">
 
-
+	<!-- 나의 섭취정보 쿼리문 -->
 	<select id="selectAll" parameterType="java.util.HashMap" resultType="intake">
  		select idate,id, it.code, name, supportpereat, round(sum(calory),2) calory, carbo, protein, fat, sugar, natrium, chole, fattyacid, transfat, img, allergy, 
  		count(*) count from intakedb it join fooddb fd on (it.code = fd.code)
 		where id = #{id} and idate between date_sub(sysdate(), interval #{state} day) and sysdate()
 		group by code, idate
 		order by count desc 
-		<!-- select * ,count(*) from intakedb it join fooddb fd on(it.code = fd.code) group by it.code; -->
 	</select>
 
 
 	<select id="select" parameterType="String" resultType="intake">
 		select * from intakedb where ino = #{ino}
 	</select>
-	
-	<delete id="delete" parameterType="String">
-		delete from intakedb where ino = #{ino}
-	</delete>
 	
 	<insert id="insert"	parameterType="java.util.HashMap">
 		insert into intakedb values(null,sysdate(),#{id},#{code})
@@ -37,6 +32,31 @@
 				(select ino from intakedb 
 							where code = #{code} and idate = #{date} and id = #{id} limit 1) sino);
 	</delete>
+	
+	
+	<!-- 베스트 섭취 정보 쿼리문 -->
+	<select id ="bestselectAll" parameterType="String" resultType="intake">
+		select idate,id, it.code, name, supportpereat, round(sum(calory),2) calory, carbo, protein, fat, sugar, natrium, chole, fattyacid, transfat, img, allergy, 
+ 		count(*) count from intakedb it join fooddb fd on (it.code = fd.code)
+		where idate between date_sub(sysdate(), interval #{state} day) and sysdate()
+		group by code, idate
+		order by count desc 
+	</select>
+
+	<insert id="bestadd"	parameterType="java.util.HashMap">
+		insert into intakedb values(null,#{date},#{id},#{code})
+	</insert>
+
+	<delete id="bestdel" parameterType="java.util.HashMap" >
+		delete from intakedb where ino = 
+		(select * from  
+				(select ino from intakedb 
+							where code = #{code} and idate = #{date} limit 1) sino);
+	</delete>
+	
+	
+	
+	
 	
 	
 </mapper>

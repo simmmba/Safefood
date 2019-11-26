@@ -27,8 +27,6 @@ public class IntakeController {
 		String id = m.getId();
 		
 		List<Intake> list = service.selectAll(id, state);
-		
-		
 		return list;
 	}
 	
@@ -41,6 +39,16 @@ public class IntakeController {
 		service.insert(code, id);
 
 	}
+	@GetMapping(value = "/intakeAdd.food")
+	public void intakeAdd(HttpServletRequest req, HttpSession session) {
+		Member m = (Member) session.getAttribute("member");
+		
+		String id = m.getId();
+		String code = req.getParameter("code");
+		String date = req.getParameter("date");
+		
+		service.add(code,date, id);
+	}
 	
 	@GetMapping(value = "/intakeDel.food")
 	public void intakeDel(HttpServletRequest req, HttpSession session) {
@@ -52,17 +60,38 @@ public class IntakeController {
 		service.del(code,date,id);
 	}
 	
-	@GetMapping(value = "/intakeAdd.food")
-	public void intakeAdd(HttpServletRequest req, HttpSession session) {
+	@GetMapping(value = "/bestintake.food")
+	public List<Intake> bestintake(Model model, HttpSession session, HttpServletRequest req) {
+		String state = req.getParameter("state");
+		
+		List<Intake> list = service.bestselectAll(state);
+		
+		
+		return list;
+	}
+	
+	@GetMapping(value = "/bestintakeAdd.food")
+	public void bestintakeAdd(HttpServletRequest req, HttpSession session) {
 		Member m = (Member) session.getAttribute("member");
 
 		String id = m.getId();
 		String code = req.getParameter("code");
 		String date = req.getParameter("date");
 
-		service.add(code,date, id);
+		service.bestadd(code, id,date);
 		
 	}
+	
+	@GetMapping(value = "/bestintakeDel.food")
+	public void bestintakeDel(HttpServletRequest req, HttpSession session) {
+		Member m = (Member) session.getAttribute("member");
+		
+		String id = m.getId();
+		String code = req.getParameter("code");
+		String date = req.getParameter("date");
+		service.bestdel(code,id,date);
+	}
+	
 	
 
 }

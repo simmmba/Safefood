@@ -9,9 +9,11 @@ public interface IntakeService {
 	public List<Intake> selectAll(String id, String state);
 	
 	public void insert(String code, String id);
-	public void update(String code, String id);
 	public void add(String ino, String date, String id);
 	public void del(String ino, String date, String id);
 	
+	public List<Intake> bestselectAll( String state);
+	public void bestadd(String code,  String id, String date);
+	public void bestdel(String code,  String id, String date);
     
 }

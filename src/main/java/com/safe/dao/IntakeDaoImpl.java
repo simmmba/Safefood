@@ -36,20 +36,7 @@ public class IntakeDaoImpl implements IntakeDao {
 		return session.selectOne("intake.selectOne",m);
 	}
 
-	@Override
-	public void update(String code, String id) {
-		Intake intake= selectOne(code, id);
-		
-		if(intake == null) {
-			insert(code,id);
-		}else {
-			Map<String,String> m = new HashMap<>();
-			m.put("ino", intake.getIno());
-			m.put("code", code);
-			m.put("id", id);
-			session.update("intake.update",m);
-		}
-	}
+
 	@Override
 	public void insert(String code, String id) {
 		Map<String,String> m = new HashMap<>();
@@ -57,8 +44,8 @@ public class IntakeDaoImpl implements IntakeDao {
 		m.put("id", id);
 		session.insert("intake.insert",m);
 	}
-
-	@Override
+	
+ 	@Override
 	public void add(String code, String date, String id) {
 		Map<String,String> m = new HashMap<>();
 		m.put("id", id);
@@ -76,6 +63,36 @@ public class IntakeDaoImpl implements IntakeDao {
 		session.delete("intake.del", m);
 		
 	}
+	
+	@Override
+    public List<Intake> bestselectAll(String state) {
+    	if(state.equals("day")) state = "1";
+    	else if(state.equals("week")) state = "8";
+    	else state = "32";
+    	Map<String,String> m = new HashMap<>();
+    	return session.selectList("intake.bestselectAll",state);
+    }
+	
+	@Override
+	public void bestadd(String code, String id, String date) {
+		Map<String,String> m = new HashMap<>();
+		m.put("id", id);
+		m.put("code", code);
+		m.put("date", date);
+		session.insert("intake.bestadd",m);
+	}
+	
+	@Override
+	public void bestdel(String code,String id, String date) {
+		Map<String,String> m = new HashMap<>();
+		m.put("id", id);
+		m.put("code", code);
+		m.put("date", date);
+		session.delete("intake.bestdel", m);
+		
+	}
+
+
 
     
 }

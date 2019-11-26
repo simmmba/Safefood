@@ -25,10 +25,6 @@ public class IntakeServiceImpl implements IntakeService{
 		return intakeDao.selectOne(code,id);
 	}
 	@Override
-	public void update(String code, String id) {
-		intakeDao.update(code,id);
-	}
-	@Override
 	public void insert(String code, String id) {
 		intakeDao.insert(code,id);
 	}
@@ -43,5 +39,18 @@ public class IntakeServiceImpl implements IntakeService{
 		intakeDao.del(code,date, id);
 	}
 
+	@Override
+	public List<Intake> bestselectAll( String state) {
+		return intakeDao.bestselectAll( state);
+	}
+	@Override
+	public void bestadd(String code, String id, String date) {
+		intakeDao.bestadd(code, id, date);
+	}
+	
+	@Override
+	public void bestdel(String code, String id, String date) {
+		intakeDao.bestdel(code, id, date);
+	}
     
 }
