@@ -9,12 +9,17 @@
 <title>Insert title here</title>
 <link href="css/style.css" rel="stylesheet">
 <link href="css/mycss.css" rel="stylesheet">
+<style>
+	tr:nth-child(odd) { 
+    	background-color: #e7ddd6; 
+    }
+</style>
 </head>
 
 <body>
 	<div class = "floating">
-		<label><b>인기 검색어</b></label>
-		<table class = "trendTable" border="1px">
+		<label style="color: #7e6349"><b>인기 검색어</b></label>
+		<table class = "trendTable" border="1" bordercolor="#f2ede8">
 			<c:forEach items="${trends}" begin="0" end="9" step="1" var="t" varStatus = "status">
 				<tr>
 					<td>${status.count}</td>
