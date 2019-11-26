@@ -36,9 +36,31 @@
 <link href="css/mycss.css" rel="stylesheet">
 
 <style type="text/css">
-body {
-	background-color: white;
-}
+	body {
+		background-color: white;
+	}
+	table {
+		width: 100%;
+		text-align: center;
+	}
+	.tt tr:nth-child(odd) { 
+		background-color: #ece6df; 
+	}
+	.tt tr:nth-child(even) { 
+		background-color: #dbcdc1; 
+	}
+	.tt td { 
+		padding: 5px;
+		border-radius: 10px;
+	}
+	.tt th { 
+		padding: 10px;
+		border-radius: 10px;
+	}
+	.tt tr:nth-child(1) { 
+		background-color: #ac8d71;
+		color: white; 
+	}
 </style>
 </head>
 
@@ -51,7 +73,6 @@ body {
 			<header class="section-header">
 				<h3>공지사항</h3>
 			</header>
-
 			<div class="container">
 				<div class="col-lg-6">
 					<form action="noticeSearch.food" id="target" class="form-inline">
@@ -74,29 +95,61 @@ body {
 				</div>
 				<!-- /.col-lg-6 -->
 			</div>
-
-			<c:forEach items="${list}" var="b">
-				<div id="item_data" class="row"  style=" cursor: pointer;" onclick="location.href='noticeRead.food?num=${b.getNum()}';">
-					<div class='col-md-6 col-lg-12 wow' data-wow-duration='1.4s'>
-						<div class='box'>
-							<div>
-								<span class='title'> 
-									<a href='noticeRead.food?num=${b.getNum()}'> ${b.getNum()}</a>
-								</span>
-							</div>
-
-							<div class='div_info div_notice' style="padding-left: 0px;">
-								<span>제목 : ${b.getTitle()}</span>
-								<hr>
-								<span>작성일 : ${b.getWdate()}</span>
-								<hr>
-								<span>작성자 : ${b.getName()}</span>
-								<hr>
+			<br>
+			<center>
+				<table class="tt">
+<!-- 				<table class="tt table-hover"> -->
+					<tr>
+						<th width="7%">번호</th>
+						<th width="50%">제목</th>
+						<th width="20%">작성자</th>
+						<th width="15%">등록일</th>
+						<th width="8%">조회수</th>
+					</tr>
+					<c:forEach items="${list}" var="b">
+						<tr>
+							<td>${b.getNum()}</td>
+							<td><a href='noticeRead.food?num=${b.getNum()}'>${b.getTitle()}</a></td>
+							<td>${b.getName()}</td>
+							<td>${b.getWdate()}</td>
+							<td>${b.getCount()}</td>
+						</tr>
+						
+						<%--
+						<div id="item_data" class="row"  style=" cursor: pointer;" onclick="location.href='noticeRead.food?num=${b.getNum()}';">
+							<div class='col-md-6 col-lg-12 wow' data-wow-duration='1.4s'>
+								<div class='box'>
+									<div>
+										<span class='title'> 
+											<a href='noticeRead.food?num=${b.getNum()}'> ${b.getNum()}</a>
+										</span>
+									</div>
+		
+									<div class='div_info div_notice' style="padding-left: 0px;">
+										<span>제목 : ${b.getTitle()}</span>
+										<hr>
+										<span>작성일 : ${b.getWdate()}</span>
+										<hr>
+										<span>작성자 : ${b.getName()}</span>
+										<hr>
+									</div>
+								</div>
 							</div>
 						</div>
-					</div>
-				</div>
-			</c:forEach>
+						--%>
+					</c:forEach>
+				</table>
+				<!-- <div class="text-center">
+					<ul class="pagination">
+						<li><a href="#">1</a></li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><a href="#">4</a></li>
+						<li><a href="#">5</a></li>
+					</ul>
+				</div> -->
+			</center>
+		
 		</div>
 	</section>
 	
