@@ -5,17 +5,14 @@
 
 
 	<select id="selectAll" parameterType="java.util.HashMap" resultType="intake">
- 		select id, it.code, name, supportpereat, calory, carbo, protein, fat, sugar, natrium, chole, fattyacid, transfat, img, allergy, 
+ 		select idate,id, it.code, name, supportpereat, round(sum(calory),2) calory, carbo, protein, fat, sugar, natrium, chole, fattyacid, transfat, img, allergy, 
  		count(*) count from intakedb it join fooddb fd on (it.code = fd.code)
 		where id = #{id} and idate between date_sub(sysdate(), interval #{state} day) and sysdate()
-		group by code
+		group by code, idate
 		order by count desc 
 		<!-- select * ,count(*) from intakedb it join fooddb fd on(it.code = fd.code) group by it.code; -->
 	</select>
 
-	<select id="selectOne" parameterType="java.util.HashMap" resultType="String">
-		select * from intakedb where id = #{id} and code = #{code}
-	</select>
 
 	<select id="select" parameterType="String" resultType="intake">
 		select * from intakedb where ino = #{ino}
@@ -28,21 +25,18 @@
 	<insert id="insert"	parameterType="java.util.HashMap">
 		insert into intakedb values(null,sysdate(),#{id},#{code})
 	</insert>
-	
-	
-	<update id="update" parameterType="java.util.HashMap">
-		update intakedb set count = count+1 where ino = #{ino} and id = #{id} and code = #{code}
-	</update>
+
+	<insert id="add"	parameterType="java.util.HashMap">
+		insert into intakedb values(null,#{date},#{id},#{code})
+	</insert>
 
 
-
-	<update id="add" parameterType="String">
-		update intakedb set count = count+1 where ino = #{ino}
-	</update>
-
-	<update id="del" parameterType="java.util.HashMap">
-		update intakedb set count = count-1 where ino = #{ino}
-	</update>
+	<delete id="del" parameterType="java.util.HashMap" >
+		delete from intakedb where ino = 
+		(select * from  
+				(select ino from intakedb 
+							where code = #{code} and idate = #{date} and id = #{id} limit 1) sino);
+	</delete>
 	
 	
 </mapper>

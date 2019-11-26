@@ -10,8 +10,8 @@ public interface IntakeService {
 	
 	public void insert(String code, String id);
 	public void update(String code, String id);
-	public void add(String ino);
-	public void del(String ino);
+	public void add(String ino, String date, String id);
+	public void del(String ino, String date, String id);
 	
     
 }

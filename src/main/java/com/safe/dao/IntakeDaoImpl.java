@@ -19,8 +19,8 @@ public class IntakeDaoImpl implements IntakeDao {
     public List<Intake> selectAll(String id, String state) {
     	Map<String,String> m = new HashMap<String, String>();
     	if(state.equals("day")) state = "1";
-    	else if(state.equals("week")) state = "7";
-    	else state = "31";
+    	else if(state.equals("week")) state = "8";
+    	else state = "32";
     	m.put("id", id);
     	m.put("state", state);
     	
@@ -59,18 +59,21 @@ public class IntakeDaoImpl implements IntakeDao {
 	}
 
 	@Override
-	public void add(String ino) {
-		session.update("intake.add",ino);
+	public void add(String code, String date, String id) {
+		Map<String,String> m = new HashMap<>();
+		m.put("id", id);
+		m.put("code", code);
+		m.put("date", date);
+		session.insert("intake.add",m);
 	}
 	
 	@Override
-	public void del(String ino) {
-		Intake intake = session.selectOne("intake.select", ino);
-		if(intake.getCount() == 1) {
-			session.delete("intake.delete",ino);
-		}else {
-			session.update("intake.del",ino);
-		}
+	public void del(String code, String date, String id) {
+		Map<String,String> m = new HashMap<>();
+		m.put("id", id);
+		m.put("code", code);
+		m.put("date", date);
+		session.delete("intake.del", m);
 		
 	}
 
