@@ -180,7 +180,7 @@
 			}else{
 				/* $('#intakeinfo').html("영양정보"); */
 			
-				$('<tr>').append($('<th width="15%">').html("섭취일자"))
+				$('<tr>').append($('<th width="15%">').html("날&nbsp;&nbsp;&nbsp;&nbsp;짜"))
 						 .append($('<th width="30%">').html("제품명"))
 						 .append($('<th width="20%">').html("섭취 칼로리"))
 					     .append($('<th width="15%">').html("섭취 갯수"))

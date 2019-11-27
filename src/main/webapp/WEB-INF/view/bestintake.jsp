@@ -36,21 +36,56 @@
 
 <style type="text/css">
 body {
-	background-color: white;
-}
+		background-color: white;
+	}
+	table {
+		width: 70%;
+		border: solid white;
+	}
+	.it td{
+		text-align: center;
+		padding: 8px;
+	}
+	.it th{
+		text-align: center;
+		padding: 15px;
+		font-size: 17px;
+		/* background-color: #000; */
+	}
+	.it tr:nth-child(odd) { 
+		background-color: #ece6df; 
+	}
+	.it tr:nth-child(even) { 
+		background-color: #dbcdc1; 
+	}
+	.it tr:nth-child(1) { 
+		background-color: #ac8d71;
+		color: white; 
+	}
+	.btn-group .button {
+		border: 1.5px solid #604937;
+		background-color: #604937;
+		color: white;
+		padding: 9px 20px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 17px;
+		cursor: pointer;
+		float: left;
+		border-radius: 10px;
+	}
+	
+	.btn-group .button:not(:last-child) {
+		border-right: none; /* Prevent double borders */
+	}
+	
+	.btn-group .button:hover {
+		background-color: #fff;
+		color: #604937;
+		font-weight: bold;
+	}
 </style>
-<!-- =======================================================
-    Theme Name: Rapid
-    Theme URL: https://bootstrapmade.com/rapid-multipurpose-bootstrap-business-template/
-    Author: BootstrapMade.com
-    License: https://bootstrapmade.com/license/
-  ======================================================= -->
-
-
-  
-  
-  
-  
 </head>
 
 <body>
@@ -62,19 +97,21 @@ body {
 			<header class="section-header">
 				<h3>베스트 섭취 정보</h3>
 			</header>
-
-			<div class="container">
-				<button class="btn btn-warning statebtn" value = "intake">섭취량</button>
-				<button class="btn btn-success statebtn" value = "maker">제조사</button>
-				<button class="btn btn-primary statebtn" value = "calory">칼로리</button>
-			</div>
-			<table id = "intakeTable">
-
-			</table>
-			<h5 id = "intakeinfo">영양 정보</h5>
-				<center>
+			<center>
+				<div class="container" style="background-color: white; border-radius: 2em;">
+					<br>
+					<div class="btn-group" >
+						<button class="button statebtn" value = "intake">섭취 갯수</button>
+						<button class="button statebtn" value = "maker">제조사</button>
+						<button class="button statebtn" value = "calory">칼로리</button>
+					</div>
+					<br><br>
+					<table id = "intakeTable" class="it" border="1"></table>
+					<br>
+					<!-- <h5 id = "intakeinfo">영양 정보</h5> -->
 					<div id="piechart" style="width: 900px; height: 500px;"></div>
-				</center>
+				</div>
+			</center>
 		</div>
 	</section>
 	
@@ -116,9 +153,6 @@ body {
 		bestintakeDel();
 		bestintakeAdd();
 	});
-	 
-
-	
 
 	//모든 섭취 정보 중 10개
 	function bestintakeList(state) {//REST 서버에 모든 고객정보 ajax 요청 보내기
@@ -152,12 +186,12 @@ body {
 			list[0] = ['Kind', 'Value'];
 			
 			if(state == "intake"){
-				$('#intakeinfo').html("섭취 정보");
+				/* $('#intakeinfo').html("섭취 정보"); */
 			
-				$('<tr>').append($('<th>').html("순위"))
-						 .append($('<th>').html("제품명"))
-						 .append($('<th>').html("섭취 칼로리"))
-					     .append($('<th>').html("섭취량"))
+				$('<tr>').append($('<th width="10%">').html(" "))
+						 .append($('<th width="40%">').html("제품명"))
+						 .append($('<th width="25%">').html("섭취 칼로리"))
+					     .append($('<th width="25%" style="text-decoration: underline;">').html("섭취 갯수"))
 					     .appendTo('#intakeTable');
 				var cnt = 0;
 				$.each(data, function(idx,item){
@@ -166,39 +200,39 @@ body {
 					$('<tr>').append($('<td>').html(idx+1))
 							 .append($('<td>').html(item.name))
 							 .append($('<td>').html(item.calory))
-							 .append($('<td>').html(item.count))
+							 .append($('<td style="font-weight: bold;">').html(item.count))
 							 .appendTo('#intakeTable');
 					
 				})
-				opt = {title : "총 섭취량 :  " + cnt}
+				opt = {title : "총 섭취 갯수 :  " + cnt}
 				
 			}else if(state == "maker"){
-				$('#intakeinfo').html("섭취 정보");
+				/* $('#intakeinfo').html("섭취 정보"); */
 			
-				$('<tr>').append($('<th>').html("순위"))
-						 .append($('<th>').html("제조사"))
-						 .append($('<th>').html("섭취 칼로리"))
-					     .append($('<th>').html("섭취량"))
+				$('<tr>').append($('<th width="10%">').html(" "))
+						 .append($('<th width="40%" style="text-decoration: underline;">').html("제조사"))
+						 .append($('<th width="25%">').html("섭취 칼로리"))
+					     .append($('<th width="25%">').html("섭취 갯수"))
 					     .appendTo('#intakeTable');
 				var cnt = 0;
 				$.each(data, function(idx,item){
 					cnt +=item.count;
 					list[idx+1] = [item.maker+' : ' + item.count, item.count* 1];
 					$('<tr>').append($('<td>').html(idx+1))
-							 .append($('<td>').html(item.maker))
+							 .append($('<td style="font-weight: bold;">').html(item.maker))
 							 .append($('<td>').html(item.calory))
 							 .append($('<td>').html(item.count))
 							 .appendTo('#intakeTable');
 				})
-				opt = {title : "총 섭취량 :  " + cnt};
+				opt = {title : "총 섭취 갯수 :  " + cnt};
 				
 			}else{
-				$('#intakeinfo').html("섭취 정보");
+				/* $('#intakeinfo').html("섭취 정보"); */
 			
-				$('<tr>').append($('<th>').html("순위"))
-						 .append($('<th>').html("제품명"))
-						 .append($('<th>').html("섭취량"))
-					     .append($('<th>').html("섭취 칼로리"))
+				$('<tr>').append($('<th width="10%">').html(" "))
+						 .append($('<th width="40%">').html("제품명"))
+						 .append($('<th width="25%">').html("섭취 갯수"))
+					     .append($('<th width="25%" style="text-decoration: underline;">').html("섭취 칼로리"))
 					     .appendTo('#intakeTable');
 				
 				var cnt=0;
@@ -208,7 +242,7 @@ body {
 					$('<tr>').append($('<td>').html(idx+1))
 							 .append($('<td>').html(item.name))
 							 .append($('<td>').html(item.count))
-							 .append($('<td>').html(item.calory))
+							 .append($('<td style="font-weight: bold;">').html(item.calory))
 							 .appendTo('#intakeTable');
 				})
 				opt = {title : "총 칼로리 :  " + cnt}
