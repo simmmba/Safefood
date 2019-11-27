@@ -22,7 +22,7 @@
 								<br><br>
 								<h2 class="title">Find Us</h2>
 								<div class="separator-2"></div>
-								<ul class="list-icons">
+								<ul class="list-icons" style="list-style: none;">
 									<li><i class="fa fa-map-marker pr-2 text-default"></i>
 										(06220) 서울시 강남구 테헤란로</li>
 									<li><i class="fa fa-phone pr-2 text-default"></i>1544-9001</li>

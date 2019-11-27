@@ -88,7 +88,6 @@
 						</div>
 						<div class="form-group">
 							<button type="submit" class="btn btn-secondary">검색</button>
-							<span style="float:right"><button type="button" class="btn btn-secondary" onclick = "location.href = 'noticeInsertForm.food'" >작성</button></span>
 						</div>
 					</form>
 					<!-- /input-group -->
@@ -149,6 +148,12 @@
 					</ul>
 				</div> -->
 			</center>
+			<br>
+			<c:if test="${not empty member}">
+				<center>
+					<button type="button" class="btn btn-secondary" onclick = "location.href = 'noticeInsertForm.food'" >작성</button>
+				</center>
+			</c:if>
 		
 		</div>
 	</section>

@@ -83,7 +83,7 @@ body{
 
 .floating { 
 	position: fixed;
-	right: 50%; 
+	right: 48%; 
 	top: 400px; 
 	margin-right: -740px; 
 	text-align:center; 

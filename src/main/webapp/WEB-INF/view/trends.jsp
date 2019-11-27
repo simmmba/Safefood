@@ -21,7 +21,9 @@
 
 <body>
 	<div class = "floating">
-		<label style="color: #7e6349"><b>인기 검색어</b></label>
+		<c:if test="${trends.size() > 0}">
+			<label style="color: #7e6349"><b>인기 검색어</b></label>
+		</c:if>
 		<table class = "trendTable ttt" border="1" bordercolor="#f2ede8">
 			<c:forEach items="${trends}" begin="0" end="9" step="1" var="t" varStatus = "status">
 				<tr>

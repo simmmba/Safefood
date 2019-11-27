@@ -95,7 +95,9 @@ body {
 
 		</div>
 	</section>
+	
 	<jsp:include page="footer.jsp"></jsp:include>
+	
 	<!-- #services -->
 	<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 	<!-- Uncomment below i you want to use a preloader -->

@@ -29,8 +29,10 @@
 		<div class="container">
 
 			<div class="logo float-left">
-				<h1><b>
-					<a href="main.food"><img src="img/favicon.png" alt="로고" height="500">&nbsp;SAFE FOOD</a></b>
+				<h1><!-- <i class="fa fa-plus pr-2 text-default"></i> --><b>
+					<a href="main.food">
+					<img src="img/favicon.png" alt="로고" height="500">&nbsp;
+					SAFE FOOD</a></b>
 				</h1>
 			</div>
 
@@ -38,10 +40,10 @@
 				<ul>
 					<!-- <li class="active"><a href="#intro">공지 사항</a></li> -->
 					<li><a href="read.food">상품 정보</a></li>
-					<li><a href="bestintakeinfo.food">베스트 섭취 정보</a></li>
 					<c:if test="${not empty member}">
 						<li><a href="intakeinfo.food">내 섭취 정보</a></li>
 						<li><a href="#team">예상 섭취 정보</a></li>
+						<li><a href="bestintakeinfo.food">베스트 섭취 정보</a></li>
 					</c:if>
 					<li><u><a href="qna.food">QnA</a></u></li>
 					<li><u><a href="notice.food">공지 사항</a></u></li>
