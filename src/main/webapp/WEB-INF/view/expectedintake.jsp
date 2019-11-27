@@ -184,9 +184,10 @@
 			/* $('#intakeinfo').html("영양정보"); */
 			$("#intakebtn").show();
 		
-			$('<tr>').append($('<th>').html("제품명"))
-					 .append($('<th>').html("섭취 칼로리"))
-				     .append($('<th>').html("섭취 갯수"))
+			$('<tr>').append($('<th width="45%">').html("제품명"))
+					 .append($('<th width="25%">').html("섭취 칼로리"))
+				     .append($('<th width="20%">').html("섭취 갯수"))
+				     .append($('<th width="10%" style="background-color: white;">').html(" "))
 				     .appendTo('#intakeTable');
 			
 			var temp2 = 0;
@@ -203,10 +204,10 @@
 			$.each(data, function(idx,item){
 				$('<tr>').append($('<td>').html(item.name))
 						 .append($('<td>').html(item.calory))
-						 .append($('<td>').html(item.count))
-						 .append($('<td>').html('<button id = "btnAdd">+</buttton>'))
-						 .append($('<td>').html('<button id = "btnDel">-</buttton>'))
-						 .append($('<td>').html('<button id = "btnRemove">x</buttton>'))
+						 .append($('<td>').html('<button class="btn btn-default" id = "btnDel">&nbsp;&nbsp;<i class="fa fa-minus pr-2 text-default"></i></button>' 
+							 							+ '<span style="width: 20px; display: inline-block;">' + item.count + '</span>'
+							 							+ '<button class="btn btn-default" id = "btnAdd">&nbsp;&nbsp;<i class="fa fa-plus pr-2 text-default"></i></button>'))
+ 						 .append($('<td style="background-color: white;">').html('<button class="btn btn-default" id="btnRemove">&nbsp;<i class="fa fa-trash pr-2 text-default"></i></buttton>'))
 						 .append($('<input type="hidden" id ="hidden_code">').val(item.code))
 						 .append($('<input type="hidden" id ="hidden_date">').val(item.idate))
 						 .appendTo('#intakeTable');
@@ -249,7 +250,7 @@
 		        ]);
 	
 		        var options = {
-		          title: '예상 섭취 칼로리 : ' + temp2
+		          title: '예상 섭취 칼로리(cal) : ' + temp2
 		        };
 	
 		        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
