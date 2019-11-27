@@ -50,7 +50,7 @@ body {
 		<div class="container">
 
 			<header class="section-header">
-				<h3>식품 목록</h3>
+				<h3>전체 식품 목록</h3>
 			</header>
 
 			<div class="container">
