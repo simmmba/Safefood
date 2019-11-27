@@ -96,13 +96,14 @@
 			<center>
 				<div class="container" style="background-color: white; border-radius: 2em;">
 					<br>
-					<div class="btn-group" >
-						<button class="button statebtn" value = "month">월간</button>
+					<div id="append" class="btn-group">
+ 						<button class="button statebtn" value = "day">일간</button>
 						<button class="button statebtn" value = "week">주간</button>
-						<button class="button statebtn" value = "day">일간</button>
+						<button class="button statebtn" value = "month">월간</button>
 					</div>
 					<br><br>
 					<table id = "intakeTable" class="it" border="1"></table>
+					<div id = "nothing"></div>
 					<br>
 					<!-- <h5 id = "intakeinfo"><b>영양 정보</b></h5> -->
 					<!-- <h5 id = "intakeinfo"></h5> -->
@@ -149,6 +150,7 @@
 	 		intakeState();
 	 		intakeDel();
 	 		intakeAdd();
+			$('.statebtn').hide();
 		});
 		 
 		//모든 사용자 목록 조회 요청
@@ -173,13 +175,14 @@
 			$('#intakeinfo').empty();
 			
 			
+			
+			
 			if(data == ""){
 				$('<h2>').html("해당 기간에 섭취한 식품이 없습니다.")
-						 .appendTo('#intakeTable');
+						 .appendTo('#nothing');
 			
 			}else{
-				/* $('#intakeinfo').html("영양정보"); */
-			
+				$('.statebtn').show();
 				$('<tr>').append($('<th width="15%">').html("날&nbsp;&nbsp;&nbsp;&nbsp;짜"))
 						 .append($('<th width="30%">').html("제품명"))
 						 .append($('<th width="20%">').html("섭취 칼로리"))
