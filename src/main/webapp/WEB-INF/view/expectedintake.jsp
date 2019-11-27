@@ -35,22 +35,56 @@
 <link href="css/mycss.css" rel="stylesheet">
 
 <style type="text/css">
-body {
-	background-color: white;
-}
+	body {
+		background-color: white;
+	}
+	table {
+		width: 70%;
+		border: solid white;
+	}
+	.it td{
+		text-align: center;
+	}
+	.it th{
+		text-align: center;
+		padding: 15px;
+		font-size: 17px;
+		/* background-color: #000; */
+	}
+	.it tr:nth-child(odd) { 
+		background-color: #ece6df; 
+	}
+	.it tr:nth-child(even) { 
+		background-color: #dbcdc1; 
+	}
+	.it tr:nth-child(1) { 
+		background-color: #ac8d71;
+		color: white; 
+	}
+	.btn-group .button {
+		border: 1.5px solid #604937;
+		background-color: #604937;
+		color: white;
+		padding: 9px 20px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 17px;
+		cursor: pointer;
+		float: left;
+		border-radius: 10px;
+	}
+	
+	.btn-group .button:not(:last-child) {
+		border-right: none; /* Prevent double borders */
+	}
+	
+	.btn-group .button:hover {
+		background-color: #fff;
+		color: #604937;
+		font-weight: bold;
+	}
 </style>
-<!-- =======================================================
-    Theme Name: Rapid
-    Theme URL: https://bootstrapmade.com/rapid-multipurpose-bootstrap-business-template/
-    Author: BootstrapMade.com
-    License: https://bootstrapmade.com/license/
-  ======================================================= -->
-
-
-  
-  
-  
-  
 </head>
 
 <body>
@@ -62,15 +96,18 @@ body {
 			<header class="section-header">
 				<h3>예상 섭취 정보</h3>
 			</header>
-
-			<table id = "intakeTable">
-
-			</table>
-			<button id = "intakebtn">섭취</button>
-			<h5 id = "intakeinfo">영양 정보</h5>
-				<center>
+			<center>
+				<div class="container" style="background-color: white; border-radius: 2em;">
+					<br><br><br>
+					<table id = "intakeTable" class="it" border="1"></table>
+					<div id = "nothing"></div>
+					<br>
+					<button id = "intakebtn">섭취</button>
+					<!-- <h5 id = "intakeinfo"><b>영양 정보</b></h5> -->
+					<!-- <h5 id = "intakeinfo"></h5> -->
 					<div id="piechart" style="width: 900px; height: 500px;"></div>
-				</center>
+				</div>
+			</center>
 		</div>
 	</section>
 	
@@ -140,10 +177,10 @@ body {
 		
 		if(data == ""){
 			$('<h2>').html("예상 섭취 정보가 없습니다.")
-					 .appendTo('#intakeTable');
+					 .appendTo('#nothing');
 		
 		}else{
-			$('#intakeinfo').html("영양정보");
+			/* $('#intakeinfo').html("영양정보"); */
 			$("#intakebtn").show();
 		
 			$('<tr>').append($('<th>').html("제품명"))
