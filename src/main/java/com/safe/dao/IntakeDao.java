@@ -13,7 +13,9 @@ public interface IntakeDao {
 	public void add(String code, String date, String id);
 	public void del(String code, String date, String id);
 	
-	public List<Intake> bestselectAll( String state);
+	public List<Intake> bestselectAllByIntake();
+	public List<Intake> bestselectAllByMaker();
+	public List<Intake> bestselectAllByCalory();
 	public void bestadd(String code,String id, String date);
 	public void bestdel(String code,String id, String date);
     

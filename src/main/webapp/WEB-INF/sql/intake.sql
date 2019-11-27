@@ -12,5 +12,18 @@ INSERT INTO intakedb VALUES (null,curdate(),'ssafy',2);
 INSERT INTO intakedb VALUES (null,curdate(),'ssafy',3);
 INSERT INTO intakedb VALUES (null,curdate(),'ssafy',4);	
 
+CREATE TABLE `expectintakedb` (
+  ino int(11) NOT NULL auto_increment,
+  `id` varchar(45) NOT NULL,
+  `code` int(11) NOT NULL,
+  PRIMARY KEY (`ino`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO expectintakedb VALUES (null,'ssafy',1);
+INSERT INTO expectintakedb VALUES (null,'ssafy',2);
+INSERT INTO expectintakedb VALUES (null,'ssafy',3);
+INSERT INTO expectintakedb VALUES (null,'ssafy',4);	
+
+
 select * from intakedb;
 select ino from intakedb where code = 1 order by idate desc limit 1;
