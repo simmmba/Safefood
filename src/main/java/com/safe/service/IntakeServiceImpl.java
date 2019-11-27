@@ -40,8 +40,16 @@ public class IntakeServiceImpl implements IntakeService{
 	}
 
 	@Override
-	public List<Intake> bestselectAll( String state) {
-		return intakeDao.bestselectAll( state);
+	public List<Intake> bestselectAllByIntake() {
+		return intakeDao.bestselectAllByIntake();
+	}
+	@Override
+	public List<Intake> bestselectAllByMaker() {
+		return intakeDao.bestselectAllByMaker();
+	}
+	@Override
+	public List<Intake> bestselectAllByCalory() {
+		return intakeDao.bestselectAllByCalory();
 	}
 	@Override
 	public void bestadd(String code, String id, String date) {

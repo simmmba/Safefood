@@ -35,12 +35,23 @@
 	
 	
 	<!-- 베스트 섭취 정보 쿼리문 -->
-	<select id ="bestselectAll" parameterType="String" resultType="intake">
-		select idate,id, it.code, name, supportpereat, round(sum(calory),2) calory, carbo, protein, fat, sugar, natrium, chole, fattyacid, transfat, img, allergy, 
- 		count(*) count from intakedb it join fooddb fd on (it.code = fd.code)
-		where idate between date_sub(sysdate(), interval #{state} day) and sysdate()
-		group by code, idate
+	<select id ="bestselectAllbyIntake"  resultType="intake">
+		select idate, it.code code, name, supportpereat, round(calory,2) calory, carbo, protein, fat, sugar, natrium, chole, fattyacid, transfat,maker, img, allergy, count(*) count 
+ 		from intakedb it join fooddb fd on (it.code = fd.code)
+		group by code
 		order by count desc 
+	</select>
+	<select id ="bestselectAllbyMaker"  resultType="intake">
+		select  round(sum(calory),2) calory, carbo, protein, fat, sugar, natrium, chole, fattyacid, transfat, maker, img, allergy, count(*) count 
+		from intakedb it join fooddb fd on (it.code = fd.code)
+		group by maker
+		order by count desc
+	</select>
+	<select id ="bestselectAllbyCalory" resultType="intake">
+		select idate,id, it.code code, name, supportpereat, round(sum(calory),2) calory, carbo, protein, fat, sugar, natrium, chole, fattyacid, transfat,maker, img, allergy, count(*) count 
+		from intakedb it join fooddb fd on (it.code = fd.code)
+		group by it.code
+		order by calory desc 
 	</select>
 
 	<insert id="bestadd"	parameterType="java.util.HashMap">
@@ -53,9 +64,6 @@
 				(select ino from intakedb 
 							where code = #{code} and idate = #{date} limit 1) sino);
 	</delete>
-	
-	
-	
 	
 	
 	

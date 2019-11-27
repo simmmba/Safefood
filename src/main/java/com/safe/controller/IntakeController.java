@@ -54,7 +54,7 @@ public class IntakeController {
 	public void intakeDel(HttpServletRequest req, HttpSession session) {
 		Member m = (Member) session.getAttribute("member");
 		
-		String id = m.getId();
+		String id = m.getId(); 
 		String code = req.getParameter("code");
 		String date = req.getParameter("date");
 		service.del(code,date,id);
@@ -63,10 +63,14 @@ public class IntakeController {
 	@GetMapping(value = "/bestintake.food")
 	public List<Intake> bestintake(Model model, HttpSession session, HttpServletRequest req) {
 		String state = req.getParameter("state");
-		
-		List<Intake> list = service.bestselectAll(state);
-		
-		
+		List<Intake> list = null;
+		if(state.equals("intake")) {
+			list = service.bestselectAllByIntake();
+		}else if(state.equals("maker")) {
+			list = service.bestselectAllByMaker();
+		}else {
+			list = service.bestselectAllByCalory();
+		}
 		return list;
 	}
 	

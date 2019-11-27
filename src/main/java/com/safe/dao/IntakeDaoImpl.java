@@ -65,13 +65,18 @@ public class IntakeDaoImpl implements IntakeDao {
 	}
 	
 	@Override
-    public List<Intake> bestselectAll(String state) {
-    	if(state.equals("day")) state = "1";
-    	else if(state.equals("week")) state = "8";
-    	else state = "32";
-    	Map<String,String> m = new HashMap<>();
-    	return session.selectList("intake.bestselectAll",state);
+    public List<Intake> bestselectAllByIntake() {
+		System.out.println("뭐징");
+    	return session.selectList("intake.bestselectAllbyIntake");
     }
+	@Override
+	public List<Intake> bestselectAllByMaker() {
+		return session.selectList("intake.bestselectAllbyMaker");
+	}
+	@Override
+	public List<Intake> bestselectAllByCalory() {
+		return session.selectList("intake.bestselectAllbyCalory");
+	}
 	
 	@Override
 	public void bestadd(String code, String id, String date) {

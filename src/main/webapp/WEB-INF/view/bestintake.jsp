@@ -64,9 +64,9 @@ body {
 			</header>
 
 			<div class="container">
-				<button class="btn btn-warning statebtn" value = "day">일간</button>
-				<button class="btn btn-success statebtn" value = "week">주간</button>
-				<button class="btn btn-primary statebtn" value = "month">월간</button>
+				<button class="btn btn-warning statebtn" value = "intake">섭취량</button>
+				<button class="btn btn-success statebtn" value = "maker">제조사</button>
+				<button class="btn btn-primary statebtn" value = "calory">칼로리</button>
 			</div>
 			<table id = "intakeTable">
 
@@ -108,10 +108,10 @@ body {
 	<!--검색 -->
 	
 	<script type="text/javascript">
-	var state = "day";
+	var state = "intake";
 	
 	$(document).ready(function(){
-		bestintakeList("day");
+		bestintakeList("intake");
 		bestintakeState();
 		bestintakeDel();
 		bestintakeAdd();
@@ -146,81 +146,88 @@ body {
 					 .appendTo('#intakeTable');
 		
 		}else{
-			$('#intakeinfo').html("영양정보");
-		
-			$('<tr>').append($('<th>').html("순위"))
-					 .append($('<th>').html("제품명"))
-					 .append($('<th>').html("섭취 칼로리"))
-				     .append($('<th>').html("섭취 갯수"))
-				     .appendTo('#intakeTable');
 			
-			var temp2 = 0;
-	     	var temp3 = 0;
-			var temp4 = 0;
-			var temp5 = 0;
-			var temp6 = 0;
-			var temp7 = 0;
-			var temp8 = 0;
-			var temp9 = 0;
-			var temp10 = 0;
+			var list = new Array();
+			var opt = {};
+			list[0] = ['Kind', 'Value'];
 			
+			if(state == "intake"){
+				$('#intakeinfo').html("섭취 정보");
 			
-			$.each(data, function(idx,item){
-				$('<tr>').append($('<td>').html(item.idate))
-						 .append($('<td>').html(item.name))
-						 .append($('<td>').html(item.calory))
-						 .append($('<td>').html(item.count))
-						 .append($('<td>').html('<button id = "btnAdd">+</buttton>'))
-						 .append($('<td>').html('<button id = "btnDel">-</buttton>'))
-						 .append($('<input type="hidden" id ="hidden_code">').val(item.code))
-						 .append($('<input type="hidden" id ="hidden_date">').val(item.idate))
-						 .appendTo('#intakeTable');
-		     	
-				temp2 += item.calory
-				temp3 += item.carbo * item.count;
-				temp4 += item.protein * item.count;
-				temp5 += item.fat * item.count;
-				temp6 += item.sugar * item.count;
-				temp7 += item.natrium * item.count;
-				temp8 += item.getchole * item.count;
-				temp9 += item.fattyacid * item.count;
-				temp10 += item.transfat * item.count;
-			});
+				$('<tr>').append($('<th>').html("순위"))
+						 .append($('<th>').html("제품명"))
+						 .append($('<th>').html("섭취 칼로리"))
+					     .append($('<th>').html("섭취량"))
+					     .appendTo('#intakeTable');
+				var cnt = 0;
+				$.each(data, function(idx,item){
+					cnt +=item.count;
+					list[idx+1] = [item.name+' : ' + item.count, item.count* 1];
+					$('<tr>').append($('<td>').html(idx+1))
+							 .append($('<td>').html(item.name))
+							 .append($('<td>').html(item.calory))
+							 .append($('<td>').html(item.count))
+							 .appendTo('#intakeTable');
+					
+				})
+				opt = {title : "총 섭취량 :  " + cnt}
+				
+			}else if(state == "maker"){
+				$('#intakeinfo').html("섭취 정보");
 			
-			temp2 = temp2.toFixed(2);
-			temp3 = temp3.toFixed(2);
-			temp4 = temp4.toFixed(2);
-			temp5 = temp5.toFixed(2);
-			temp6 = temp6.toFixed(2);
-			temp7 = temp7.toFixed(2);
-			temp8 = temp8.toFixed(2);
-			temp9 = temp9.toFixed(2);
-			temp10 = temp10.toFixed(2);
+				$('<tr>').append($('<th>').html("순위"))
+						 .append($('<th>').html("제조사"))
+						 .append($('<th>').html("섭취 칼로리"))
+					     .append($('<th>').html("섭취량"))
+					     .appendTo('#intakeTable');
+				var cnt = 0;
+				$.each(data, function(idx,item){
+					cnt +=item.count;
+					list[idx+1] = [item.maker+' : ' + item.count, item.count* 1];
+					$('<tr>').append($('<td>').html(idx+1))
+							 .append($('<td>').html(item.maker))
+							 .append($('<td>').html(item.calory))
+							 .append($('<td>').html(item.count))
+							 .appendTo('#intakeTable');
+				})
+				opt = {title : "총 섭취량 :  " + cnt};
+				
+			}else{
+				$('#intakeinfo').html("섭취 정보");
+			
+				$('<tr>').append($('<th>').html("순위"))
+						 .append($('<th>').html("제품명"))
+						 .append($('<th>').html("섭취량"))
+					     .append($('<th>').html("섭취 칼로리"))
+					     .appendTo('#intakeTable');
+				
+				var cnt=0;
+				$.each(data, function(idx,item){
+					cnt +=item.calory;
+					list[idx+1] = [item.name+' : ' + item.calory, item.calory* 1];
+					$('<tr>').append($('<td>').html(idx+1))
+							 .append($('<td>').html(item.name))
+							 .append($('<td>').html(item.count))
+							 .append($('<td>').html(item.calory))
+							 .appendTo('#intakeTable');
+				})
+				opt = {title : "총 칼로리 :  " + cnt}
+			}
 			
 		    google.charts.load('current', {'packages':['corechart']});
 		    google.charts.setOnLoadCallback(drawChart);
 			
 			function drawChart() {
-		        var data = google.visualization.arrayToDataTable([
-		          ['Kind', 'Value'],
-		          ['탄수화물 : ' + temp3, temp3 * 1],
-		          ['단백질 : ' + temp4, temp4 * 1],
-		          ['지방 : ' + temp5, temp5 * 1],
-		          ['당류 : ' + temp6, temp6 * 1],
-		          ['나트륨 : ' + temp7, temp7 * 1],
-		          ['콜레스테롤 : ' + temp8, temp8 * 1],
-		          ['포화지방산 : ' + temp9, temp9 * 1],
-		          ['트랜스지방 : ' + temp10, temp10 * 1]
-		        ]);
+				console.log(list);
+		        var data = google.visualization.arrayToDataTable(list);
 	
-		        var options = {
-		          title: '총 섭취 칼로리 : ' + temp2
-		        };
+		        var options = opt;
 	
 		        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-			 		chart.draw(data, options);
-				}
+			 	chart.draw(data, options);
+			} 
 		}
+		
 	}
 	
 	//섭취 빼기 요청

@@ -21,6 +21,8 @@ public class Intake {
 	protected double fattyacid;
 	/**일회 제공되는 트렌스지방*/
 	protected double transfat;
+	/**제조사*/
+	protected String maker;
 	/**이미지 경로*/
 	protected String img;
 	protected String allergy;
@@ -40,6 +42,14 @@ public class Intake {
 
 	public void setIno(String ino) {
 		this.ino = ino;
+	}
+
+	public String getMaker() {
+		return maker;
+	}
+
+	public void setMaker(String maker) {
+		this.maker = maker;
 	}
 
 	public String getIdate() {
@@ -169,9 +179,17 @@ public class Intake {
 	public void setCount(int count) {
 		this.count = count;
 	}
-    
-    
 
+	@Override
+	public String toString() {
+		return "Intake [ino=" + ino + ", idate=" + idate + ", id=" + id + ", code=" + code + ", name=" + name
+				+ ", calory=" + calory + ", carbo=" + carbo + ", protein=" + protein + ", fat=" + fat + ", sugar="
+				+ sugar + ", natrium=" + natrium + ", chole=" + chole + ", fattyacid=" + fattyacid + ", transfat="
+				+ transfat + ", maker=" + maker + ", img=" + img + ", allergy=" + allergy + ", count=" + count + "]";
+	}
+    
+    
+	
 
 	
     
