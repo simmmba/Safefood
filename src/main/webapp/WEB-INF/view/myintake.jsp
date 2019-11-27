@@ -178,6 +178,7 @@
 			
 			
 			if(data == ""){
+				$('.statebtn').hide();
 				$('<h2>').html("해당 기간에 섭취한 식품이 없습니다.")
 						 .appendTo('#nothing');
 			
