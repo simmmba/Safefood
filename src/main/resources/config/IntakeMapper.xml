@@ -9,7 +9,7 @@
  		count(*) count from intakedb it join fooddb fd on (it.code = fd.code)
 		where id = #{id} and idate between date_sub(sysdate(), interval #{state} day) and sysdate()
 		group by code, idate
-		order by count desc 
+		order by idate asc , count desc 
 	</select>
 
 
@@ -51,7 +51,7 @@
 		select idate,id, it.code code, name, supportpereat, round(sum(calory),2) calory, carbo, protein, fat, sugar, natrium, chole, fattyacid, transfat,maker, img, allergy, count(*) count 
 		from intakedb it join fooddb fd on (it.code = fd.code)
 		group by it.code
-		order by calory desc 
+		order by calory desc
 	</select>
 
 	<insert id="bestadd"	parameterType="java.util.HashMap">
@@ -65,6 +65,10 @@
 							where code = #{code} and idate = #{date} limit 1) sino);
 	</delete>
 	
+	
+	<select id="exepctedSelect" parameterType="String" resultType="expectedintake">
+		select *, 1 as count from fooddb where code = #{code}
+	</select>
 	
 	
 </mapper>

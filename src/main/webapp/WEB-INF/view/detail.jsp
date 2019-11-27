@@ -26,8 +26,7 @@
 <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 <link href="lib/animate/animate.min.css" rel="stylesheet">
 <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-<link href="lib/owlcarousel/assets/owl.carousel.min.css"
-	rel="stylesheet">
+<link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 
 <!-- Main Stylesheet File -->
@@ -64,7 +63,7 @@ body {
 						<h3><b>${f.name}</b></h3>
 						<div class="btn-group" role="group">
 							<button class="btn btn-secondary btn-md active" role="button" id="intakebtn" value = "${f.code}">추가&nbsp;&nbsp;&nbsp;<i class="fa fa-plus pr-2 text-default"></i></button>
-							<button class="btn btn-secondary btn-md active" role="button">찜&nbsp;&nbsp;&nbsp;<i class="fa fa-cart-plus pr-2 text-default"></i></button>
+							<button class="btn btn-secondary btn-md active" role="button" id = "expectedintakebtn" value = "${f.code}">찜&nbsp;&nbsp;&nbsp;<i class="fa fa-cart-plus pr-2 text-default"></i></button>
 						</div>
 						<br>
 						<br>
@@ -153,7 +152,6 @@ body {
 			   ['포화지방산 : ' + temp9, temp9 * 1],
 			   ['트랜스지방 : ' + temp10, temp10 * 1]
 	        ]);
-	
 	        var options = {
 	          title: '일일 제공량 : ' + ${f.getSupportpereat()} + '\n칼로리 : ' + ${f.getCalory()}
 	        };
@@ -169,6 +167,7 @@ body {
 	$(document).ready(function(){
 
  		intake();
+ 		expectedintake();
 	});
 
 	
@@ -183,6 +182,23 @@ body {
 				type:'get',
 				success:function(){
 					alert("내 섭취 정보에 추가했습니다.")
+				},
+				error : function(xhr, status, msg){
+					alert("상태값 : " + status + "http 에러 메세지 : " + msg);
+				}
+			});
+		}); 
+	}
+	//예상 섭취 정보 추가
+	function expectedintake() {
+		$('body').on('click', '#expectedintakebtn', function(){
+			var code = $(this).val();
+			//ajax 요청
+			$.ajax({
+				url:'expectedintake.food?code='+code,
+				type:'get',
+				success:function(){
+					alert("예상 섭취 정보에 추가했습니다.")
 				},
 				error : function(xhr, status, msg){
 					alert("상태값 : " + status + "http 에러 메세지 : " + msg);

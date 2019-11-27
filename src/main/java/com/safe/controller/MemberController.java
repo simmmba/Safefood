@@ -70,17 +70,16 @@ public class MemberController extends HttpServlet {
 		String id = req.getParameter("id");
 		String pass = req.getParameter("pass");
 
-		System.out.println(id + " " + pass);
 		Member m = service.login(id, pass);
+
 		if (service.login(id, pass) != null) {
 			HttpSession hs = req.getSession();
 			hs.setAttribute("member", m);
-			System.out.println("로그인 성공");
 			return "redirect:/main.food";
+		
 		} else {
 			String msg = "아이디 또는 패스워드가 틀립니다.";
 			req.setAttribute("msg", msg);
-			System.out.println("로그인 실패");
 			return "loginFail";
 		}
 		
@@ -114,12 +113,11 @@ public class MemberController extends HttpServlet {
 		String Npass=req.getParameter("Npass");
 		
 		if(Npass =="") Npass = Opass;
-		System.out.println("n : "  + Npass );
-		System.out.println("o : "  + Opass );
 
 		String[] allergyArr = req.getParameterValues("allergy");
 		String allergy = null;
 		StringBuilder sb = new StringBuilder();
+
 		if (allergyArr != null) {
 			sb.append(allergyArr[0]);
 			if(allergyArr.length > 1) {
@@ -127,9 +125,6 @@ public class MemberController extends HttpServlet {
 					sb.append("," + allergyArr[i]);
 				}
 			}
-//			for (String str : allergyArr) {
-//				sb.append(str + ",");
-//			}
 			allergy = sb.toString();
 		}
 		
@@ -180,14 +175,12 @@ public class MemberController extends HttpServlet {
 		if(newPass==null) {
 			String msg = "회원정보가 없습니다.";
 			req.setAttribute("msg", msg);
-			System.out.println("임시 비밀번호 발급 실패");
 			return "login";
 		}
 		else {
 			String msg = "임시 비밀번호를 발급했습니다.";
 			req.setAttribute("msg", msg);
 			req.setAttribute("newPass", newPass);
-			System.out.println("임시 비밀번호 발급 성공");
 			
 			return "passSuccess";
 		}

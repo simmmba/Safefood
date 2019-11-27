@@ -30,65 +30,15 @@ public class SafeFoodController extends HttpServlet {
 	
 	@GetMapping(value = "/main.food")
 	public String list(HttpServletRequest req, Model model) {
-		
-		ServletContext app = req.getServletContext();
-
-		String key = req.getParameter("key");
-		
-		if (key == null)	key = "all";
-		String word = req.getParameter("word");
-
-		if (word != null  && word!="") {
-			System.out.println("???");
-			trendWord(word);
-		}
-		app.setAttribute("trends", trends);
-
-		List<Food> list = new ArrayList<Food>();
-		System.out.println("key : "+key);
-		if(!key.equals("all") && word != null && !word.trim().equals("")) {
-			if(key.equals("칼로리")) {
-				try {
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-			else {
-				list=service.searchAll(key, word);
-			}
-		}
-		else {
-			list=service.searchAll("all",null);
-		}
+		List<Food> list=service.searchAll("all",null);
 		model.addAttribute("list", list);//jsp에서 꺼내쓰도록 list 저장
 		return "index";
 	}
 
 	@GetMapping(value = "/read.food")
 	public String read(HttpServletRequest req) {
-		String key = req.getParameter("key");
-		if (key == null)
-			key = "all";
-		String word = req.getParameter("word");
-		ServletContext app = req.getServletContext();
 
-		if (word != null  && word!="")
-			trendWord(word);
-		app.setAttribute("trends", trends);
-
-		List<Food> list = new ArrayList<Food>();
-		if(!key.equals("all") && word != null && !word.trim().equals("")) {
-			if(key.equals("칼로리")) {
-				try {
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-			else {
-				list=service.searchAll(key, word);
-			}
-		}
-		else list=service.searchAll("all",null);
+		List<Food> list=service.searchAll("all",null);
 		req.setAttribute("list", list);//jsp에서 꺼내쓰도록 list 저장
 		
 		//jsp로 forward해서 넘어가기
@@ -98,38 +48,22 @@ public class SafeFoodController extends HttpServlet {
 	@GetMapping(value = "/search.food")
 	public String search(HttpServletRequest req, Model model) {
 		String key = req.getParameter("key");
-		if (key == null)	key = "all";
 		String word = req.getParameter("word");
-		ServletContext app = req.getServletContext();
+
+		if (key == null)	key = "all";
 		
-		if (word != null && word!="")	{
-			trendWord(word);
-		}
+		//인기 검색어
+		ServletContext app = req.getServletContext();
+		if (word != null && word!="")	trendWord(word);
 		app.setAttribute("trends", trends);
 		
 		List<Food> list = new ArrayList<Food>();
 		if(!key.equals("all") && word != null && !word.trim().equals("")) {
-			if(key.equals("칼로리")) {
-				try {
-					list=service.searchCal(word);
-					double cal=0.0;
-					for(int i=0;i<list.size();i++) {
-						cal+=list.get(i).getCalory();
-					}
-					
-					String str=String.format("%.2f",cal);
-					model.addAttribute("cal",str);
-					model.addAttribute("list", list);
-					return "cal";
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-			else {
-				list=service.searchAll(key, word);
-			}
+			list=service.searchAll(key, word);
 		}
-		else list=service.searchAll("all",null);
+		else {
+			list=service.searchAll("all",null);
+		}
 		model.addAttribute("list", list);//jsp에서 꺼내쓰도록 list 저장
 		//jsp로 forward해서 넘어가기
 		return "index";
@@ -137,15 +71,17 @@ public class SafeFoodController extends HttpServlet {
 	@GetMapping(value = "/searchRead.food")
 	public String searchRead(HttpServletRequest req, Model model) {
 		String key = req.getParameter("key");
-		if (key == null)	key = "all";
-		
 		String word = req.getParameter("word");
-		ServletContext app = req.getServletContext();
+
+		if (key == null)	key = "all";
+
 		
+		ServletContext app = req.getServletContext();
 		if (word != null)	trendWord(word);
 		app.setAttribute("trends", trends);
 		
 		List<Food> list = new ArrayList<Food>();
+		
 		if(!key.equals("all") && word != null && !word.trim().equals("")) {
 			if(key.equals("칼로리")) {
 				try {
@@ -200,6 +136,11 @@ public class SafeFoodController extends HttpServlet {
 		return "bestintake";
 	}
 
+	@GetMapping(value = "/expectedintakeinfo.food")
+	public String expectedintake() {
+		return "expectedintake";
+	}
+	
 	public void trendWord(String word) {
 		boolean flag = true;
 
@@ -211,9 +152,7 @@ public class SafeFoodController extends HttpServlet {
 			}
 		}
 
-		if (flag) {
-			trends.add(new Word(word, 1));
-		}
+		if (flag)	trends.add(new Word(word, 1));
 
 		trends.sort(new Comparator<Word>() {
 			@Override
