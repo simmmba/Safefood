@@ -73,8 +73,14 @@
 			<header class="section-header">
 				<h3>공지사항</h3>
 			</header>
-			<div class="container">
-				<div class="col-lg-6">
+			<!-- <div class="container"> -->
+			<div>
+				<!-- <div class="col-lg-6"> -->
+					<c:if test="${not empty member}">
+						<div style="float: right; display: inline;">
+							<button type="button" class="btn btn-secondary" onclick = "location.href = 'noticeInsertForm.food'" ><i class="fa fa-edit pr-2 text-default"></i>&nbsp;공지사항 작성</button>
+						</div>
+					</c:if>
 					<form action="noticeSearch.food" id="target" class="form-inline">
 						<div class="form-group">
 							<select class="form-control" id="key" name="condition">
@@ -87,11 +93,11 @@
 								placeholder="검색어를 입력하세요">
 						</div>
 						<div class="form-group">
-							<button type="submit" class="btn btn-secondary">검색</button>
+							<button type="submit" class="btn btn-secondary"><i class="fa fa-search pr-2 text-default"></i>&nbsp;검색</button>
 						</div>
 					</form>
 					<!-- /input-group -->
-				</div>
+				<!-- </div> -->
 				<!-- /.col-lg-6 -->
 			</div>
 			<br>
@@ -149,11 +155,6 @@
 				</div> -->
 			</center>
 			<br>
-			<c:if test="${not empty member}">
-				<center>
-					<button type="button" class="btn btn-secondary" onclick = "location.href = 'noticeInsertForm.food'" >작성</button>
-				</center>
-			</c:if>
 		
 		</div>
 	</section>

@@ -39,18 +39,10 @@ body {
 	background-color: white;
 }
 </style>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-<!-- 부가적인 테마 -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
-<!-- =======================================================
-    Theme Name: Rapid
-    Theme URL: https://bootstrapmade.com/rapid-multipurpose-bootstrap-business-template/
-    Author: BootstrapMade.com
-    License: https://bootstrapmade.com/license/
-  ======================================================= -->
+부가적인 테마
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"> -->
 </head>
 
 <body>
@@ -60,7 +52,7 @@ body {
 	<section id="services" class="section-bg">
 		<div class="container">
 			<header class="section-header">
-				<h3>공지 사항 작성</h3>
+				<h3>공지사항 작성</h3>
 				<form class="form-horizontal" action="noticeInsert.food" method="post">
 					<div class="form-group has-feedback row">
 						<label for="inputName"
@@ -69,8 +61,8 @@ body {
 						</label>
 						<div class="col-md-8">
 							<input type="text" class="form-control" id="inputName"
-								placeholder="" required name="title"> <i
-								class="fa fa-pencil form-control-feedback pr-4"></i>
+								placeholder="'공지사항 제목'을 입력하세요" required name="title"> 
+								<!-- <i class="fa fa-pencil form-control-feedback pr-4"></i> -->
 						</div>
 					</div>
 					<div class="form-group has-feedback row">
@@ -80,8 +72,8 @@ body {
 						</label>
 						<div class="col-md-8">
 							<input type="password" class="form-control" id="inputLastName"
-								placeholder="영문 숫자 포함 6자리 이상" required="required" name="pass"> <i
-								class="fa fa-pencil form-control-feedback pr-4"></i>
+								placeholder="'영문 숫자 포함 6자리 이상' 입력해주세요" required="required" name="pass">
+								<!-- <i class="fa fa-pencil form-control-feedback pr-4"></i> -->
 						</div>
 					</div>
 					
@@ -92,8 +84,8 @@ body {
 						</label>
 						<div class="col-md-8">
 							<textarea cols = "50" rows = "10" class="form-control" id="inputEmail"
-								placeholder="address" required="required" name="content"></textarea> 
-							<i class="fa fa-envelope form-control-feedback pr-4"></i>
+								placeholder="'공지사항 내용'을 입력해주세요" required="required" name="content"></textarea> 
+							<!-- <i class="fa fa-envelope form-control-feedback pr-4"></i> -->
 							<input type="hidden" name = "name" value = "${member.id}">
 						</div>
 					</div>
@@ -101,9 +93,8 @@ body {
 					
 					<div class="form-group row">
 						<div class="ml-md-auto col-md-9">
-							<button type="submit"
-								class="btn btn-group btn-default btn-animated">
-								등록 <i class="fa fa-check"></i>
+							<button type="submit" class="btn btn-secondary">
+								등록 &nbsp;<i class="fa fa-check"></i>
 							</button>
 						</div>
 					</div>

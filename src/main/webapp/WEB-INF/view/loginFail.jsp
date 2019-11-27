@@ -50,10 +50,12 @@ body {
 
 	<jsp:include page="nav.jsp"></jsp:include>
 	
-	<section id="services" class="section-bg">
+	<center>
+	<section id="services" class="section-bg" style="height: 650px;">
 
+		<div style="height: 150px;"></div>
 		<blockquote class="blockquote container">
-			<p class="mb-0">아이디 혹은 비밀번호가 틀렸습니다..</p>
+			<p class="mb-0">아이디 혹은 비밀번호가 틀렸습니다!</p>
 		</blockquote>
 		<div class="container">
 
@@ -64,6 +66,8 @@ body {
 		</div>
 
 	</section>
+	</center>
+	
 
 	<jsp:include page="footer.jsp"></jsp:include>
 

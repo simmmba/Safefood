@@ -54,7 +54,7 @@ body {
 	<section id="services" class="section-bg">
 		<div class="container">
 
-			<header class="section-header">
+			<header class="section-header" style="height: 450px">
 				<h3>로그인</h3>
 				<form class="form-horizontal" action="login.food" method="post">
 					<div class="form-group has-feedback row">
@@ -85,7 +85,7 @@ body {
 								로그인 <i class="fa fa-check"></i>
 							</button> -->
 							<button type="submit"  class="btn btn-secondary">
-								로그인 &nbsp;&nbsp;<i class="fa fa-check"></i>
+								<i class="fa fa-check"></i>&nbsp;&nbsp;로그인
 							</button>
 						</div>
 					</div>
@@ -98,7 +98,7 @@ body {
 								비밀번호 찾기 <i class="fa fa-check"></i>
 							</button> -->
 							<button type="submit"  class="btn btn-secondary">
-								비밀번호 찾기 &nbsp;&nbsp;<i class="fa fa-asterisk"></i>
+								<i class="fa fa-asterisk"></i>&nbsp;&nbsp;비밀번호 찾기
 							</button>
 						</div>
 					</div>

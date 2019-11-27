@@ -79,13 +79,20 @@ body {
 				<h3>질문 게시판</h3>
 			</header>
 			<div id="app">
-				<div class="container">
-					<button type="button" class="btn btn-secondary" @click="showlist(0)"><i class="fa fa-list-ul pr-2 text-default"></i>&nbsp;전체 질문</button>
-					<button type="button" class="btn btn-secondary" @click="showlist(2)"><i class="fa fa-edit pr-2 text-default"></i>&nbsp;질문 작성</button>
-					<button type="button" class="btn btn-secondary" @click="showlist(4)"><i class="fa fa-search pr-2 text-default"></i>&nbsp;검색</button>
+				<div class="container" style="height: 50px">
+					<div style="float: left">
+						<button type="button" class="btn btn-secondary" @click="showlist(0)"><i class="fa fa-list-ul pr-2 text-default"></i>&nbsp;전체 질문</button>
+						<button type="button" class="btn btn-secondary" @click="showlist(4)"><i class="fa fa-search pr-2 text-default"></i>&nbsp;검색</button>
+						
+					</div>
+					<div style="float: right">
+						<button type="button" class="btn btn-secondary" @click="showlist(2)"><i class="fa fa-edit pr-2 text-default"></i>&nbsp;질문 작성</button>
+					</div>
 				</div>
 				<br>
-				<component v-bind:is="currentview"></component>
+				<div>
+					<component v-bind:is="currentview"></component>
+				</div>
 			</div>
 		</div>
 	</section>

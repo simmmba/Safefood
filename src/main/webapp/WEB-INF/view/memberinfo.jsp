@@ -34,10 +34,10 @@
 <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 
 <!-- bootswatch lib -->
-<link rel="stylesheet"
+<!-- <link rel="stylesheet"
 	href="https://bootswatch.com/4/minty/bootstrap.css" media="screen">
 <link rel="stylesheet"
-	href="https://bootswatch.com/_assets/css/custom.min.css">
+	href="https://bootswatch.com/_assets/css/custom.min.css"> -->
 
 <!-- Main Stylesheet File -->
 <link href="css/style.css" rel="stylesheet">
@@ -48,17 +48,13 @@ body {
 }
 .t th{
 	text-align: right;
+	color: gray;
 }
 .t td{
 	padding-left: 50px;
+	color: gray;
 }
 </style>
-<!-- =======================================================
-    Theme Name: Rapid
-    Theme URL: https://bootstrapmade.com/rapid-multipurpose-bootstrap-business-template/
-    Author: BootstrapMade.com
-    License: https://bootstrapmade.com/license/
-  ======================================================= -->
 </head>
 <body>
 
@@ -97,10 +93,10 @@ body {
 			</center>
 		</div>
 		<div id="button_" class="container">
-			<button type="button" class="btn btn-success"
-				onclick="location.href='editForm.food'">수정</button>
-			<button type="button" class="btn btn-warning"
-				onclick="location.href='quitConfirm.food?id=${member.id}'">탈퇴</button>
+			<button type="button" class="btn btn-secondary" 
+				onclick="location.href='editForm.food'"><i class="fa fa-paperclip"></i>&nbsp;&nbsp;수정</button>
+			<button type="button" class="btn btn-secondary"
+				onclick="location.href='quitConfirm.food?id=${member.id}'"><i class="fa fa-times-circle"></i>&nbsp;&nbsp;탈퇴</button>
 		</div>
 	</section>
 	

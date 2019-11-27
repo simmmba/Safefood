@@ -83,7 +83,7 @@ body {
 					</label>
 					<div class="col-md-8">
 						<input type="text" class="form-control" id="inputUserName"
-							placeholder="User Name" required="required" name="name">
+							placeholder="" required="required" name="name">
 					</div>
 				</div>
 				<div class="form-group has-feedback row">
@@ -93,7 +93,7 @@ body {
 					</label>
 					<div class="col-md-8">
 						<input type="text" class="form-control" id="inputEmail"
-							placeholder="address" required="required" name="address">
+							placeholder="" required="required" name="address">
 					</div>
 				</div>
 				<div class="form-group has-feedback row">
@@ -102,8 +102,8 @@ body {
 						<span class="text-danger small">*</span>
 					</label>
 					<div class="col-md-8">
-						<input type="text" class="form-control" id="inputPassword"
-							placeholder="010-xxx-xxxx" required="required" name="callnum">
+						<input type="tel" class="form-control" id="inputPassword" pattern="(010)-\d{3,4}-\d{4}"
+							placeholder="010-xxxx-xxxx" required="required" name="callnum">
 					</div>
 				</div>
 				<div class="form-group has-feedback row">
