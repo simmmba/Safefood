@@ -144,6 +144,7 @@
 	
 	$(document).ready(function(){
 		expectedintakeList();
+		expectedintakeRemove()
 		expectedintakeDel();
 		expectedintakeAdd();
 		dointake()
@@ -205,6 +206,7 @@
 						 .append($('<td>').html(item.count))
 						 .append($('<td>').html('<button id = "btnAdd">+</buttton>'))
 						 .append($('<td>').html('<button id = "btnDel">-</buttton>'))
+						 .append($('<td>').html('<button id = "btnRemove">x</buttton>'))
 						 .append($('<input type="hidden" id ="hidden_code">').val(item.code))
 						 .append($('<input type="hidden" id ="hidden_date">').val(item.idate))
 						 .appendTo('#intakeTable');
@@ -256,11 +258,26 @@
 		}
 	}
 	
+	//섭취 삭제 요청
+	 function expectedintakeRemove() {
+		$('body').on('click', '#btnRemove', function(){
+			var code = $(this).closest('tr').find('#hidden_code').val();
+			$.ajax({
+				url:'expectedintakeRemove.food?code='+code,
+				type:'get',
+				success: function(){
+					expectedintakeList();
+				},
+				error : function(xhr, status, msg){
+					alert("상태값 : " + status + "http 에러 메세지 : " + msg);
+				}
+			});
+		});
+	}
 	//섭취 빼기 요청
 	 function expectedintakeDel() {
 		$('body').on('click', '#btnDel', function(){
 			var code = $(this).closest('tr').find('#hidden_code').val();
-			var date = $(this).closest('tr').find('#hidden_date').val();
 			$.ajax({
 				url:'expectedintakeDel.food?code='+code,
 				type:'get',
@@ -278,7 +295,6 @@
 	function expectedintakeAdd() {
 		$('body').on('click', '#btnAdd', function(){
 			var code = $(this).closest('tr').find('#hidden_code').val();
-			var date = $(this).closest('tr').find('#hidden_date').val();
 			$.ajax({
 				url:'expectedintakeAdd.food?code='+code,
 				type:'get',
@@ -294,7 +310,6 @@
 	//섭취
 	function dointake() {
 		$('body').on('click', '#intakebtn', function(){
-			alert("오잉")
 			$.ajax({
 				url:'dointake.food',
 				type:'get',

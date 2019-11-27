@@ -128,6 +128,20 @@ public class IntakeController {
 		
 	}
 	
+	@GetMapping(value = "/expectedintakeRemove.food")
+	public void expectedintakeRemove(HttpServletRequest req, HttpSession session) {
+		String code = req.getParameter("code");
+		List<ExpectedIntake> el = (ArrayList<ExpectedIntake>) session.getAttribute("expectedList");
+		
+		for (int i = 0; i < el.size(); i++) {
+			ExpectedIntake ei = el.get(i);
+			if(code.equals(ei.getCode())) {
+				el.remove(i);
+				break;
+			}
+		}
+	}
+	
 	@GetMapping(value = "/expectedintakeAdd.food")
 	public void expectedintakeAdd(HttpServletRequest req, HttpSession session) {
 		String code = req.getParameter("code");
@@ -170,7 +184,6 @@ public class IntakeController {
 				service.insert(ei.getCode(), id);
 			}
 		}
-		
 		session.setAttribute("expectedList", new ArrayList<ExpectedIntake>());
 	}
 	
