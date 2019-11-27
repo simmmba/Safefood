@@ -9,6 +9,7 @@ import com.safe.dao.QnaDao;
 import com.safe.vo.Answer;
 import com.safe.vo.Board;
 import com.safe.vo.Question;
+import com.safe.vo.Reply;
 // client(ClientApp.java)가 getBean해서 사용하는 객체
 // 서비스 객체
 // CustomerDaoImpl 객체를 주입받아 dao 작업 지시
@@ -55,5 +56,9 @@ public class QnaServiceImpl implements QnaService {
 	@Override
 	public List<Question> findByName(String name) {
         return qnaDao.findByName(name);
+	}
+	@Override
+	public List<Reply> selectReply(String num) {
+		return qnaDao.selectReply(num);
 	}
 }

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.safe.service.QnaService;
 import com.safe.vo.Answer;
 import com.safe.vo.Question;
+import com.safe.vo.Reply;
 
 @RestController
 public class QnaRestController {
@@ -25,7 +26,6 @@ public class QnaRestController {
 		return service.selectAll();
 	}
 	
-	// http://localhost:8080/rest/board/11
 	@RequestMapping(value="/qna/{num}", method=RequestMethod.GET) // value에 num 바로 사용 가능!
 	public Question selectOne(@PathVariable String num){
 		return service.selectOne(num);
@@ -92,11 +92,15 @@ public class QnaRestController {
 			return service.findByTitle(word);
 		}
 		else if(condition.equals("name")) {
-//			System.out.println(word);
 			return service.findByName(word);
 		}
-		
 		else
 			return null;
+	}
+	
+	//qna
+	@RequestMapping(value="/qnaReply/{num}", method=RequestMethod.GET) // value에 num 바로 사용 가능!
+	public List<Reply> selectReply(@PathVariable String num){
+		return service.selectReply(num);
 	}
 }

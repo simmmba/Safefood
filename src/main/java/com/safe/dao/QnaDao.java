@@ -3,6 +3,7 @@ import java.util.List;
 
 import com.safe.vo.Answer;
 import com.safe.vo.Question;
+import com.safe.vo.Reply;
 //client(QuestionApp.java)를 위한 인터페이스
 public interface QnaDao {
     public List<Question> selectAll();
@@ -15,4 +16,5 @@ public interface QnaDao {
     public void updateAnswer(Answer a);
     public List<Question> findByTitle(String title);
     public List<Question> findByName(String name);
+	public List<Reply> selectReply(String num);
 }

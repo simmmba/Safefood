@@ -46,6 +46,10 @@
 		update answer set content = #{content} where num = #{num}
 	</update>
 	
+	<select id="selectReply" parameterType="String" resultType="reply">
+		select * from reply where boardnum = #{num}
+	</select>
+	
 </mapper>
 
 

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import com.safe.vo.Answer;
 import com.safe.vo.Question;
+import com.safe.vo.Reply;
 // dao 객체: CRUD 작업
 // sqlSession 객체를 주입 받아 CRUD 작업 수행
 @Component("qnaDao")
@@ -58,5 +59,9 @@ public class QnaDaoImpl implements QnaDao {
 	@Override
 	public List<Question> findByName(String name) {
         return session.selectList("qna.findByName", name);
+	}
+	@Override
+	public List<Reply> selectReply(String num) {
+		return session.selectList("qna.selectReply",num);
 	}
 }

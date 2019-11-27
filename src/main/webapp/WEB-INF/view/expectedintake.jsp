@@ -167,9 +167,9 @@ body {
 				$('<tr>').append($('<td>').html(item.name))
 						 .append($('<td>').html(item.calory))
 						 .append($('<td>').html(item.count))
-						 .append($('<td>').html('<button id = "btnAdd">+</buttton>'))
-						 .append($('<td>').html('<button id = "btnDel">-</buttton>'))
-						 .append($('<td>').html('<button id = "btnRemove">x</buttton>'))
+						 .append($('<td>').html('<button id = "btnAdd">+</button>'))
+						 .append($('<td>').html('<button id = "btnDel">-</button>'))
+						 .append($('<td>').html('<button id = "btnRemove">x</button>'))
 						 .append($('<input type="hidden" id ="hidden_code">').val(item.code))
 						 .append($('<input type="hidden" id ="hidden_date">').val(item.idate))
 						 .appendTo('#intakeTable');

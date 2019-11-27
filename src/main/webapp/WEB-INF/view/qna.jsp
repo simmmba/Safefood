@@ -152,14 +152,29 @@ body {
 					</tr>
 
 					<tr>
-						<td colspan="2">{{question.content}}</td>
+						<td colspan="2"><pre>{{question.content}}</pre></td>
 					</tr>
 
 				</tbody>
 			</table>
 			<button @click="updateQuestion" class="btn btn-primary">수정</button>
 			<button @click="deleteQuestion" class="btn btn-primary">삭제</button>
-
+			
+			<hr>
+			<span>댓글</span>
+			<table class="table table-hover">
+				<tbody>
+				<template v-for="r in reply">
+					<tr>
+						<td >{{r.name}}</td>
+						<td >{{r.content}}</td>
+						<td>{{r.wdate}}</td>
+					</tr>
+				</template>
+				</tbody>
+			</table>
+			<input type="text" v-model="replyContent" @keyup.enter = "writeReply"><button @click="writeReply" class="btn btn-secondary">댓글 작성</button>
+			
 		</div>
 	</script>
 
@@ -316,7 +331,6 @@ body {
 	      mounted () {
 	        axios
 	          .get('http://localhost:8080/safefood/listQuestion')
-	          //.get('./emp.json')
 	          .then(response => {
 					this.info = response.data;        	  
 	        	  })
@@ -333,6 +347,8 @@ body {
 	    data(){
 	        return {
 	          question: [],
+	          reply:[],
+	          replyContent:'',
 	          loading: true,
 	          errored: false 
 	        }
@@ -345,7 +361,6 @@ body {
 		    	deleteQuestion:function(){
 			        axios
 			          .delete('http://localhost:8080/safefood/qna/'+App.questionNum)
-			          //.get('./emp.json')
 			          .then(response => {
 			        	  App.showlist(0);
 			        	  
@@ -356,20 +371,45 @@ body {
 			          .finally(() => this.loading = false);
 		    		
 			        location.href='./qna.food';
+			    },
+			    writeReply:function(){
+			        axios
+			          .post('http://localhost:8080/safefood/qnaReply',{
+			        	  replyContent:this.replyContent
+			          })
+			          .then(response => {
+			        	  App.showlist(0);
+			        	  
+			        	  })
+			          .catch(() => {
+			            this.errored = true
+			          })
+			          .finally(() => this.loading = false);
+		    		
+			        /* location.href='./qna.food'; */
 			    }
 	      },
 	      mounted () {
-	        axios
+	        //게시글
+	    	axios
 	          .get('http://localhost:8080/safefood/qna/'+App.questionNum)
-	          //.get('./emp.json')
 	          .then(response => {
 					this.question = response.data;
+	          })
+	          .catch(() => {
+	            this.errored = true
+	          })
+	          .finally(() => this.loading = false);
+			//댓글
+	        axios
+	          .get('http://localhost:8080/safefood/qnaReply/'+App.questionNum)
+	          .then(response => {
+					this.reply = response.data;
 	        	  })
 	          .catch(() => {
 	            this.errored = true
 	          })
 	          .finally(() => this.loading = false);
-	        
 	      }
 		});
 		
