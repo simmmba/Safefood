@@ -35,22 +35,56 @@
 <link href="css/mycss.css" rel="stylesheet">
 
 <style type="text/css">
-body {
-	background-color: white;
-}
+	body {
+		background-color: white;
+	}
+	table {
+		width: 70%;
+		border: solid white;
+	}
+	.it td{
+		text-align: center;
+	}
+	.it th{
+		text-align: center;
+		padding: 15px;
+		font-size: 17px;
+		/* background-color: #000; */
+	}
+	.it tr:nth-child(odd) { 
+		background-color: #ece6df; 
+	}
+	.it tr:nth-child(even) { 
+		background-color: #dbcdc1; 
+	}
+	.it tr:nth-child(1) { 
+		background-color: #ac8d71;
+		color: white; 
+	}
+	.btn-group .button {
+		border: 1.5px solid #604937;
+		background-color: #604937;
+		color: white;
+		padding: 9px 20px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 17px;
+		cursor: pointer;
+		float: left;
+		border-radius: 10px;
+	}
+	
+	.btn-group .button:not(:last-child) {
+		border-right: none; /* Prevent double borders */
+	}
+	
+	.btn-group .button:hover {
+		background-color: #fff;
+		color: #604937;
+		font-weight: bold;
+	}
 </style>
-<!-- =======================================================
-    Theme Name: Rapid
-    Theme URL: https://bootstrapmade.com/rapid-multipurpose-bootstrap-business-template/
-    Author: BootstrapMade.com
-    License: https://bootstrapmade.com/license/
-  ======================================================= -->
-
-
-  
-  
-  
-  
 </head>
 
 <body>
@@ -62,15 +96,18 @@ body {
 			<header class="section-header">
 				<h3>예상 섭취 정보</h3>
 			</header>
-
-			<table id = "intakeTable">
-
-			</table>
-			<button id = "intakebtn">섭취</button>
-			<h5 id = "intakeinfo">영양 정보</h5>
-				<center>
+			<center>
+				<div class="container" style="background-color: white; border-radius: 2em;">
+					<br><br><br>
+					<table id = "intakeTable" class="it" border="1"></table>
+					<div id = "nothing"></div>
+					<br>
+					<button id = "intakebtn">섭취</button>
+					<!-- <h5 id = "intakeinfo"><b>영양 정보</b></h5> -->
+					<!-- <h5 id = "intakeinfo"></h5> -->
 					<div id="piechart" style="width: 900px; height: 500px;"></div>
-				</center>
+				</div>
+			</center>
 		</div>
 	</section>
 	
@@ -141,15 +178,16 @@ body {
 		
 		if(data == ""){
 			$('<h2>').html("예상 섭취 정보가 없습니다.")
-					 .appendTo('#intakeTable');
+					 .appendTo('#nothing');
 		
 		}else{
-			$('#intakeinfo').html("영양정보");
+			/* $('#intakeinfo').html("영양정보"); */
 			$("#intakebtn").show();
 		
-			$('<tr>').append($('<th>').html("제품명"))
-					 .append($('<th>').html("섭취 칼로리"))
-				     .append($('<th>').html("섭취 갯수"))
+			$('<tr>').append($('<th width="45%">').html("제품명"))
+					 .append($('<th width="25%">').html("섭취 칼로리"))
+				     .append($('<th width="20%">').html("섭취 갯수"))
+				     .append($('<th width="10%" style="background-color: white;">').html(" "))
 				     .appendTo('#intakeTable');
 			
 			var temp2 = 0;
@@ -166,10 +204,10 @@ body {
 			$.each(data, function(idx,item){
 				$('<tr>').append($('<td>').html(item.name))
 						 .append($('<td>').html(item.calory))
-						 .append($('<td>').html(item.count))
-						 .append($('<td>').html('<button id = "btnAdd">+</button>'))
-						 .append($('<td>').html('<button id = "btnDel">-</button>'))
-						 .append($('<td>').html('<button id = "btnRemove">x</button>'))
+						 .append($('<td>').html('<button class="btn btn-default" id = "btnDel">&nbsp;&nbsp;<i class="fa fa-minus pr-2 text-default"></i></button>' 
+							 							+ '<span style="width: 20px; display: inline-block;">' + item.count + '</span>'
+							 							+ '<button class="btn btn-default" id = "btnAdd">&nbsp;&nbsp;<i class="fa fa-plus pr-2 text-default"></i></button>'))
+ 						 .append($('<td style="background-color: white;">').html('<button class="btn btn-default" id="btnRemove">&nbsp;<i class="fa fa-trash pr-2 text-default"></i></buttton>'))
 						 .append($('<input type="hidden" id ="hidden_code">').val(item.code))
 						 .append($('<input type="hidden" id ="hidden_date">').val(item.idate))
 						 .appendTo('#intakeTable');
@@ -212,7 +250,7 @@ body {
 		        ]);
 	
 		        var options = {
-		          title: '예상 섭취 칼로리 : ' + temp2
+		          title: '예상 섭취 칼로리(cal) : ' + temp2
 		        };
 	
 		        var chart = new google.visualization.PieChart(document.getElementById('piechart'));

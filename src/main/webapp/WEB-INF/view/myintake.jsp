@@ -187,8 +187,8 @@
 				$('<tr>').append($('<th width="15%">').html("날&nbsp;&nbsp;&nbsp;&nbsp;짜"))
 						 .append($('<th width="30%">').html("제품명"))
 						 .append($('<th width="20%">').html("섭취 칼로리"))
-					     .append($('<th width="15%">').html("섭취 갯수"))
-					     .append($('<th width="20%" colspan="2">').html(" "))
+					     .append($('<th width="35%">').html("섭취 갯수"))
+/* 					     .append($('<th width="35%" colspan="3">').html("섭취 갯수")) */
 					     .appendTo('#intakeTable');
 				
 				var temp2 = 0;
@@ -206,9 +206,10 @@
 					$('<tr>').append($('<td>').html(item.idate))
 							 .append($('<td>').html(item.name))
 							 .append($('<td>').html(item.calory))
-							 .append($('<td>').html(item.count))
-							 .append($('<td>').html('<button class="btn btn-default" id = "btnAdd">&nbsp;&nbsp;<i class="fa fa-plus pr-2 text-default"/></i></button>'))
-							 .append($('<td>').html('<button class="btn btn-default" id = "btnDel">&nbsp;&nbsp;<i class="fa fa-minus pr-2 text-default"/></i></button>'))
+							 .append($('<td>').html('<button class="btn btn-default" id = "btnDel">&nbsp;&nbsp;<i class="fa fa-minus pr-2 text-default"></i></button>' 
+							 							+ '<span style="width: 20px; display: inline-block;">' + item.count + '</span>'
+							 							+ '<button class="btn btn-default" id = "btnAdd">&nbsp;&nbsp;<i class="fa fa-plus pr-2 text-default"></i></button>'))
+							 .append($('<td>').html('<button class="btn btn-default" id = "btnAdd">&nbsp;&nbsp;<i class="fa fa-plus pr-2 text-default"></i></button>')) */
 							 .append($('<input type="hidden" id ="hidden_code">').val(item.code))
 							 .append($('<input type="hidden" id ="hidden_date">').val(item.idate))
 							 .appendTo('#intakeTable');
