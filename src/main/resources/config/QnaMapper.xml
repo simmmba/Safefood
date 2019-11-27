@@ -50,6 +50,15 @@
 		select * from reply where boardnum = #{num}
 	</select>
 	
+	<insert id="insertReply" parameterType="reply">
+		insert into reply values(null, #{num},#{name}, sysdate(), #{content})
+	</insert>
+	
+	
+	<delete id="deleteReply" parameterType="string">
+		delete from reply where num = #{num}
+	</delete>
+
 </mapper>
 
 

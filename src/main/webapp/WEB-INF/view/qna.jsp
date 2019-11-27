@@ -68,12 +68,12 @@ body {
 </head>
 
 <body>
-	
+
 	<jsp:include page="nav.jsp"></jsp:include>
 
 	<section id="services" class="section-bg">
 
-		
+
 		<div class="container">
 			<header class="section-header">
 				<h3>질문 게시판</h3>
@@ -81,12 +81,21 @@ body {
 			<div id="app">
 				<div class="container" style="height: 50px">
 					<div style="float: left">
-						<button type="button" class="btn btn-secondary" @click="showlist(0)"><i class="fa fa-list-ul pr-2 text-default"></i>&nbsp;전체 질문</button>
-						<button type="button" class="btn btn-secondary" @click="showlist(4)"><i class="fa fa-search pr-2 text-default"></i>&nbsp;검색</button>
-						
+						<button type="button" class="btn btn-secondary"
+							@click="showlist(0)">
+							<i class="fa fa-list-ul pr-2 text-default"></i>&nbsp;전체 질문
+						</button>
+						<button type="button" class="btn btn-secondary"
+							@click="showlist(4)">
+							<i class="fa fa-search pr-2 text-default"></i>&nbsp;검색
+						</button>
+
 					</div>
 					<div style="float: right">
-						<button type="button" class="btn btn-secondary" @click="showlist(2)"><i class="fa fa-edit pr-2 text-default"></i>&nbsp;질문 작성</button>
+						<button type="button" class="btn btn-secondary"
+							@click="showlist(2)">
+							<i class="fa fa-edit pr-2 text-default"></i>&nbsp;질문 작성
+						</button>
 					</div>
 				</div>
 				<br>
@@ -98,9 +107,9 @@ body {
 	</section>
 
 	<jsp:include page="trends.jsp"></jsp:include>
-	
+
 	<jsp:include page="footer.jsp"></jsp:include>
-	
+
 	<!-- #services -->
 	<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
@@ -157,8 +166,8 @@ body {
 
 				</tbody>
 			</table>
-			<button @click="updateQuestion" class="btn btn-primary">수정</button>
-			<button @click="deleteQuestion" class="btn btn-primary">삭제</button>
+			<button v-if="question.name == App.currentId" @click="updateQuestion" class="btn btn-primary">수정</button>
+			<button v-if="question.name == App.currentId" @click="deleteQuestion" class="btn btn-primary">삭제</button>
 			
 			<hr>
 			<span>댓글</span>
@@ -169,11 +178,12 @@ body {
 						<td >{{r.name}}</td>
 						<td >{{r.content}}</td>
 						<td>{{r.wdate}}</td>
+						<td><button v-if="r.name==App.currentId" @click="delReply(r.num)">X</button></td>
 					</tr>
 				</template>
 				</tbody>
 			</table>
-			<input type="text" v-model="replyContent" @keyup.enter = "writeReply"><button @click="writeReply" class="btn btn-secondary">댓글 작성</button>
+			<input type="text" v-if="App.currentId != ''" v-model="replyContent" @keyup.enter = "writeReply"><button v-if="App.currentId != ''" @click="writeReply" class="btn btn-secondary">댓글 작성</button>
 			
 		</div>
 	</script>
@@ -375,23 +385,56 @@ body {
 			    writeReply:function(){
 			        axios
 			          .post('http://localhost:8080/safefood/qnaReply',{
-			        	  replyContent:this.replyContent
+			        	  num : App.questionNum,
+			        	  content:this.replyContent,
+			        	  name :"${member.id}"
 			          })
 			          .then(response => {
-			        	  App.showlist(0);
-			        	  
-			        	  })
+				  			//댓글
+				  	        this.replyContent = '';
+				  			axios
+				  	          .get('http://localhost:8080/safefood/qnaReply/'+App.questionNum)
+				  	          .then(response => {
+				  					this.reply = response.data;
+				  	        	  })
+				  	          .catch(() => {
+				  	            this.errored = true
+				  	          })
+				  	          .finally(() => this.loading = false);
+			        	
+			          
+			          })
 			          .catch(() => {
-			            this.errored = true
+			            this.errored = true	
 			          })
 			          .finally(() => this.loading = false);
 		    		
 			        /* location.href='./qna.food'; */
+			    },
+			    delReply(num){
+		  			axios
+		  	          .delete('http://localhost:8080/safefood/qnaReply/'+num)
+		  	          .then(response => {
+			  			axios
+			  	          .get('http://localhost:8080/safefood/qnaReply/'+App.questionNum)
+			  	          .then(response => {
+			  					this.reply = response.data;
+			  	        	  })
+			  	          .catch(() => {
+			  	            this.errored = true
+			  	          })
+			  	          .finally(() => this.loading = false);
+		  	        	  
+		  	          })
+		  	          .catch(() => {
+		  	            this.errored = true
+		  	          })
+		  	          .finally(() => this.loading = false);
 			    }
 	      },
 	      mounted () {
 	        //게시글
-	    	axios
+	        	axios
 	          .get('http://localhost:8080/safefood/qna/'+App.questionNum)
 	          .then(response => {
 					this.question = response.data;
@@ -401,15 +444,15 @@ body {
 	          })
 	          .finally(() => this.loading = false);
 			//댓글
-	        axios
-	          .get('http://localhost:8080/safefood/qnaReply/'+App.questionNum)
-	          .then(response => {
-					this.reply = response.data;
-	        	  })
-	          .catch(() => {
-	            this.errored = true
-	          })
-	          .finally(() => this.loading = false);
+		        axios
+		          .get('http://localhost:8080/safefood/qnaReply/'+App.questionNum)
+		          .then(response => {
+						this.reply = response.data;
+		        	  })
+		          .catch(() => {
+		            this.errored = true
+		          })
+		          .finally(() => this.loading = false);
 	      }
 		});
 		
@@ -542,6 +585,7 @@ body {
 			  currenttitle:'SSAFY HRM LIST',
 			  questionNum:'',
 			  currentview: 'listQuestion',
+			  currentId :"${member.id}",
 		      allviews:['listQuestion','detailQuestion','writeQuestion','updateQuestion','searchQuestion'],
 		   },
 		   components: {

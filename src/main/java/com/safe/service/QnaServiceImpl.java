@@ -61,4 +61,12 @@ public class QnaServiceImpl implements QnaService {
 	public List<Reply> selectReply(String num) {
 		return qnaDao.selectReply(num);
 	}
+	@Override
+	public void insertReply(Reply r) {
+		qnaDao.insertReply(r);
+	}
+	@Override
+	public void deleteReply(String num) {
+		qnaDao.deleteReply(num);
+	}
 }

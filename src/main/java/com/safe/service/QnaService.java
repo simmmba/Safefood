@@ -18,4 +18,6 @@ public interface QnaService {
     public List<Question> findByTitle(String title);
     public List<Question> findByName(String name);
 	public List<Reply> selectReply(String num);
+	public void insertReply(Reply r);
+	public void deleteReply(String num);
 }

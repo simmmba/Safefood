@@ -99,8 +99,26 @@ public class QnaRestController {
 	}
 	
 	//qna
-	@RequestMapping(value="/qnaReply/{num}", method=RequestMethod.GET) // value에 num 바로 사용 가능!
+	@RequestMapping(value="/qnaReply/{num}", method=RequestMethod.GET) // 
 	public List<Reply> selectReply(@PathVariable String num){
 		return service.selectReply(num);
+	}
+	
+	@RequestMapping(value="/qnaReply", method=RequestMethod.POST) // insert 할때는 method로 POST 사용!
+	public Map insertQustion(@RequestBody Reply r){ // @RequestBody: REQUEST 안의 json -> java object로 변환
+		service.insertReply(r);
+
+		Map map = new HashMap();
+		map.put("result", "insert success!!!");
+		
+		return map;
+	}
+	
+	@RequestMapping(value="/qnaReply/{num}", method=RequestMethod.DELETE) // method로 DELETE 사용!
+	public Map deleteReply(@PathVariable String num){
+		service.deleteReply(num);
+		Map map = new HashMap();
+		map.put("result", "delete success!!!");
+		return map;
 	}
 }

@@ -64,4 +64,13 @@ public class QnaDaoImpl implements QnaDao {
 	public List<Reply> selectReply(String num) {
 		return session.selectList("qna.selectReply",num);
 	}
+	@Override
+	public void insertReply(Reply r) {
+		session.insert("qna.insertReply",r);
+	}
+	@Override
+	public void deleteReply(String num) {
+		session.delete("qna.deleteReply",num);
+	}
+	
 }
