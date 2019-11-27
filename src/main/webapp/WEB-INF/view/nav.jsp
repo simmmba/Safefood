@@ -43,7 +43,7 @@
 					<li><a href="bestintakeinfo.food">베스트 섭취 정보</a></li>
 					<c:if test="${not empty member}">
 						<li><a href="intakeinfo.food">내 섭취 정보</a></li>
-						<li><a href="#team">예상 섭취 정보</a></li>
+						<li><a href="expectedintakeinfo.food">예상 섭취 정보</a></li>
 					</c:if>
 					<li><u><a href="qna.food">질문 게시판</a></u></li>
 					<li><u><a href="notice.food">공지 사항</a></u></li>

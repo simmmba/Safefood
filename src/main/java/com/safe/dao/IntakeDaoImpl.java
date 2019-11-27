@@ -97,6 +97,11 @@ public class IntakeDaoImpl implements IntakeDao {
 		
 	}
 
+	@Override
+	public com.safe.vo.ExpectedIntake ExpectedIntake(String code) {
+		return session.selectOne("intake.exepctedSelect",code);
+	}
+
 
 
     

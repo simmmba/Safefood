@@ -1,6 +1,7 @@
 package com.safe.service;
 import java.util.List;
 
+import com.safe.vo.ExpectedIntake;
 import com.safe.vo.Intake;
 
 public interface IntakeService {
@@ -17,5 +18,6 @@ public interface IntakeService {
 	public List<Intake> bestselectAllByCalory();
 	public void bestadd(String code,  String id, String date);
 	public void bestdel(String code,  String id, String date);
+	public ExpectedIntake expectedintake(String code);
     
 }

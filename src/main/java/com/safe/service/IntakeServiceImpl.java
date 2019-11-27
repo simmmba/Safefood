@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.safe.dao.IntakeDao;
+import com.safe.vo.ExpectedIntake;
 import com.safe.vo.Intake;
 // dao 객체: CRUD 작업
 // sqlintakeDao 객체를 주입 받아 CRUD 작업 수행
@@ -59,6 +60,11 @@ public class IntakeServiceImpl implements IntakeService{
 	@Override
 	public void bestdel(String code, String id, String date) {
 		intakeDao.bestdel(code, id, date);
+	}
+
+	@Override
+	public ExpectedIntake expectedintake(String code) {
+		return intakeDao.ExpectedIntake(code);
 	}
     
 }

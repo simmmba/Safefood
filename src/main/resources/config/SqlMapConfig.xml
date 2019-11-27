@@ -9,6 +9,7 @@
         <typeAlias alias="Question" type="com.safe.vo.Question"/>
         <typeAlias alias="Answer" type="com.safe.vo.Answer"/>
         <typeAlias alias="Intake" type="com.safe.vo.Intake"/>
+        <typeAlias alias="ExpectedIntake" type="com.safe.vo.ExpectedIntake"/>
     </typeAliases>
 	
     <!-- 3. mapper file: table&object mapping -->
