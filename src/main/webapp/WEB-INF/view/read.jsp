@@ -93,8 +93,8 @@ body {
 								<span class ='info_span'><b>1회 제공량  </b> ${f.supportpereat} g</span><br>
 								<span class ='info_span'><b>칼로리   </b> ${f.calory} cal</span><br>
 								
+								<hr>
 								<c:if test="${not empty member}">
-									<hr>
 									<div>
 										<span class="allergyinfo"> <c:forTokens
 												var="ma" items="${member.allergy}" delims=",">
