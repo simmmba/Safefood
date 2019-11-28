@@ -82,7 +82,7 @@ body {
 			</center>
 		</div>
 
-		<c:if test="${member.id == b.name}">
+		<c:if test="${member.id == b.name || member.authority == 'admin'}">
 			<div id="button_" class="container">
 				<button type="button" class="btn btn-secondary"
 					onclick="location.href='noticeEditForm.food?num=${b.num}'"><i class="fa fa-paperclip"></i>&nbsp;&nbsp;수정</button>

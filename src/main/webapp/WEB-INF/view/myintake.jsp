@@ -102,8 +102,8 @@
 						<button class="button statebtn" value = "month">월간</button>
 					</div>
 					<br><br>
+					<h2 id ="nothing"></h2>
 					<table id = "intakeTable" class="it" border="1"></table>
-					<div id = "nothing"></div>
 					<br>
 					<!-- <h5 id = "intakeinfo"><b>영양 정보</b></h5> -->
 					<!-- <h5 id = "intakeinfo"></h5> -->
@@ -172,20 +172,15 @@
 			$('#intakeTable').empty();
 			$('#piechart').empty();
 			$('#intakeinfo').empty();
-			
-			
-			
+			$('#nothing').empty();
 			
 			if(data == ""){
-				$('<h2>').html("해당 기간에 섭취한 식품이 없습니다.")
-			
+				$('#nothing').html("예상 섭취 정보가 없습니다.")
 			}else{
-				$('.statebtn').show();
 				$('<tr>').append($('<th width="15%">').html("날&nbsp;&nbsp;&nbsp;&nbsp;짜"))
 						 .append($('<th width="30%">').html("제품명"))
 						 .append($('<th width="20%">').html("섭취 칼로리"))
 					     .append($('<th width="35%">').html("섭취 갯수"))
-/* 					     .append($('<th width="35%" colspan="3">').html("섭취 갯수")) */
 					     .appendTo('#intakeTable');
 				
 				var temp2 = 0;
