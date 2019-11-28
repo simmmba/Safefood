@@ -91,6 +91,7 @@ body {
 							<span><b>알레르기 성분 : </b></span>
 							<span id="allergy">${a}</span>
 						</c:if>
+						<br><br>
 					</div>
 					<br>
 					<div class="chart">
