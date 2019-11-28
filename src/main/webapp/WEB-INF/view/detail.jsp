@@ -59,7 +59,7 @@ body {
 				<div class="box">
 					<br>
 					<div class='div_detail'>
-						<img class='item_image' src="${f.img}" alt="" height="200px">
+						<img class='item_images' src="${f.img}" alt="" height="200px">
 						<div class="btn-group" role="group">
 							<button class="btn btn-secondary btn-md active" role="button" id="intakebtn" value = "${f.code}">추가&nbsp;&nbsp;&nbsp;<i class="fa fa-plus pr-2 text-default"></i></button>
 							<button class="btn btn-secondary btn-md active" role="button" id = "expectedintakebtn" value = "${f.code}">찜&nbsp;&nbsp;&nbsp;<i class="fa fa-cart-plus pr-2 text-default"></i></button>
