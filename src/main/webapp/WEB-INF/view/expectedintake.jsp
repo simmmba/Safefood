@@ -40,26 +40,30 @@
 	}
 	table {
 		width: 70%;
-		border: solid white;
+		border: solid #85684b 2px;
 	}
 	.it td{
 		text-align: center;
+		padding: 8px;
 	}
 	.it th{
 		text-align: center;
-		padding: 15px;
+		padding: 12px;
 		font-size: 17px;
 		/* background-color: #000; */
 	}
-	.it tr:nth-child(odd) { 
-		background-color: #ece6df; 
-	}
-	.it tr:nth-child(even) { 
-		background-color: #dbcdc1; 
+	.it tr { 
+		background-color: #fff;
+		color: #85684b; 
 	}
 	.it tr:nth-child(1) { 
-		background-color: #ac8d71;
+		background-color: #85684b;
 		color: white; 
+	}
+	.it td:nth-child(1){
+		text-align: left;
+		padding: 8px;
+		padding-left: 40px;
 	}
 	.btn-group .button {
 		border: 1.5px solid #604937;
@@ -99,10 +103,13 @@
 			<center>
 				<div class="container" style="background-color: white; border-radius: 2em;">
 					<br><br><br>
+					<div class="btn-group" >
+						<button id = "intakebtn" class="button">섭취하기</button>
+					</div>
+					<br><br>
 					<table id = "intakeTable" class="it" border="1"></table>
 					<div id = "nothing"></div>
 					<br>
-					<button id = "intakebtn">섭취</button>
 					<!-- <h5 id = "intakeinfo"><b>영양 정보</b></h5> -->
 					<!-- <h5 id = "intakeinfo"></h5> -->
 					<div id="piechart" style="width: 900px; height: 500px;"></div>
@@ -185,9 +192,9 @@
 			$("#intakebtn").show();
 		
 			$('<tr>').append($('<th width="45%">').html("제품명"))
-					 .append($('<th width="25%">').html("섭취 칼로리"))
-				     .append($('<th width="20%">').html("섭취 갯수"))
-				     .append($('<th width="10%" style="background-color: white;">').html(" "))
+					 .append($('<th width="15%">').html("예상 칼로리"))
+				     .append($('<th width="20%">').html("담은 갯수"))
+				     /* .append($('<th width="10%" style="background-color: white;">').html(" ")) */
 				     .appendTo('#intakeTable');
 			
 			var temp2 = 0;
@@ -202,12 +209,12 @@
 			
 			
 			$.each(data, function(idx,item){
-				$('<tr>').append($('<td>').html(item.name))
+				$('<tr>').append($('<td>').html('<img id="image" src="' + item.img + '" alt="" width="50px" height="50px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + item.name))
 						 .append($('<td>').html(item.calory))
 						 .append($('<td>').html('<button class="btn btn-default" id = "btnDel">&nbsp;&nbsp;<i class="fa fa-minus pr-2 text-default"></i></button>' 
 							 							+ '<span style="width: 20px; display: inline-block;">' + item.count + '</span>'
 							 							+ '<button class="btn btn-default" id = "btnAdd">&nbsp;&nbsp;<i class="fa fa-plus pr-2 text-default"></i></button>'))
- 						 .append($('<td style="background-color: white;">').html('<button class="btn btn-default" id="btnRemove">&nbsp;<i class="fa fa-trash pr-2 text-default"></i></buttton>'))
+ 						 /* .append($('<td style="background-color: white;">').html('<button class="btn btn-default" id="btnRemove">&nbsp;<i class="fa fa-trash pr-2 text-default"></i></buttton>')) */
 						 .append($('<input type="hidden" id ="hidden_code">').val(item.code))
 						 .append($('<input type="hidden" id ="hidden_date">').val(item.idate))
 						 .appendTo('#intakeTable');
