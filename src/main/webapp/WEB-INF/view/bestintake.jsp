@@ -35,7 +35,7 @@
 <link href="css/mycss.css" rel="stylesheet">
 
 <style type="text/css">
-body {
+	body {
 		background-color: white;
 	}
 	table {
@@ -52,12 +52,6 @@ body {
 		font-size: 17px;
 		/* background-color: #000; */
 	}
-	/* .it tr:nth-child(odd) { 
-		background-color: #ece6df; 
-	}
-	.it tr:nth-child(even) { 
-		background-color: #dbcdc1; 
-	} */
 	.it tr { 
 		background-color: #fff;
 		color: #85684b; 

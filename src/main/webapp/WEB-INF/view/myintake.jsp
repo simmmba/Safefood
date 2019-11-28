@@ -37,26 +37,30 @@
 	}
 	table {
 		width: 70%;
-		border: solid white;
+		border: solid #85684b 2px;
 	}
 	.it td{
 		text-align: center;
+		padding: 8px;
 	}
 	.it th{
 		text-align: center;
-		padding: 15px;
+		padding: 12px;
 		font-size: 17px;
 		/* background-color: #000; */
 	}
-	.it tr:nth-child(odd) { 
-		background-color: #ece6df; 
-	}
-	.it tr:nth-child(even) { 
-		background-color: #dbcdc1; 
+	.it tr { 
+		background-color: #fff;
+		color: #85684b; 
 	}
 	.it tr:nth-child(1) { 
-		background-color: #ac8d71;
+		background-color: #85684b;
 		color: white; 
+	}
+	.it td:nth-child(2){
+		text-align: left;
+		padding: 8px;
+		padding-left: 40px;
 	}
 	.btn-group .button {
 		border: 1.5px solid #604937;
@@ -178,9 +182,9 @@
 				$('#nothing').html("예상 섭취 정보가 없습니다.")
 			}else{
 				$('<tr>').append($('<th width="15%">').html("날&nbsp;&nbsp;&nbsp;&nbsp;짜"))
-						 .append($('<th width="30%">').html("제품명"))
-						 .append($('<th width="20%">').html("섭취 칼로리"))
-					     .append($('<th width="35%">').html("섭취 갯수"))
+						 .append($('<th width="40%">').html("제품명"))
+						 .append($('<th width="15%">').html("섭취 칼로리"))
+					     .append($('<th width="20%">').html("섭취 갯수"))
 					     .appendTo('#intakeTable');
 				
 				var temp2 = 0;
@@ -196,7 +200,7 @@
 				
 				$.each(data, function(idx,item){
 					$('<tr>').append($('<td>').html(item.idate))
-							 .append($('<td>').html(item.name))
+							 .append($('<td>').html('<img id="image" src="' + item.img + '" alt="" width="50px" height="50px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + item.name))
 							 .append($('<td>').html(item.calory))
 							 .append($('<td>').html('<button class="btn btn-default" id = "btnDel">&nbsp;&nbsp;<i class="fa fa-minus pr-2 text-default"></i></button>' 
 							 							+ '<span style="width: 20px; display: inline-block;">' + item.count + '</span>'
