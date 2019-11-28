@@ -64,6 +64,7 @@ body {
 						<div class="btn-group" role="group">
 							<button class="btn btn-secondary btn-md active" role="button" id="intakebtn" value = "${f.code}">추가&nbsp;&nbsp;&nbsp;<i class="fa fa-plus pr-2 text-default"></i></button>
 							<button class="btn btn-secondary btn-md active" role="button" id = "expectedintakebtn" value = "${f.code}">찜&nbsp;&nbsp;&nbsp;<i class="fa fa-cart-plus pr-2 text-default"></i></button>
+							<button class="btn btn-secondary btn-md active" role="button" id = "buyitembtn" value = "${f.name}">구매&nbsp;&nbsp;&nbsp;<i class="fa fa-cart-plus pr-2 text-default"></i></button>
 						</div>
 						<br>
 						<br>
@@ -168,6 +169,7 @@ body {
 
  		intake();
  		expectedintake();
+ 		buyitem();
 	});
 
 	
@@ -204,6 +206,34 @@ body {
 					alert("상태값 : " + status + "http 에러 메세지 : " + msg);
 				}
 			});
+		}); 
+	}
+
+	//구매하러 가기
+	function expectedintake() {
+		$('body').on('click', '#expectedintakebtn', function(){
+			var code = $(this).val();
+			//ajax 요청
+			$.ajax({
+				url:'expectedintake.food?code='+code,
+				type:'get',
+				success:function(){
+					alert("예상 섭취 정보에 추가했습니다.")
+				},
+				error : function(xhr, status, msg){
+					alert("상태값 : " + status + "http 에러 메세지 : " + msg);
+				}
+			});
+		}); 
+	}
+	
+	//구매 페이지 이동
+	function buyitem() {
+
+		$('body').on('click', '#buyitembtn', function(){
+			var name = $(this).val();
+			var url = 'http://browse.auction.co.kr/search?keyword='+name;
+			window.open(url);
 		}); 
 	}
 	

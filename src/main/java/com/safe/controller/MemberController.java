@@ -47,7 +47,7 @@ public class MemberController extends HttpServlet {
 		if (allergyArr != null) {
 			sb.append(allergyArr[0]);
 			if(allergyArr.length > 1) {
-				for(int i = 1; i < allergyArr.length-1; i++) {
+				for(int i = 1; i < allergyArr.length; i++) {
 					sb.append("," + allergyArr[i]);
 				}
 			}
@@ -122,7 +122,7 @@ public class MemberController extends HttpServlet {
 		if (allergyArr != null) {
 			sb.append(allergyArr[0]);
 			if(allergyArr.length > 1) {
-				for(int i = 1; i < allergyArr.length-1; i++) {
+				for(int i = 1; i < allergyArr.length; i++) {
 					sb.append("," + allergyArr[i]);
 				}
 			}
@@ -132,11 +132,10 @@ public class MemberController extends HttpServlet {
 		service.update(id, Opass, Npass, address, callnum, allergy);
 
 		HttpSession hs = req.getSession();
-		Member m = (Member) hs.getAttribute("member");
-		m.setAddress(address);
-		m.setCallnum(callnum);
-		m.setAllergy(allergy);
 		
+		Member m = service.login(id, Npass);
+				
+		hs.setAttribute("member",m);
 		return "memberinfo";
 	}
 	

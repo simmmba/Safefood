@@ -5,7 +5,7 @@
 }
 
 .item_image{
-	padding-bottom: 20px;
+	padding-top: 20px;
 	display:block;
 }
 
@@ -37,7 +37,7 @@ table td{
 
 
 .div_info{
-	/* padding-left: 200px; */
+	padding-left: 20px; 
 	text-align:left;
 	float: left;
 	width: 70%;
@@ -106,4 +106,14 @@ body{
 .allergyinfo
 {
 	color: red;	
+}
+.info_span
+{
+	margin-bottom:5px;	
+}
+.warning_span
+{
+	color: red;
+	padding-left:10px;
+	
 }
