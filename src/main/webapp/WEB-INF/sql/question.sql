@@ -1,3 +1,4 @@
+drop table question;
 CREATE TABLE `question` (
   `NUM` int(11) NOT NULL AUTO_INCREMENT,
   `PASS` varchar(20) NOT NULL,

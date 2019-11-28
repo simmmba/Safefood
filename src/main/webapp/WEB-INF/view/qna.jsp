@@ -124,19 +124,15 @@
 				<div class='box'>
 					<div>
 						<span class='title'> 
-							{{q.num}}
+							{{q.title}} <span>&nbsp;&nbsp;[ {{q.replycount}} ]</span>
 						</span>
 					</div>
 
-					<div class='div_info div_notice' style="padding-left: 0px;">
-						<span>제목 : {{q.title}}</span>
-						<hr>
-						<span>작성일 : {{q.wdate}}</span>
-						<hr>
+					<hr>
+					<div class='div_notice' style="padding-left: 0px;">
+						<span>작성일 : {{q.wdate}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<!-- <span>질문번호 : {{q.num}}</span> -->
 						<span>작성자 : {{q.name}}</span>
-						<hr>
-						<span>댓글수 : {{q.replycount}}</span>
-						<hr>
 					</div>
 				</div>
 			</div>
@@ -146,6 +142,7 @@
 
 	<script type="text/x-template" id="detailQuestiontemplate">
 		<div class="container">
+			<center>
 			<table class="table" style="color: gray;">
 				<tr>
 					<th colspan="3" style="font-size: 20px; text-align: center;">{{question.title}}</th>
@@ -158,6 +155,7 @@
 					<td colspan="3" style="padding-top: 30px; padding-left: 50px; height: 300px;">{{question.content}}</td>
 				</tr>
 			</table>
+			</center>
 			<hr>
 			<div style="float: right;">
 				<button v-if=hasAuthority(question.name) @click="updateQuestion" class="btn btn-light" style="color: gray;"><i class="fa fa-paperclip"></i>&nbsp;&nbsp;수정</button>
@@ -166,7 +164,7 @@
 			<br><br>
 			<table class="table table-hover" style="color: gray;">
 				<tr>
-					<th colspan="4" class="re">&nbsp;&nbsp;&nbsp;답변</th>
+					<th colspan="4" class="re">&nbsp;&nbsp;&nbsp;답변 목록</th>
 				</tr>
 				<template v-for="r in reply">
 					<tr>
@@ -178,7 +176,7 @@
 				</template>
 			</table>
 			<center>
-				<input type="text" v-if="App.currentId != ''" v-model="replyContent" @keyup.enter = "writeReply" style="width: 60%;">&nbsp;<button v-if="App.currentId != ''" @click="writeReply" class="btn btn-secondary">등록</button>
+				답변하기 : <input type="text" v-if="App.currentId != ''" v-model="replyContent" @keyup.enter = "writeReply" style="width: 60%;">&nbsp;<button v-if="App.currentId != ''" @click="writeReply" class="btn btn-secondary">등록</button>
 			</center>
 		</div>
 	</script>

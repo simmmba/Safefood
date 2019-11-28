@@ -12,10 +12,6 @@
 		<div id="topbar">
 			<div class="container">
 				<div class="social-links">
-					
-					<c:if test="${member.authority == 'admin'}">
-						<span>관리 모드</span>
-					</c:if>
 					<c:if test="${empty member}">
 						<a class="member_join_login" href="joinForm.food" role="button">회원가입</a>
 						<a class="member_join_login" href="loginForm.food" role="button">로그인</a>
@@ -24,6 +20,10 @@
 					<c:if test="${not empty member}">
 						<a class="member_join_login" href="memberinfo.food" role="button">회원정보</a>
 						<a class="member_join_login" href="logout.food" role="button">로그아웃</a>
+					</c:if>
+					
+					<c:if test="${member.authority == 'admin'}">
+						<span><b>&nbsp;&nbsp;&nbsp;[ 관리자모드 ]</b></span>&nbsp;&nbsp;&nbsp;
 					</c:if>
 				</div>
 			</div>
