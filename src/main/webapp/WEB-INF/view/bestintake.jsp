@@ -40,7 +40,7 @@ body {
 	}
 	table {
 		width: 70%;
-		border: solid white;
+		border: solid #85684b 2px;
 	}
 	.it td{
 		text-align: center;
@@ -48,19 +48,28 @@ body {
 	}
 	.it th{
 		text-align: center;
-		padding: 15px;
+		padding: 12px;
 		font-size: 17px;
 		/* background-color: #000; */
 	}
-	.it tr:nth-child(odd) { 
+	/* .it tr:nth-child(odd) { 
 		background-color: #ece6df; 
 	}
 	.it tr:nth-child(even) { 
 		background-color: #dbcdc1; 
+	} */
+	.it tr { 
+		background-color: #fff;
+		color: #85684b; 
 	}
 	.it tr:nth-child(1) { 
-		background-color: #ac8d71;
+		background-color: #85684b;
 		color: white; 
+	}
+	.it td:nth-child(2){
+		text-align: left;
+		padding: 8px;
+		padding-left: 40px;
 	}
 	.btn-group .button {
 		border: 1.5px solid #604937;
@@ -102,8 +111,8 @@ body {
 					<br>
 					<div class="btn-group" >
 						<button class="button statebtn" value = "intake">섭취 갯수</button>
-						<button class="button statebtn" value = "maker">제조사</button>
 						<button class="button statebtn" value = "calory">칼로리</button>
+						<button class="button statebtn" value = "maker">제조사</button>
 					</div>
 					<br><br>
 					<table id = "intakeTable" class="it" border="1"></table>
@@ -199,7 +208,7 @@ body {
 					list[idx+1] = [item.name+' : ' + item.count, item.count* 1];
 					$('<tr>').append($('<td>').html(idx+1))
 							 /* .append($('<td style="background-color: white;">').html('<img id="image" src="' + item.img + '" alt="" width="50px" height="50px">')) */
-							 .append($('<td>').html(item.name))
+							 .append($('<td>').html('<img id="image" src="' + item.img + '" alt="" width="50px" height="50px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + item.name))
 							 .append($('<td>').html(item.calory))
 							 .append($('<td style="font-weight: bold;">').html(item.count))
 							 .appendTo('#intakeTable');
@@ -241,7 +250,7 @@ body {
 					cnt +=item.calory;
 					list[idx+1] = [item.name+' : ' + item.calory, item.calory* 1];
 					$('<tr>').append($('<td>').html(idx+1))
-							 .append($('<td>').html(item.name))
+					 		 .append($('<td>').html('<img id="image" src="' + item.img + '" alt="" width="50px" height="50px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + item.name))
 							 .append($('<td>').html(item.count))
 							 .append($('<td style="font-weight: bold;">').html(item.calory))
 							 .appendTo('#intakeTable');

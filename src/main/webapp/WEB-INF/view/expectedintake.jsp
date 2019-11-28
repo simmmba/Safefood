@@ -99,10 +99,13 @@
 			<center>
 				<div class="container" style="background-color: white; border-radius: 2em;">
 					<br><br><br>
+					<div class="btn-group" >
+						<button id = "intakebtn" class="button">섭취하기</button>
+					</div>
+					<br><br>
 					<table id = "intakeTable" class="it" border="1"></table>
 					<div id = "nothing"></div>
 					<br>
-					<button id = "intakebtn">섭취</button>
 					<!-- <h5 id = "intakeinfo"><b>영양 정보</b></h5> -->
 					<!-- <h5 id = "intakeinfo"></h5> -->
 					<div id="piechart" style="width: 900px; height: 500px;"></div>

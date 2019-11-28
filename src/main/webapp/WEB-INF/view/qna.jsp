@@ -36,9 +36,14 @@
 <link href="css/mycss.css" rel="stylesheet">
 
 <style type="text/css">
-body {
-	background-color: white;
-}
+	body {
+		background-color: white;
+	}
+	.re{
+		font-size: 20px;
+		color: gray;
+		vertical-align: middle;
+	}
 </style>
 <!-- vue 추가 -->
 <script src="https://unpkg.com/vue"></script>
@@ -64,7 +69,6 @@ body {
 <!-- Contact Form JavaScript File -->
 <script src="contactform/contactform.js"></script>
 <!--검색 -->
-
 </head>
 
 <body>
@@ -145,32 +149,35 @@ body {
 					<th colspan="3" style="font-size: 20px; text-align: center;">{{question.title}}</th>
 				</tr>
 				<tr>
-					<td colspan="2">질문자 : {{question.name}}</td>
-					<td style="text-align: right">작성일 : {{question.wdate}}</td>
+					<td colspan="2">&nbsp;&nbsp;질문자 : {{question.name}}</td>
+					<td style="text-align: right">작성일 : {{question.wdate}}&nbsp;&nbsp;</td>
 				</tr>
 				<tr>
 					<td colspan="3" style="padding-top: 30px; padding-left: 50px; height: 300px;">{{question.content}}</td>
 				</tr>
 			</table>
-			<button v-if=hasAuthority(question.name) @click="updateQuestion" class="btn btn-primary">수정</button>
-			<button v-if=hasAuthority(question.name)  @click="deleteQuestion" class="btn btn-primary">삭제</button>
-			
 			<hr>
-			<span>댓글</span>
-			<table class="table table-hover">
-				<tbody>
+			<div style="float: right;">
+				<button v-if=hasAuthority(question.name) @click="updateQuestion" class="btn btn-light" style="color: gray;"><i class="fa fa-paperclip"></i>&nbsp;&nbsp;수정</button>
+				<button v-if=hasAuthority(question.name)  @click="deleteQuestion" class="btn btn-light" style="color: gray;"><i class="fa fa-times-circle"></i>&nbsp;&nbsp;삭제</button>
+			</div>
+			<br><br>
+			<table class="table table-hover" style="color: gray;">
+				<tr>
+					<th colspan="4" class="re">&nbsp;&nbsp;&nbsp;답변</th>
+				</tr>
 				<template v-for="r in reply">
 					<tr>
-						<td >{{r.name}}</td>
-						<td >{{r.content}}</td>
-						<td>{{r.wdate}}</td>
-						<td><button v-if=hasAuthority(r.name) @click="delReply(r.num)">X</button></td>
+						<td style="width: 20%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{r.name}}</td>
+						<td style="width: 53%;" style="color: #5D5D5D;">{{r.content}}</td>
+						<td style="width: 20%;">{{r.wdate}}</td>
+						<td style="width: 7%;"><button v-if=hasAuthority(r.name) @click="delReply(r.num)" class="btn btn-default"><i class="fa fa-trash pr-2 text-default" style="color:#8C8C8C;"></i></button></td>
 					</tr>
 				</template>
-				</tbody>
 			</table>
-			<input type="text" v-if="App.currentId != ''" v-model="replyContent" @keyup.enter = "writeReply"><button v-if="App.currentId != ''" @click="writeReply" class="btn btn-secondary">댓글 작성</button>
-			
+			<center>
+				<input type="text" v-if="App.currentId != ''" v-model="replyContent" @keyup.enter = "writeReply" style="width: 60%;">&nbsp;<button v-if="App.currentId != ''" @click="writeReply" class="btn btn-secondary">등록</button>
+			</center>
 		</div>
 	</script>
 
@@ -231,11 +238,9 @@ body {
 					<input type="hidden" v-model ="name" name = "name" value = "${member.id}">
 				</div>
 			</div>
-				<div class="form-group row">
-					<div class="ml-md-auto col-md-9">
-						<button @click="write" class="btn btn-primary">수정</button>
-					</div>
-				</div>
+			<center>
+				<button @click="write" class="btn btn-light" style="color: gray">저장&nbsp;&nbsp;<i class="fa fa-check"></i></button>
+			</center>
 			</div>
 	</script>
 
