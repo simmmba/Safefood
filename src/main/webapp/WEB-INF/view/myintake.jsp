@@ -35,56 +35,6 @@
 	body {
 		background-color: white;
 	}
-	table {
-		width: 70%;
-		border: solid #85684b 2px;
-	}
-	.it td{
-		text-align: center;
-		padding: 8px;
-	}
-	.it th{
-		text-align: center;
-		padding: 12px;
-		font-size: 17px;
-		/* background-color: #000; */
-	}
-	.it tr { 
-		background-color: #fff;
-		color: #85684b; 
-	}
-	.it tr:nth-child(1) { 
-		background-color: #85684b;
-		color: white; 
-	}
-	.it td:nth-child(2){
-		text-align: left;
-		padding: 8px;
-		padding-left: 40px;
-	}
-	.btn-group .button {
-		border: 1.5px solid #604937;
-		background-color: #604937;
-		color: white;
-		padding: 9px 20px;
-		text-align: center;
-		text-decoration: none;
-		display: inline-block;
-		font-size: 17px;
-		cursor: pointer;
-		float: left;
-		border-radius: 10px;
-	}
-	
-	.btn-group .button:not(:last-child) {
-		border-right: none; /* Prevent double borders */
-	}
-	
-	.btn-group .button:hover {
-		background-color: #fff;
-		color: #604937;
-		font-weight: bold;
-	}
 </style>
 </head>
 
