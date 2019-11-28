@@ -60,17 +60,18 @@ body {
 					<br>
 					<div class='div_detail'>
 						<img class='item_images' src="${f.img}" alt="" height="200px">
+						<br>
 						<div class="btn-group" role="group">
-							<button class="btn btn-secondary btn-md active" role="button" id="intakebtn" value = "${f.code}">추가&nbsp;&nbsp;&nbsp;<i class="fa fa-plus pr-2 text-default"></i></button>
-							<button class="btn btn-secondary btn-md active" role="button" id = "expectedintakebtn" value = "${f.code}">찜&nbsp;&nbsp;&nbsp;<i class="fa fa-cart-plus pr-2 text-default"></i></button>
-							<button class="btn btn-secondary btn-md active" role="button" id = "buyitembtn" value = "${f.name}">구매&nbsp;&nbsp;&nbsp;<i class="fa fa-cart-plus pr-2 text-default"></i></button>
+							<button class="btn btn-light btn-md active" role="button" id="intakebtn" value = "${f.code}">추가&nbsp;&nbsp;&nbsp;<i class="fa fa-plus pr-2 text-default" style="color: green;"></i></button>
+							<button class="btn btn-light btn-md active" role="button" id = "expectedintakebtn" value = "${f.code}">찜&nbsp;&nbsp;&nbsp;<i class="fa fa-heart pr-2 text-default" style="color: red;"></i></button>
+							<button class="btn btn-light btn-md active" role="button" id = "buyitembtn" value = "${f.name}">구매&nbsp;&nbsp;&nbsp;<i class="fa fa-cart-plus pr-2 text-default" style="color: blue;"></i></button>
 						</div>
 					<%-- <img id="image" src="${f.img}" alt="" width="300px" height="300px"> --%>
 					</div>
 					<div class='div_details'>
 						<span class='title'>${f.name}</span>
 						<hr>
-						<c:if test="${not empty member}">
+						<%-- <c:if test="${not empty member}">
 							<div><b>${member.id}님이 주의해야할 알레르기 성분 : </b>
 								<span class = "allergyinfo">
 									 <c:forTokens var ="ma" items="${member.allergy}" delims=",">
@@ -81,17 +82,17 @@ body {
 								 </span>
 							</div>
 						</c:if>
-						<br>
+						<br> --%>
 						<span><b>제조사 :</b> ${f.maker}</span>
 						<br><br>
 						<span><b>원재료 :</b> </span>
 						<p style='padding-top: 10px'>${f.material}</p>
-						<%-- <c:if test="${a != ''}">
+						<c:if test="${a != ''}">
 							<span><b>알레르기 성분 : </b></span>
 							<span id="allergy">${a}</span>
-						</c:if> --%>
-						
+						</c:if>
 					</div>
+					<br>
 					<div class="chart">
 						<div id="piechart" style="height: 400px;"></div>
 					</div>
