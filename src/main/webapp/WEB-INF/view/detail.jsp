@@ -58,7 +58,7 @@ body {
 			<div class="container">
 				<div class="box">
 					<br>
-					<img id="image" src="${f.img}" alt="" width="200px" height="200px">
+					<img id="image" src="${f.img}" alt="" width="300px" height="300px">
 					<div class="col-md-12">
 						<h3><b>${f.name}</b></h3>
 						<div class="btn-group" role="group">

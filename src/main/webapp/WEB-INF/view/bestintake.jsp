@@ -198,6 +198,7 @@ body {
 					cnt +=item.count;
 					list[idx+1] = [item.name+' : ' + item.count, item.count* 1];
 					$('<tr>').append($('<td>').html(idx+1))
+							 /* .append($('<td style="background-color: white;">').html('<img id="image" src="' + item.img + '" alt="" width="50px" height="50px">')) */
 							 .append($('<td>').html(item.name))
 							 .append($('<td>').html(item.calory))
 							 .append($('<td style="font-weight: bold;">').html(item.count))

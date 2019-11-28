@@ -82,13 +82,14 @@ body {
 					<div class='col-md-6 col-lg-12 wow' data-wow-duration='1.4s'>
 						<div class='box'>
 							<div class='div_image'>
-								<img class='item_image' src="${f.getImg()}" height="200px">
-								<span class='title'>${f.getName()}</span>
+								<img class='item_image' src="${f.getImg()}" height="200px" style="position:absoulte;width:100%;height:100%;">
 							</div>
 
 							<div class='div_info'>
-								<span><b>제조사:</b> ${f.getMaker()}</span>
+								<span class='title'>${f.getName()}</span>
 								<hr>
+								<span><b>제조사:</b> ${f.getMaker()}</span>
+								<br><br>
 								<span><b>원재료:</b> </span>
 								<p style='padding-top: 10px'>${f.getMaterial()}</p>
 							</div>
