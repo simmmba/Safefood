@@ -90,14 +90,11 @@ body {
 						</div>
 					</div>
 					
-					
-					<div class="form-group row">
-						<div class="ml-md-auto col-md-9">
-							<button type="submit" class="btn btn-secondary">
-								등록 &nbsp;<i class="fa fa-check"></i>
-							</button>
-						</div>
-					</div>
+					<center>
+						<button type="submit" class="btn btn-secondary">
+							등록 &nbsp;<i class="fa fa-check"></i>
+						</button>
+					</center>
 				</form>
 			</header>
 

@@ -34,10 +34,10 @@
 <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 
 <!-- bootswatch lib -->
-<link rel="stylesheet"
+<!-- <link rel="stylesheet"
 	href="https://bootswatch.com/4/minty/bootstrap.css" media="screen">
 <link rel="stylesheet"
-	href="https://bootswatch.com/_assets/css/custom.min.css">
+	href="https://bootswatch.com/_assets/css/custom.min.css"> -->
 
 <!-- Main Stylesheet File -->
 <link href="css/style.css" rel="stylesheet">
@@ -65,40 +65,29 @@ body {
 			</header>
 		</div>
 		<div class="container">
-			<table class="table table-hover">
-				<tbody>
+			<center>
+				<table class="table" style="width: 70%; color: gray;">
 					<tr>
-						<th scope="row">제목</th>
-						<td>${b.title}</td>
+						<th colspan="3" style="font-size: 20px; text-align: center;">${b.title}</th>
 					</tr>
 					<tr>
-						<th scope="row">작성자</th>
-						<td>${b.name}</td>
-					</tr>
-					<tr>
-						<th scope="row">작성일</th>
-						<td>${b.wdate}</td>
+						<td colspan="2">작성자 : ${b.name}</td>
+						<td style="text-align: right">작성일 : ${b.wdate}</td>
 					</tr>
 
 					<tr>
-						<th scope="row">조회수</th>
-						<td>${b.count}</td>
+						<td colspan="3" style="padding-top: 30px; padding-left: 50px; height: 300px;">${b.content}</td>
 					</tr>
-
-					<tr>
-						<td colspan="2">${b.content}</td>
-					</tr>
-
-				</tbody>
-			</table>
+				</table>
+			</center>
 		</div>
 
 		<c:if test="${member.id == b.name}">
 			<div id="button_" class="container">
-				<button type="button" class="btn btn-success"
-					onclick="location.href='noticeEditForm.food?num=${b.num}'">수정</button>
-				<button type="button" class="btn btn-warning"
-					onclick="location.href='noticeDelete.food?num=${b.num}'">삭제</button>
+				<button type="button" class="btn btn-secondary"
+					onclick="location.href='noticeEditForm.food?num=${b.num}'"><i class="fa fa-paperclip"></i>&nbsp;&nbsp;수정</button>
+				<button type="button" class="btn btn-secondary"
+					onclick="location.href='noticeDelete.food?num=${b.num}'"><i class="fa fa-times-circle"></i>&nbsp;&nbsp;삭제</button>
 			</div>
 		</c:if>
 
