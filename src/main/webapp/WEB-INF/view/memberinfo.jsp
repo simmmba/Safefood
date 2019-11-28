@@ -87,7 +87,7 @@ body {
 					</tr>
 					<tr>
 						<th>allergy</th>
-						<td>${member.allegy}</td>
+						<td>${member.allergy}</td>
 					</tr>
 				</table>
 			</center>

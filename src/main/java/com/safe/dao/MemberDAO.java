@@ -33,14 +33,16 @@ public class MemberDAO implements IMemberDao {
 	}
 	
 	@Override
-	public void update(String id, String Opass, String Npass, String address, String callnum, String allegy) {
+	public void update(String id, String Opass, String Npass, String address, String callnum, String allergy) {
 		Map<String, String> m = new HashMap<>();
+		
 		m.put("id", id);
 		m.put("Npass", encode(Npass));
 		m.put("Opass", encode(Opass));
 		m.put("address", address);
 		m.put("callnum", callnum);
-		m.put("allegy",allegy);
+		m.put("allergy",allergy);
+		System.out.println(m.toString());
 		
 		session.update("member.update",m);
 	}

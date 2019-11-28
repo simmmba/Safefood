@@ -126,85 +126,88 @@ body {
 							class="col-md-3 control-label text-md-right col-form-label">알레르기
 							<span class="text-danger small">*</span>
 						</label>
+						
 						<div class="col-md-8">
-							<fieldset class="form-group">
-								<div class="row">
-									<div class="col-sm-4">
-										<div class="form-check form-check-inline">
-											<input name="allergy" class="form-check-input"
-												id='inlineCheckbox2' type="checkbox" value="대두"> <label
-												class="form-check-label">대두 </label>
-										</div>
-										<div class="form-check form-check-inline">
-											<input name="allergy" class="form-check-input"
-												id='inlineCheckbox2' type="checkbox" value="땅콩"> <label
-												class="form-check-label">땅콩 </label>
-										</div>
-										<div class="form-check form-check-inline">
-											<input name="allergy" class="form-check-input"
-												id='inlineCheckbox2' type="checkbox" value="우유"> <label
-												class="form-check-label">우유 </label>
-										</div>
-										<div class="form-check form-check-inline">
-											<input name="allergy" class="form-check-input"
-												id='inlineCheckbox2' type="checkbox" value="게"> <label
-												class="form-check-label">게</label>
-										</div>
-										<div class="form-check form-check-inline">
-											<input name="allergy" class="form-check-input"
-												id='inlineCheckbox2' type="checkbox" value="세우"> <label
-												class="form-check-label">새우</label>
-										</div>
-										<div class="form-check form-check-inline">
-											<input name="allergy" class="form-check-input"
-												id='inlineCheckbox2' type="checkbox" value="참치"> <label
-												class="form-check-label">참치</label>
-										</div>
-										<div class="form-check form-check-inline">
-											<input name="allergy" class="form-check-input"
-												id='inlineCheckbox2' type="checkbox" value="연어"> <label
-												class="form-check-label">연어</label>
-										</div>
-										<div class="form-check form-check-inline">
-											<input name="allergy" class="form-check-input"
-												id='inlineCheckbox2' type="checkbox" value="쑥"> <label
-												class="form-check-label">쑥 </label>
-										</div>
-										<div class="form-check form-check-inline">
-											<input name="allergy" class="form-check-input"
-												id='inlineCheckbox2' type="checkbox" value="소고기"> <label
-												class="form-check-label">소고기</label>
-										</div>
-										<div class="form-check form-check-inline">
-											<input name="allergy" class="form-check-input"
-												id='inlineCheckbox2' type="checkbox" value="닭고기"> <label
-												class="form-check-label">닭고기 </label>
-										</div>
-										<div class="form-check form-check-inline">
-											<input name="allergy" class="form-check-input"
-												id='inlineCheckbox2' type="checkbox" value="돼지고기"> <label
-												class="form-check-label">돼지고기</label>
-										</div>
-										<div class="form-check form-check-inline">
-											<input name="allergy" class="form-check-input"
-												id='inlineCheckbox2' type="checkbox" value="복숭아"> <label
-												class="form-check-label">복숭아 </label>
-										</div>
-										<div class="form-check form-check-inline">
-											<input name="allergy" class="form-check-input"
-												id='inlineCheckbox2' type="checkbox" value="민들레"> <label
-												class="form-check-label">민들레</label>
-										</div>
-
-										<div class="form-check form-check-inline">
-											<input name="allergy" class="form-check-input"
-												id='inlineCheckbox2' type="checkbox" value="계란흰자"> <label
-												class="form-check-label">계란흰자 </label>
-										</div>
+						<fieldset class="form-group">
+							<div class="row">
+								<div class="col-sm-8">
+									<div class="form-check form-check-inline">
+										<input name="allergy" class="form-check-input"
+											id='inlineCheckbox1' type="checkbox" value="대두"> <label
+											class="form-check-label" for ='inlineCheckbox1'>대두 </label>
+									</div>
+									<div class="form-check form-check-inline">
+										<input name="allergy" class="form-check-input"
+											id='inlineCheckbox2' type="checkbox" value="땅콩"> <label
+											class="form-check-label" for ='inlineCheckbox2'>땅콩 </label>
+									</div>
+									<div class="form-check form-check-inline">
+										<input name="allergy" class="form-check-input"
+											id='inlineCheckbox3' type="checkbox" value="우유">
+											<label class="form-check-label" for ='inlineCheckbox3'>우유 </label>
+									</div>
+									<div class="form-check form-check-inline">
+										<input name="allergy" class="form-check-input"
+											id='inlineCheckbox4' type="checkbox" value="게"> <label
+											class="form-check-label"for ='inlineCheckbox4'>게</label>
+									</div>
+									<div class="form-check form-check-inline">
+										<input name="allergy" class="form-check-input"
+											id='inlineCheckbox5' type="checkbox" value="새우"> <label
+											class="form-check-label"for ='inlineCheckbox5'>새우</label>
+									</div>
+									<div class="form-check form-check-inline">
+										<input name="allergy" class="form-check-input"
+											id='inlineCheckbox6' type="checkbox" value="참치"> <label
+											class="form-check-label" for ='inlineCheckbox6'>참치</label>
+									</div>
+									<div class="form-check form-check-inline">
+										<input name="allergy" class="form-check-input"
+											id='inlineCheckbox7' type="checkbox" value="연어"> <label
+											class="form-check-label" for ='inlineCheckbox7'>연어</label>
+									</div>
+									<div class="form-check form-check-inline">
+										<input name="allergy" class="form-check-input"
+											id='inlineCheckbox8' type="checkbox" value="쑥"> <label
+											class="form-check-label" for ='inlineCheckbox8'>쑥 </label>
+									</div>
+									<div class="form-check form-check-inline">
+										<input name="allergy" class="form-check-input"
+											id='inlineCheckbox9' type="checkbox" value="소고기"> <label
+											class="form-check-label" for ='inlineCheckbox9'>소고기</label>
+									</div>
+									<div class="form-check form-check-inline">
+										<input name="allergy" class="form-check-input"
+											id='inlineCheckbox10' type="checkbox" value="닭고기"> <label
+											class="form-check-label" for ='inlineCheckbox10'>닭고기 </label>
+									</div>
+									<div class="form-check form-check-inline">
+										<input name="allergy" class="form-check-input"
+											id='inlineCheckbox11' type="checkbox" value="돼지고기"> <label
+											class="form-check-label" for ='inlineCheckbox11'>돼지고기</label>
+									</div>
+									<div class="form-check form-check-inline">
+										<input name="allergy" class="form-check-input"
+											id='inlineCheckbox12' type="checkbox" value="복숭아"> <label
+											class="form-check-label" for ='inlineCheckbox12'>복숭아 </label>
+									</div>
+									<div class="form-check form-check-inline">
+										<input name="allergy" class="form-check-input"
+											id='inlineCheckbox13' type="checkbox" value="민들레"> <label
+											class="form-check-label" for ='inlineCheckbox13'>민들레</label>
+									</div>
+	
+									<div class="form-check form-check-inline">
+										<input name="allergy" class="form-check-input"
+											id='inlineCheckbox14' type="checkbox" value="계란흰자"> <label
+											class="form-check-label" for ='inlineCheckbox14'>계란흰자 </label>
 									</div>
 								</div>
-							</fieldset>
-						</div>
+							</div>
+						</fieldset>
+					</div>
+						
+						
 					</div>
 					<div class="form-group row">
 						<div class="ml-md-auto col-md-9">

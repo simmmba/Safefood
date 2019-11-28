@@ -92,13 +92,18 @@ body {
 								<br><br>
 								<span><b>원재료:</b> </span>
 								<p style='padding-top: 10px'>${f.getMaterial()}</p>
-								<span>${member.id}님의 알레르기 주의 :
-									 <c:forTokens var ="ma" items="${memeber.allergy}" delims=",">
-									 	<c:forTokens var = "fa" items="${f.getAllergy}" delims=",">
-									 		<c:if test="${ma == fa}">${fa}</c:if>
-									 	</c:forTokens>
-									 </c:forTokens>
-								</span>
+								
+								<c:if test="${not empty member}">
+									<div>${member.id}님의 알레르기 주의 :
+										<span class = "allergyinfo">
+											 <c:forTokens var ="ma" items="${member.allergy}" delims=",">
+											 	<c:forTokens var = "fa" items="${f.allergy}" delims=",">
+											 		<c:if test="${ma == fa}">${fa}</c:if>
+											 	</c:forTokens>
+											 </c:forTokens>
+										 </span>
+									</div>
+								</c:if>
 								
 							</div>
 						</div>

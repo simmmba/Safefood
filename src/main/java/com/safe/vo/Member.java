@@ -3,21 +3,21 @@ package com.safe.vo;
 import java.io.Serializable;
 
 public class Member implements Serializable{
-	private String id, pass, name, address, callnum, allegy,authority;
+	private String id, pass, name, address, callnum, allergy,authority;
 
 	public Member() {
 		
 	}
 	
 
-	public Member(String id, String pass, String name, String address, String callnum, String allegy,
+	public Member(String id, String pass, String name, String address, String callnum, String allergy,
 			String authority) {
 		this.id = id;
 		this.pass = pass;
 		this.name = name;
 		this.address = address;
 		this.callnum = callnum;
-		this.allegy = allegy;
+		this.allergy = allergy;
 		this.authority = authority;
 	}
 
@@ -66,13 +66,13 @@ public class Member implements Serializable{
 	}
 
 
-	public String getAllegy() {
-		return allegy;
+	public String getAllergy() {
+		return allergy;
 	}
 
 
-	public void setAllegy(String allegy) {
-		this.allegy = allegy;
+	public void setAllergy(String allergy) {
+		this.allergy = allergy;
 	}
 	
 	
@@ -89,6 +89,6 @@ public class Member implements Serializable{
 	@Override
 	public String toString() {
 		return "Member [id=" + id + ", pass=" + pass + ", name=" + name + ", address=" + address + ", callnum="
-				+ callnum + ", allegy=" + allegy + ", authority=" + authority + "]";
+				+ callnum + ", allergy=" + allergy + ", authority=" + authority + "]";
 	}
 }

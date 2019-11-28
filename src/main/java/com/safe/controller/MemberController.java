@@ -135,7 +135,7 @@ public class MemberController extends HttpServlet {
 		Member m = (Member) hs.getAttribute("member");
 		m.setAddress(address);
 		m.setCallnum(callnum);
-		m.setAllegy(allergy);
+		m.setAllergy(allergy);
 		
 		return "memberinfo";
 	}
@@ -187,9 +187,9 @@ public class MemberController extends HttpServlet {
 		}
 	}
 	
-	@ExceptionHandler
-	public String exception(Model model) {
-		return "error";
-	}
+//	@ExceptionHandler
+//	public String exception(Model model) {
+//		return "error";
+//	}
 
 }

@@ -13,11 +13,11 @@
 	</select>
 	
 	<insert id="insertJoin" parameterType="Member">
-		insert into members values(#{id},#{pass},#{name},#{address},#{callnum},#{allegy},'user')
+		insert into members values(#{id},#{pass},#{name},#{address},#{callnum},#{allergy},'user')
 	</insert>
 	
 	<update id="update" parameterType="HashMap">
-		update members set address = #{address} , callnum = #{callnum}, allegy = #{allegy}, pass=#{Npass} where id =#{id} and pass = #{Opass}
+		update members set address = #{address} , callnum = #{callnum}, allergy = #{allergy}, pass=#{Npass} where id =#{id} and pass = #{Opass}
 	</update>	
 
 	
