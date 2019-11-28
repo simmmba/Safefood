@@ -15,7 +15,9 @@
 <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
 
 <!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,500,600,700,700i|Montserrat:300,400,500,600,700" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,500,600,700,700i|Montserrat:300,400,500,600,700"
+	rel="stylesheet">
 
 <!-- Bootstrap CSS File -->
 <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -80,7 +82,8 @@ body {
 						onclick="location.href='detail.food?code=${f.code}';">
 						<div class='box'>
 							<div class='div_image'>
-								<img class='item_image' src="${f.getImg()}" height="200px">
+								<img class='item_image' src="${f.getImg()}" height="200px"
+									style="position: absoulte; width: 100%; height: 100%;">
 							</div>
 
 							<div class='div_info'>
@@ -104,17 +107,6 @@ body {
 								</c:if>
 
 							</div>
-							<c:if test="${not empty member}">
-								<div><b>${member.id}님이 주의해야할 알레르기 성분 : </b>
-									<span class = "allergyinfo">
-										 <c:forTokens var ="ma" items="${member.allergy}" delims=",">
-										 	<c:forTokens var = "fa" items="${f.allergy}" delims=",">
-										 		<c:if test="${ma == fa}">${fa}</c:if>
-										 	</c:forTokens>
-										 </c:forTokens>
-									 </span>
-								</div>
-							</c:if>
 						</div>
 					</div>
 				</c:forEach>
