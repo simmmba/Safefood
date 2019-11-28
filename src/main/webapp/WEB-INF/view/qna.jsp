@@ -273,20 +273,20 @@
 				<div class='box'>
 					<div>
 						<span class='title'> 
-							{{q.num}}
+							{{q.title}} <span>&nbsp;&nbsp;[ {{q.replycount}} ]</span>
 						</span>
 					</div>
-						<div class='div_info div_notice' style="padding-left: 0px;">
-						<span>제목 : {{q.title}}</span>
-						<hr>
-						<span>작성일 : {{q.wdate}}</span>
-						<hr>
+
+					<hr>
+					<div class='div_notice' style="padding-left: 0px;">
+						<span>작성일 : {{q.wdate}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<!-- <span>질문번호 : {{q.num}}</span> -->
 						<span>작성자 : {{q.name}}</span>
-						<hr>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 	</script>
 

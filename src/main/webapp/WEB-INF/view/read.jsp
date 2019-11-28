@@ -89,9 +89,9 @@ body {
 							<div class='div_info'>
 								<span class='title'>${f.getName()}</span>
 								<hr>
-								<span class ='info_span'><b>제조사   </b> ${f.getMaker()}</span><br> 
-								<span class ='info_span'><b>1회 제공량  </b> ${f.supportpereat} g</span><br>
-								<span class ='info_span'><b>칼로리   </b> ${f.calory} cal</span><br>
+								<span class ='info_span'><b>제조사 :    </b> ${f.getMaker()}</span><br> 
+								<span class ='info_span'><b>1회 제공량 :   </b> ${f.supportpereat} g</span><br>
+								<span class ='info_span'><b>칼로리 :    </b> ${f.calory} kcal</span><br>
 								
 								<hr>
 								<c:if test="${not empty member}">
