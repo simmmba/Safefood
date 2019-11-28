@@ -37,12 +37,15 @@ table td{
 
 
 .div_info{
-	padding-left: 200px;
+	/* padding-left: 200px; */
 	text-align:left;
+	float: left;
+	width: 70%;
 }
 
 .div_image{
 	float:left;
+	width: 30%;
 }
 
 #item_data{
