@@ -11,7 +11,7 @@
 	</select>
 	
 	<insert id="insertQuestion"	parameterType="question">
-		insert into question(pass, name, wdate, title, content) values(#{pass}, #{name}, sysdate(), #{title}, #{content})
+		insert into question(name, wdate, title, content,replycount) values( #{name}, sysdate(), #{title}, #{content},0)
 	</insert>
 	
 	<delete id="deleteQuestion"	parameterType="string">
