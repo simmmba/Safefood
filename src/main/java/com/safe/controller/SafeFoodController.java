@@ -26,7 +26,6 @@ public class SafeFoodController extends HttpServlet {
 	
 	static List<Word> trends = new ArrayList<>();
 	
-	
 	@GetMapping(value = "/main.food")
 	public String list(HttpServletRequest req, Model model) {
 		List<Food> list=service.searchAll("all",null);
