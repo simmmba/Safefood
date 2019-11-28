@@ -41,7 +41,7 @@ body {
 </head>
 
 <body>
-	
+
 	<jsp:include page="nav.jsp"></jsp:include>
 
 	<section id="services" class="section-bg">
@@ -52,7 +52,6 @@ body {
 			</header>
 
 			<div class="container">
-				<div class="col-lg-6">
 					<form action="searchRead.food" id="target" class="form-inline">
 						<div class="form-group">
 							<select class="form-control" id="key" name="key">
@@ -64,20 +63,21 @@ body {
 							</select>
 						</div>
 						<div class="form-group">
-							<input type="text" class="form-control" id="word" name="word" placeholder="검색어를 입력하세요">
+							<input type="text" class="form-control" id="word" name="word"
+								placeholder="검색어를 입력하세요">
 						</div>
 						<div class="form-group">
 							<button type="submit" class="btn btn-secondary">검색</button>
+							<span class = "warning_span">* 식품에 포함된 회원님의 알레르기 정보입니다.</span>
 						</div>
 					</form>
-					<!-- /input-group -->
-				</div>
-				<!-- /.col-lg-6 -->
 			</div>
 
-			<c:forEach items="${list}" var="f">
-				<div id="item_data" class="row" onclick="location.href='detail.food?code=${f.code}';">
-					<div class='col-md-6 col-lg-12 wow' data-wow-duration='1.4s'>
+			<div id=div_main class="row">
+				<c:forEach items="${list}" var="f">
+					<div class='col-md-6 col-lg-6 wow bounceInUp'
+						data-wow-duration='1.4s' id="item_data" class="row"
+						onclick="location.href='detail.food?code=${f.code}';">
 						<div class='box'>
 							<div class='div_image'>
 								<img class='item_image' src="${f.getImg()}" height="200px">
@@ -86,11 +86,23 @@ body {
 							<div class='div_info'>
 								<span class='title'>${f.getName()}</span>
 								<hr>
-								<span><b>제조사:</b> ${f.getMaker()}</span>
-								<br><br>
-								<%-- <span><b>원재료:</b> </span>
-								<p style='padding-top: 10px'>${f.getMaterial()}</p> --%>
+								<span class ='info_span'><b>제조사   </b> ${f.getMaker()}</span><br> 
+								<span class ='info_span'><b>1회 제공량  </b> ${f.supportpereat} g</span><br>
+								<span class ='info_span'><b>칼로리   </b> ${f.calory} cal</span><br>
 								
+								<c:if test="${not empty member}">
+									<hr>
+									<div>
+										<span class="allergyinfo"> <c:forTokens
+												var="ma" items="${member.allergy}" delims=",">
+												<c:forTokens var="fa" items="${f.allergy}" delims=",">
+													<c:if test="${ma == fa}">${fa}</c:if>
+												</c:forTokens>
+											</c:forTokens>
+										</span>
+									</div>
+								</c:if>
+
 							</div>
 							<c:if test="${not empty member}">
 								<div><b>${member.id}님이 주의해야할 알레르기 성분 : </b>
@@ -105,15 +117,15 @@ body {
 							</c:if>
 						</div>
 					</div>
-				</div>
-			</c:forEach>
+				</c:forEach>
+			</div>
 		</div>
 	</section>
-	
+
 	<jsp:include page="trends.jsp"></jsp:include>
-	
+
 	<jsp:include page="footer.jsp"></jsp:include>
-	
+
 	<!-- #services -->
 
 

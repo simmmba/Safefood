@@ -25,8 +25,6 @@ public class SafeFoodController extends HttpServlet {
 	FoodService service;
 	
 	static List<Word> trends = new ArrayList<>();
-	String[] allergy = { "대두", "땅콩", "우유", "게", "새우", "참치", "연어", "쑥", "소고기", "닭고기", "복숭아", "민들레", "계란흰자", "돼지고기" };
-	
 	
 	@GetMapping(value = "/main.food")
 	public String list(HttpServletRequest req, Model model) {
@@ -113,10 +111,18 @@ public class SafeFoodController extends HttpServlet {
 		Food f = service.search(code);
 
 		String meterial = f.getMaterial();
-		String allergy = findAllergy(meterial);
-
+		String[] allergy = f.getAllergy().split(",");
+		
+		StringBuilder sb = new StringBuilder();
+		
+		for (String a : allergy) {
+			if(meterial.contains(a)) {
+				sb.append(a).append("  ");
+			}
+		}
+		
 		model.addAttribute("f",f);
-		model.addAttribute("a",allergy);
+		model.addAttribute("a",sb.toString());
 		
 		return "detail";
 	}
@@ -162,15 +168,6 @@ public class SafeFoodController extends HttpServlet {
 		});
 	}
 
-	public String findAllergy(String meterial) {
-		StringBuilder sb = new StringBuilder();
-		
-		for (String a : allergy) {
-			if(meterial.contains(a)) {
-				sb.append(a).append("  ");
-			}
-		}
-		return sb.toString();
-	}
+
 
 }

@@ -79,9 +79,7 @@ body {
 							<button type="submit" class="btn btn-secondary">검색</button>
 						</div>
 					</form>
-					<!-- /input-group -->
 				</div>
-				<!-- /.col-lg-6 -->
 			</div>
 
 			<div id=div_main class="row">

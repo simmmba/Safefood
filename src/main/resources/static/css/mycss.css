@@ -42,7 +42,7 @@ table td{
 
 
 .div_info{
-	/* padding-left: 200px; */
+	padding-left: 20px; 
 	text-align:left;
 	float: left;
 	width: 77%;
@@ -131,7 +131,6 @@ body{
 	color: red;
 	font-weight: bold;
 }
-
 .it {
 	width: 70%;
 	border: solid #85684b 2px;
@@ -181,4 +180,13 @@ body{
 	background-color: #fff;
 	color: #604937;
 	font-weight: bold;
+}
+.info_span
+{
+	margin-bottom:5px;	
+}
+.warning_span
+{
+	color: red;
+	padding-left:10px;
 }
