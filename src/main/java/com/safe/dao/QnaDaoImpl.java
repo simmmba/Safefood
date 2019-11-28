@@ -5,7 +5,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.safe.vo.Answer;
 import com.safe.vo.Question;
 import com.safe.vo.Reply;
 // dao 객체: CRUD 작업
@@ -37,18 +36,6 @@ public class QnaDaoImpl implements QnaDao {
 	public void updateQuestion(Question q) {
 		session.update("qna.updateQuestion", q);
 	}
-	@Override
-	public void insertAnswer(Answer a) {
-		session.insert("qna.insertAnswer", a);
-	}
-	@Override
-	public void deleteAnswer(String num) {
-		session.delete("qna.deleteAnswer", num);
-	}
-	@Override
-	public void updateAnswer(Answer a) {
-		session.update("qna.updateAnswer", a);
-	}
 	public void countUp(String num) {
     	session.update("qna.updateCount",num);
     }
@@ -67,6 +54,8 @@ public class QnaDaoImpl implements QnaDao {
 	@Override
 	public void insertReply(Reply r) {
 		session.insert("qna.insertReply",r);
+		System.out.println(r.getBoardNum());
+		session.update("qna.countReply",r.getBoardNum());
 	}
 	@Override
 	public void deleteReply(String num) {

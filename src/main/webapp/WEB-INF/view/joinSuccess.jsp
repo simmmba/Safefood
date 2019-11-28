@@ -55,13 +55,13 @@ body {
 
 		<div style="height: 150px;"></div>
 		<blockquote class="blockquote container">
-			<p class="mb-0">중복된 아이디 입니다.</p>
+			<p class="mb-0">회원가입에 성공했습니다. 환영합니다.</p>
 		</blockquote>
 		<div class="container">
 
 			<div>
-				<button type="button" class="btn btn-danger"
-					onclick="location.href='joinForm.food'">돌아가기</button>
+				<button type="button" class="btn btn-success"
+					onclick="location.href='loginForm.food'">로그인하기</button>
 			</div>
 		</div>
 

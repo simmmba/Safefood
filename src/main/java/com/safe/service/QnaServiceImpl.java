@@ -4,10 +4,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.safe.dao.BoardDao;
 import com.safe.dao.QnaDao;
-import com.safe.vo.Answer;
-import com.safe.vo.Board;
 import com.safe.vo.Question;
 import com.safe.vo.Reply;
 // client(ClientApp.java)가 getBean해서 사용하는 객체
@@ -36,18 +33,6 @@ public class QnaServiceImpl implements QnaService {
 	@Override
 	public void updateQuestion(Question q) {
 		qnaDao.updateQuestion(q);
-	}
-	@Override
-	public void insertAnswer(Answer a) {
-		qnaDao.insertAnswer(a);
-	}
-	@Override
-	public void deleteAnswer(String num) {
-		qnaDao.deleteAnswer(num);
-	}
-	@Override
-	public void updateAnswer(Answer a) {
-		qnaDao.updateAnswer(a);
 	}
 	@Override
 	public List<Question> findByTitle(String title) {

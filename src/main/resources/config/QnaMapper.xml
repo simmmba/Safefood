@@ -34,25 +34,19 @@
 		select * from question where name = #{name}
 	</select>
 	
-	<insert id="insertAnswer"	parameterType="answer">
-		insert into answer(qnum, pass, name, wdate, content) values(#{num}, #{pass}, #{name}, sysdate(), #{content})
-	</insert>
-	
-	<delete id="deleteAnswer"	parameterType="string">
-		delete from answer where num = #{num}
-	</delete>
-	
-	<update id="updateAnswer"	parameterType="java.util.HashMap">
-		update answer set content = #{content} where num = #{num}
-	</update>
+
 	
 	<select id="selectReply" parameterType="String" resultType="reply">
 		select * from reply where boardnum = #{num}
 	</select>
 	
 	<insert id="insertReply" parameterType="reply">
-		insert into reply values(null, #{num},#{name}, sysdate(), #{content})
+		insert into reply values(null, #{boardNum},#{name}, sysdate(), #{content})
 	</insert>
+	
+	<update id='countReply' parameterType="String">
+		update question set replycount = replycount+1 where num = #{num}
+	</update>
 	
 	
 	<delete id="deleteReply" parameterType="string">

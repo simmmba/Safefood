@@ -131,6 +131,8 @@ body {
 						<hr>
 						<span>작성자 : {{q.name}}</span>
 						<hr>
+						<span>댓글수 : {{q.replycount}}</span>
+						<hr>
 					</div>
 				</div>
 			</div>
@@ -350,7 +352,7 @@ body {
 			    writeReply:function(){
 			        axios
 			          .post('http://localhost:8080/safefood/qnaReply',{
-			        	  num : App.questionNum,
+			        	  boardNum : App.questionNum,
 			        	  content:this.replyContent,
 			        	  name :"${member.id}"
 			          })
@@ -543,11 +545,6 @@ body {
 		      }
 		});
 		
-	
-		
-	
-	
-	
 	var App=new Vue({
 		  el: '#app',
 		  data: {

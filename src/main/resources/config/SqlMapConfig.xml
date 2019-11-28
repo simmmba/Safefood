@@ -8,7 +8,6 @@
         <typeAlias alias="Member" type="com.safe.vo.Member"/>
         <typeAlias alias="Question" type="com.safe.vo.Question"/>
         <typeAlias alias="Reply" type="com.safe.vo.Reply"/>
-        <typeAlias alias="Answer" type="com.safe.vo.Answer"/>
         <typeAlias alias="Intake" type="com.safe.vo.Intake"/>
         <typeAlias alias="ExpectedIntake" type="com.safe.vo.ExpectedIntake"/>
     </typeAliases>

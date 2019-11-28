@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,7 +32,7 @@ public class MemberController extends HttpServlet {
 	}
 	
 	@PostMapping(value = "/join.food")
-	public String join(HttpServletRequest req, HttpServletResponse res) {
+	public String join(HttpServletRequest req) {
 		String id = req.getParameter("id");
 		String pass = req.getParameter("pass");
 		String name = req.getParameter("name");
@@ -54,8 +55,9 @@ public class MemberController extends HttpServlet {
 		}
 
 		Member m = new Member(id, pass, name, address, call, allergy,"user");
+		
 		service.join(m);
-		return "redirect:/main.food";
+		return "joinSuccess";
 	}
 
 	
@@ -186,7 +188,7 @@ public class MemberController extends HttpServlet {
 	}
 	
 	@ExceptionHandler
-	public String exception() {
+	public String exception(Model model) {
 		return "error";
 	}
 

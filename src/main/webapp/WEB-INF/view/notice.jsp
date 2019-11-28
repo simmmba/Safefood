@@ -76,7 +76,7 @@
 			<!-- <div class="container"> -->
 			<div>
 				<!-- <div class="col-lg-6"> -->
-					<c:if test="${not empty member}">
+					<c:if test="${member.authority == 'admin'}">
 						<div style="float: right; display: inline;">
 							<button type="button" class="btn btn-secondary" onclick = "location.href = 'noticeInsertForm.food'" ><i class="fa fa-edit pr-2 text-default"></i>&nbsp;공지사항 작성</button>
 						</div>

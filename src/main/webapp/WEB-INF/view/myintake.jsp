@@ -175,7 +175,7 @@
 			$('#nothing').empty();
 			
 			if(data == ""){
-				$('#nothing').html("예상 섭취 정보가 없습니다.")
+				$('#nothing').html("해당 기간에 섭취 정보가 없습니다.")
 			}else{
 				$('<tr>').append($('<th width="15%">').html("날&nbsp;&nbsp;&nbsp;&nbsp;짜"))
 						 .append($('<th width="30%">').html("제품명"))
