@@ -152,8 +152,8 @@ body {
 					<td colspan="3" style="padding-top: 30px; padding-left: 50px; height: 300px;">{{question.content}}</td>
 				</tr>
 			</table>
-			<button v-if="question.name == App.currentId" @click="updateQuestion" class="btn btn-primary">수정</button>
-			<button v-if="question.name == App.currentId" @click="deleteQuestion" class="btn btn-primary">삭제</button>
+			<button v-if=hasAuthority(question.name) @click="updateQuestion" class="btn btn-primary">수정</button>
+			<button v-if=hasAuthority(question.name)  @click="deleteQuestion" class="btn btn-primary">삭제</button>
 			
 			<hr>
 			<span>댓글</span>
@@ -164,7 +164,7 @@ body {
 						<td >{{r.name}}</td>
 						<td >{{r.content}}</td>
 						<td>{{r.wdate}}</td>
-						<td><button v-if="r.name==App.currentId" @click="delReply(r.num)">X</button></td>
+						<td><button v-if=hasAuthority(r.name) @click="delReply(r.num)">X</button></td>
 					</tr>
 				</template>
 				</tbody>
@@ -186,27 +186,6 @@ body {
 						placeholder="'질문 제목'을 입력해주세요" required name="title">
 				</div>
 			</div>
-			<div class="form-group has-feedback row">
-				<label for="inputLastName"
-					class="col-md-3 control-label text-md-right col-form-label">작성자
-					<span class="text-danger small">*</span>
-				</label>
-				<div class="col-md-8">
-					<input type="text" v-model = "name" class="form-control" 
-						placeholder="'질문자명'을 입력해주세요" required="required" > 
-				</div>
-			</div>
-			<div class="form-group has-feedback row">
-				<label for="inputLastName"
-					class="col-md-3 control-label text-md-right col-form-label">비밀번호
-					<span class="text-danger small">*</span>
-				</label>
-				<div class="col-md-8">
-					<input type="password" v-model = "pass" class="form-control" id="inputLastName"
-						placeholder="'영문 숫자 포함 6자리 이상' 입력해주세요" required="required" name="pass"> 
-				</div>
-			</div>
-			
 			<div class="form-group has-feedback row">
 				<label for="inputEmail"
 					class="col-md-3 control-label text-md-right col-form-label">내용
@@ -416,6 +395,13 @@ body {
 		  	            this.errored = true
 		  	          })
 		  	          .finally(() => this.loading = false);
+			    },
+			    hasAuthority(name){
+			    	
+			    	if(name == App.currentId){
+			    		return true;
+			    	}
+			    	return false;
 			    }
 	      },
 	      mounted () {
@@ -452,8 +438,6 @@ body {
 			      errored: false,
 			      question:[],
 			      title :'',
-			      pass :'',
-			      name : '',
 			      content:''
 			    }
 			  },
@@ -461,9 +445,9 @@ body {
 		 		write() {				  
 				  axios.post('http://localhost:8080/safefood/qna/', {
 			    	  title: this.title,
-			    	  pass:this.pass,
 			    	  content: this.content,
-			    	  name : this.name
+			    	  name : App.currentId,
+			    	  pass:''
 			    	  
 			    	} 
 			      ).then(function(response){
@@ -572,6 +556,7 @@ body {
 			  questionNum:'',
 			  currentview: 'listQuestion',
 			  currentId :"${member.id}",
+			  admin:"${member.admin}",
 		      allviews:['listQuestion','detailQuestion','writeQuestion','updateQuestion','searchQuestion'],
 		   },
 		   components: {

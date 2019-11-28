@@ -150,7 +150,6 @@
 	 		intakeState();
 	 		intakeDel();
 	 		intakeAdd();
-			$('.statebtn').hide();
 		});
 		 
 		//모든 사용자 목록 조회 요청
@@ -178,9 +177,7 @@
 			
 			
 			if(data == ""){
-				$('.statebtn').hide();
 				$('<h2>').html("해당 기간에 섭취한 식품이 없습니다.")
-						 .appendTo('#nothing');
 			
 			}else{
 				$('.statebtn').show();
