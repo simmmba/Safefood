@@ -53,8 +53,7 @@ public class MemberController extends HttpServlet {
 			allergy = sb.toString();
 		}
 
-		Member m = new Member(id, pass, name, address, call, allergy);
-		System.out.println(m.toString());
+		Member m = new Member(id, pass, name, address, call, allergy,"user");
 		service.join(m);
 		return "redirect:/main.food";
 	}

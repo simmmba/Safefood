@@ -411,8 +411,7 @@ body {
 		  	          .finally(() => this.loading = false);
 			    },
 			    hasAuthority(name){
-			    	
-			    	if(name == App.currentId){
+			    	if(name == App.currentId || App.authority == "admin"){
 			    		return true;
 			    	}
 			    	return false;
@@ -570,7 +569,7 @@ body {
 			  questionNum:'',
 			  currentview: 'listQuestion',
 			  currentId :"${member.id}",
-			  admin:"${member.admin}",
+			  authority:"${member.authority}",
 		      allviews:['listQuestion','detailQuestion','writeQuestion','updateQuestion','searchQuestion'],
 		   },
 		   components: {

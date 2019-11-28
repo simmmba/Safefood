@@ -13,7 +13,7 @@
 	</select>
 	
 	<insert id="insertJoin" parameterType="Member">
-		insert into members values(#{id},#{pass},#{name},#{address},#{callnum},#{allegy})
+		insert into members values(#{id},#{pass},#{name},#{address},#{callnum},#{allegy},'user')
 	</insert>
 	
 	<update id="update" parameterType="HashMap">
