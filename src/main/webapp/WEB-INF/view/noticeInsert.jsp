@@ -65,17 +65,6 @@ body {
 								<!-- <i class="fa fa-pencil form-control-feedback pr-4"></i> -->
 						</div>
 					</div>
-					<div class="form-group has-feedback row">
-						<label for="inputLastName"
-							class="col-md-3 control-label text-md-right col-form-label">비밀번호
-							<span class="text-danger small">*</span>
-						</label>
-						<div class="col-md-8">
-							<input type="password" class="form-control" id="inputLastName"
-								placeholder="'영문 숫자 포함 6자리 이상' 입력해주세요" required="required" name="pass">
-								<!-- <i class="fa fa-pencil form-control-feedback pr-4"></i> -->
-						</div>
-					</div>
 					
 					<div class="form-group has-feedback row">
 						<label for="inputEmail"

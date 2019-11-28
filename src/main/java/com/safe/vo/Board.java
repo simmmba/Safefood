@@ -2,7 +2,7 @@ package com.safe.vo;
 
 public class Board {
     // field 7개
-    private String num, pass, name, wdate, title, content;
+    private String num, name, wdate, title, content;
     private int count;
     
     // getter, setter
@@ -11,12 +11,6 @@ public class Board {
     }
     public void setNum(String num) {
         this.num = num;
-    }
-    public String getPass() {
-        return pass;
-    }
-    public void setPass(String pass) {
-        this.pass = pass;
     }
     public String getName() {
         return name;
@@ -51,9 +45,8 @@ public class Board {
     
     // 생성자-2개(default 생성자(parameter 0개), parameter 7개 생성자)
     public Board() { }
-    public Board(String num, String pass, String name, String wdate, String title, String content, int count) {
+    public Board(String num,  String name, String wdate, String title, String content, int count) {
         this.num = num;
-        this.pass = pass;
         this.name = name;
         this.wdate = wdate;
         this.title = title;
@@ -64,7 +57,7 @@ public class Board {
     // toString()
     @Override
     public String toString() {
-        return "Board [num=" + num + ", pass=" + pass + ", name=" + name + ", wdate=" + wdate
+        return "Board [num=" + num  + ", name=" + name + ", wdate=" + wdate
                 + ", title=" + title + ", content=" + content + ", count=" + count + "]";
     }
 }

@@ -38,7 +38,7 @@ public class BoardController {
 	
 	@PostMapping(value = "/noticeInsert.food")
 	public String noticeInsert(HttpSession session, Model model, Board b) {
-		System.out.println(b.getName());
+		System.out.println(b.toString());
 		model.addAttribute("b", b);
 		service.insert(b);
 		
