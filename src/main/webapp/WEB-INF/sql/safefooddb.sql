@@ -24,14 +24,13 @@ DROP TABLE IF EXISTS `board`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `board` (
   `NUM` int(11) NOT NULL AUTO_INCREMENT,
-  `PASS` varchar(20) NOT NULL,
   `NAME` varchar(20) NOT NULL,
   `WDATE` date NOT NULL,
   `TITLE` varchar(40) NOT NULL,
   `CONTENT` varchar(100) NOT NULL,
   `COUNT` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`NUM`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +39,7 @@ CREATE TABLE `board` (
 
 LOCK TABLES `board` WRITE;
 /*!40000 ALTER TABLE `board` DISABLE KEYS */;
-INSERT INTO `board` VALUES (1,'guest','Mel Gibson','2019-09-25','게시판 연습1','게시판연습입니다.',1),(2,'guest','Mel Gibson','2019-09-25','게시판 연습2','게시판연습입니다.',2),(3,'guest','Mel Gibson','2019-09-25','게시판 연습3','게시판연습입니다.',0),(4,'guest','Mel Gibson','2019-09-25','게시판 연습4','게시판연습입니다.',0),(5,'guest','Mel Gibson','2019-09-25','게시판 연습5','게시판연습입니다.',0),(6,'guest','Mel Gibson','2019-09-25','게시판 연습6','게시판연습입니다.',0),(7,'guest','Mel Gibson','2019-09-25','게시판 연습7','게시판연습입니다.',4),(8,'guest','Mel Gibson','2019-09-25','게시판 연습8','게시판연습입니다.',0),(9,'guest','Mel Gibson','2019-09-25','게시판 연습9','게시판연습입니다.',0),(10,'guest','Mel Gibson','2019-09-25','게시판 연습10','게시판연습입니다.',0),(11,'guest','Mel Gibson','2019-09-25','게시판 연습11','게시판연습입니다.',1),(12,'guest','Mel Gibson','2019-09-25','게시판 연습12','게시판연습입니다.',1),(13,'guest','Mel Gibson','2019-09-25','게시판 연습13','게시판연습입니다.',0),(14,'guest','Mel Gibson','2019-09-25','게시판 연습14','게시판연습입니다.',0),(15,'guest','Mel Gibson','2019-09-25','게시판 연습15','게시판연습입니다.',0),(16,'guest','Mel Gibson','2019-09-25','게시판 연습16','게시판연습입니다.',0),(17,'guest','Mel Gibson','2019-09-25','게시판 연습17','게시판연습입니다.',0),(18,'guest','Mel Gibson','2019-09-25','게시판 연습18','게시판연습입니다.',2),(19,'guest','Mel Gibson','2019-09-25','게시판 연습19','게시판연습입니다.',3),(20,'guest','Mel Gibson','2019-09-25','게시판 연습20','게시판연습입니다.',25),(30,'123','silloun','2019-11-21','제발 들어가주세요','제발요',24),(31,'asdf','ssafy','2019-11-28','asdf','asdf',27);
+INSERT INTO `board` VALUES (1,'ssafy','2019-07-01','[정기공지] 7월 공지입니다.','7월 공지',1),(2,'ssafy','2019-08-01','[정기공지] 8월 공지입니다.','8월 공지',5),(3,'ssafy','2019-09-01','[정기공지] 9월 공지입니다.','9월 공지',4),(4,'ssafy','2019-10-01','[정기공지] 10월 공지입니다.','10월 공지',3),(5,'ssafy','2019-11-01','[정기공지] 11월 공지입니다.','11월 공지',3),(6,'ssafy','2019-11-29','[업데이트] 업데이트 예정입니다.','12월에 대대적인 업데이트가 예정되어있습니다.',1),(7,'ssafy','2019-11-29','[업데이트] 업데이트 관련 홈페이지 이용','업데이트 진행 중 홈페이지 이용에 불편함이 있을 수 있습니다.\r\n감사합니다.',1);
 /*!40000 ALTER TABLE `board` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -95,7 +94,7 @@ CREATE TABLE `intakedb` (
   `id` varchar(45) NOT NULL,
   `code` int(11) NOT NULL,
   PRIMARY KEY (`ino`)
-) ENGINE=InnoDB AUTO_INCREMENT=248 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=297 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -104,7 +103,7 @@ CREATE TABLE `intakedb` (
 
 LOCK TABLES `intakedb` WRITE;
 /*!40000 ALTER TABLE `intakedb` DISABLE KEYS */;
-INSERT INTO `intakedb` VALUES (182,'2019-11-19','ssafy',1),(209,'2019-11-26','ssafy',1),(213,'2019-11-26','ssafy',5),(214,'2019-11-19','ssafy',1),(245,'2019-11-26','ssafy',1),(246,'2019-11-26','ssafy',1),(247,'2019-11-26','ssafy',5);
+INSERT INTO `intakedb` VALUES (182,'2019-11-19','ssafy',1),(209,'2019-11-26','ssafy',1),(213,'2019-11-26','ssafy',5),(214,'2019-11-19','ssafy',1),(245,'2019-11-26','ssafy',1),(246,'2019-11-26','ssafy',1),(247,'2019-11-26','ssafy',5),(248,'2019-11-28','ssafy',3),(249,'2019-11-28','ssafy',11),(252,'2019-11-28','ssafy',11),(253,'2019-11-28','ssafy',3),(263,'2019-11-28','ssafy',6),(264,'2019-11-28','ssafy',6),(265,'2019-11-28','ssafy',9),(266,'2019-11-28','ssafy',9),(267,'2019-11-28','ssafy',9),(268,'2019-11-28','ssafy',6),(269,'2019-11-28','ssafy',6),(270,'2019-11-28','ssafy',2),(271,'2019-11-28','ssafy',2),(272,'2019-11-28','ssafy',1),(273,'2019-11-28','ssafy',1),(274,'2019-11-28','ssafy',4),(275,'2019-11-28','ssafy',7),(276,'2019-11-28','ssafy',7),(277,'2019-11-01','ssafy',4),(278,'2019-11-03','ssafy',7),(280,'2019-11-07','ssafy',10),(281,'2019-11-08','ssafy',12),(282,'2019-11-03','ssafy',7),(283,'2019-11-04','ssafy',9),(284,'2019-11-04','ssafy',9),(285,'2019-11-01','ssafy',4),(286,'2019-11-01','ssafy',4),(287,'2019-11-07','ssafy',10),(291,'2019-11-29','ssafy',1),(292,'2019-11-29','ssafy',1),(293,'2019-11-29','ssafy',1),(294,'2019-11-29','ssafy',11),(295,'2019-11-29','ssafy',11),(296,'2019-11-29','ssafy',6);
 /*!40000 ALTER TABLE `intakedb` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -133,7 +132,7 @@ CREATE TABLE `members` (
 
 LOCK TABLES `members` WRITE;
 /*!40000 ALTER TABLE `members` DISABLE KEYS */;
-INSERT INTO `members` VALUES ('asdf',']o`b','asdf','adsf','010-123-1234','대두,땅콩','user'),('fgh','cde','fgh','fgh','010-8328-9424','우유,게,새우','user'),('gfgh','cde','fgh','fgh','010-8328-9424','새우,참치,연어,돼지고기','user'),('rty','oqv','rty','rty','010-8328-9424','우유,게,새우,닭고기','user'),('silloun',']o`b','asdf','asdf','010-8328-9424','대두,땅콩','user'),('ssafy','nn\\at','ssafy','ssafy','010-123-1234','대두,땅콩,우유,게,새우,쑥,소고기,닭고기,돼지고기','admin'),('wer','tbo','wer','wer','010-8328-9424','땅콩','user'),('xzcv','u`s','xcv','xcv','010-8328-9424','새우','user');
+INSERT INTO `members` VALUES ('apple',']o`b','조서원','길음','010-0000-0000','닭고기,돼지고기','user'),('asdf',']o`b','황정호','안산','010-123-1234','대두,땅콩','user'),('fgh','cde','정하정','구리','010-8328-9424','우유,게,새우','user'),('gfgh','cde','신상엽','역삼','010-8328-9424','새우,참치,연어,돼지고기','user'),('hwang',']o`b','황씨더맥스','안산','010-0000-0000','대두,우유,소고기,닭고기,돼지고기,계란흰자','user'),('ssafy','nn\\at','ssafy','ssafy','010-123-1234','대두,땅콩,쑥,소고기','admin');
 /*!40000 ALTER TABLE `members` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -146,7 +145,6 @@ DROP TABLE IF EXISTS `question`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `question` (
   `NUM` int(11) NOT NULL AUTO_INCREMENT,
-  `PASS` varchar(20) NOT NULL,
   `NAME` varchar(20) NOT NULL,
   `WDATE` date NOT NULL,
   `TITLE` varchar(40) NOT NULL,
@@ -154,7 +152,7 @@ CREATE TABLE `question` (
   `COUNT` int(11) NOT NULL DEFAULT '0',
   `replycount` int(11) DEFAULT NULL,
   PRIMARY KEY (`NUM`)
-) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -163,7 +161,7 @@ CREATE TABLE `question` (
 
 LOCK TABLES `question` WRITE;
 /*!40000 ALTER TABLE `question` DISABLE KEYS */;
-INSERT INTO `question` VALUES (13,'guest','Mel Gibson','2019-09-25','lala','lala2',0,0),(14,'guest','Mel Gibson','2019-09-25','lala','lala2',0,0),(17,'guest','Mel Gibson','2019-09-25','lala','lala2',0,0),(18,'guest','Mel Gibson','2019-09-25','lala','lala2',0,0),(19,'guest','Mel Gibson','2019-09-25','lala','lala2',0,0),(20,'guest','Mel Gibson','2019-09-25','게시판 연습20','게시판연습입니다.',0,0),(21,'guest','Mel Gibson','2019-09-25','lala','lala2',0,0),(22,'pw','engg','2019-09-25','게시판 연습22','게시판연습입니다.',11,0),(28,'ssafy','ssafy','2019-10-16','룰룰','랄랄랄라',0,0),(29,'ssafy','ssafy','2019-10-16','안녕하세요','안녕',0,0),(36,'abc','abc','2019-10-23','안녕','게시판',0,0),(37,'abc','abc','2019-10-23','제목음슴','오잉',2,1);
+INSERT INTO `question` VALUES (48,'ssafy','2019-11-28','답변 부탁드려요','여기서 제일 인기 많은게 뭔가요?',1,0),(49,'ssafy','2019-11-28','배고파요','오늘 점심 뭐먹을까요\n',1,0),(50,'ssafy','2019-11-28','홈페이지 이용 관련 질문','회원가입 오류가 발생합니다',1,1),(51,'ssafy','2019-11-28','식품 등록 관련','식품 정보 추가가 가능한가요?',1,1),(52,'apple','2019-11-28','궁금해요','제일 맛없는 과자가 뭔가요\n',5,2),(53,'summer','2019-11-28','홈페이지 이용','회원정보 수정이 어려워요',3,2),(56,'hwang','2019-11-29','점심 메뉴 뭐먹을까요?','고민되네요',1,1);
 /*!40000 ALTER TABLE `question` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -181,7 +179,7 @@ CREATE TABLE `reply` (
   `WDATE` datetime NOT NULL,
   `CONTENT` varchar(100) NOT NULL,
   PRIMARY KEY (`NUM`)
-) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -190,7 +188,7 @@ CREATE TABLE `reply` (
 
 LOCK TABLES `reply` WRITE;
 /*!40000 ALTER TABLE `reply` DISABLE KEYS */;
-INSERT INTO `reply` VALUES (57,37,'ssafy','2019-11-28 13:04:58','오잉');
+INSERT INTO `reply` VALUES (57,37,'ssafy','2019-11-28 13:04:58','오잉'),(60,18,'ssafy','2019-11-28 19:34:54','rr'),(63,47,'hwang','2019-11-28 19:57:36','완전 맛있는 연어요'),(64,50,'ssafy','2019-11-28 20:07:03','담당자 확인 후 연락드리겠습니다.'),(65,53,'ssafy','2019-11-28 20:09:56','확인 후 답변드리겠습니다'),(66,51,'ssafy','2019-11-28 20:10:05','가능합니다'),(67,53,'hwang','2019-11-29 07:48:52','저도 궁금'),(68,52,'ssafy','2019-11-29 07:49:15','건빵..?'),(69,55,'ssafy','2019-11-29 07:49:27','완전 맛있는 연어요'),(70,56,'ssafy','2019-11-29 08:14:02','완전 맛있는 연어요'),(71,52,'ssafy','2019-11-29 08:14:25','맛없는 과자는 없어요');
 /*!40000 ALTER TABLE `reply` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -203,4 +201,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-28 14:42:04
+-- Dump completed on 2019-11-29  8:32:05
