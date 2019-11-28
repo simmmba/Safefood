@@ -80,7 +80,7 @@ body {
 				<div id="item_data" class="row">
 					<div class='col-md-6 col-lg-12 wow' data-wow-duration='1.4s'>
 						<div class='box'>
-							<p>칼로리 총합 : ${cal}</p>
+							<p style="font-size: 30px;"><b>칼로리 총합 : ${cal} </b></p>
 						</div>
 					</div>
 				</div>
@@ -91,10 +91,11 @@ body {
 						<div class='box'>
 							<div class='div_image'>
 								<img class='item_image' src="${f.getImg()}" height="200px">
-								<span class='title'>${f.getName()}</span>
 							</div>
 
 							<div class='div_info'>
+								<span class='title'>${f.getName()}</span>
+								<hr>
 								<span>제조사: ${f.getMaker()}</span>
 								<hr>
 								<span>원재료: </span>
