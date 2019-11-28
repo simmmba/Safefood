@@ -58,15 +58,49 @@ body {
 			<div class="container">
 				<div class="box">
 					<br>
-					<img id="image" src="${f.img}" alt="" width="300px" height="300px">
-					<div class="col-md-12">
-						<h3><b>${f.name}</b></h3>
+					<div class='div_detail'>
+						<img class='item_image' src="${f.img}" alt="" height="200px">
 						<div class="btn-group" role="group">
 							<button class="btn btn-secondary btn-md active" role="button" id="intakebtn" value = "${f.code}">추가&nbsp;&nbsp;&nbsp;<i class="fa fa-plus pr-2 text-default"></i></button>
 							<button class="btn btn-secondary btn-md active" role="button" id = "expectedintakebtn" value = "${f.code}">찜&nbsp;&nbsp;&nbsp;<i class="fa fa-cart-plus pr-2 text-default"></i></button>
 						</div>
+					<%-- <img id="image" src="${f.img}" alt="" width="300px" height="300px"> --%>
+					</div>
+					<div class='div_details'>
+						<span class='title'>${f.name}</span>
+						<hr>
+						<c:if test="${not empty member}">
+							<div><b>${member.id}님이 주의해야할 알레르기 성분 : </b>
+								<span class = "allergyinfo">
+									 <c:forTokens var ="ma" items="${member.allergy}" delims=",">
+									 	<c:forTokens var = "fa" items="${f.allergy}" delims=",">
+									 		<c:if test="${ma == fa}">${fa}</c:if>
+									 	</c:forTokens>
+									 </c:forTokens>
+								 </span>
+							</div>
+						</c:if>
+						<br>
+						<span><b>제조사 :</b> ${f.maker}</span>
+						<br><br>
+						<span><b>원재료 :</b> </span>
+						<p style='padding-top: 10px'>${f.material}</p>
+						<%-- <c:if test="${a != ''}">
+							<span><b>알레르기 성분 : </b></span>
+							<span id="allergy">${a}</span>
+						</c:if> --%>
+						
+					</div>
+					<div class="chart">
+						<div id="piechart" style="height: 400px;"></div>
+					</div>
+					<%-- <div class="col-md-12">
+						<h3><b>${f.name}</b></h3>
 						<br>
 						<br>
+						<hr>
+						<h5><b>제조사</b></h5>
+						<p id="maker">${f.maker}</p>
 						<hr>
 						<h5><b>원재료</b></h5>
 						<p id="material">${f.material}</p>
@@ -77,11 +111,7 @@ body {
 							<hr>
 						</c:if>
 							
-						<h5><b>영양 정보</b></h5>
-						<center>
-							<div id="piechart" style="width: 900px; height: 500px;"></div>
-						</center>
-					</div>
+					</div> --%>
 				</div>
 			</div>
 		</div>
@@ -153,7 +183,7 @@ body {
 			   ['트랜스지방 : ' + temp10, temp10 * 1]
 	        ]);
 	        var options = {
-	          title: '일일 제공량 : ' + ${f.getSupportpereat()} + '\n칼로리 : ' + ${f.getCalory()}
+	          title: '1회 제공량(g) : ' + ${f.getSupportpereat()} + '\n칼로리(kcal) : ' + ${f.getCalory()}
 	        };
 	
 	        var chart = new google.visualization.PieChart(document.getElementById('piechart'));

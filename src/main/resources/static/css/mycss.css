@@ -5,8 +5,13 @@
 }
 
 .item_image{
-	padding-bottom: 20px;
-	display:block;
+	/* padding-bottom: 20px; */
+	display: block;
+}
+
+.item_images{
+	/* padding-bottom: 20px; */
+	display: block; margin: 0px auto;
 }
 
 .item_info{
@@ -40,12 +45,30 @@ table td{
 	/* padding-left: 200px; */
 	text-align:left;
 	float: left;
-	width: 70%;
+	width: 77%;
 }
 
 .div_image{
 	float:left;
-	width: 30%;
+	width: 23%;
+}
+
+.div_detail{
+	float:left;
+	width: 40%;
+}
+
+.div_details{
+	/* padding-left: 200px; */
+	text-align:left;
+	float: left;
+	width: 60%;
+}
+
+.chart{
+	/* padding-left: 200px; */
+	float: left;
+	width: 100%;
 }
 
 #item_data{
@@ -105,5 +128,6 @@ body{
 }
 .allergyinfo
 {
-	color: red;	
+	color: red;
+	font-weight: bold;
 }
