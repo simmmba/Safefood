@@ -451,7 +451,6 @@
 			    	  title: this.title,
 			    	  content: this.content,
 			    	  name : App.currentId,
-			    	  pass:''
 			    	  
 			    	} 
 			      ).then(function(response){

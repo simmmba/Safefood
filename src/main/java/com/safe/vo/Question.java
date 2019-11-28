@@ -2,12 +2,11 @@ package com.safe.vo;
 
 public class Question {
 
-	private String num, pass, name, wdate, title, content;
+	private String num, name, wdate, title, content;
     private int count, replycount;
-	public Question(String num, String pass, String name, String wdate, String title, String content, int count,
+	public Question(String num, String name, String wdate, String title, String content, int count,
 			int replycount) {
 		this.num = num;
-		this.pass = pass;
 		this.name = name;
 		this.wdate = wdate;
 		this.title = title;
@@ -20,12 +19,6 @@ public class Question {
 	}
 	public void setNum(String num) {
 		this.num = num;
-	}
-	public String getPass() {
-		return pass;
-	}
-	public void setPass(String pass) {
-		this.pass = pass;
 	}
 	public String getName() {
 		return name;
@@ -65,7 +58,7 @@ public class Question {
 	}
 	@Override
 	public String toString() {
-		return "Question [num=" + num + ", pass=" + pass + ", name=" + name + ", wdate=" + wdate + ", title=" + title
+		return "Question [num=" + num + ", name=" + name + ", wdate=" + wdate + ", title=" + title
 				+ ", content=" + content + ", count=" + count + ", replycount=" + replycount + "]";
 	}
 	
