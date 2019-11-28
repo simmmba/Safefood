@@ -85,26 +85,42 @@ body {
 					</div>
 				</div>
 			</div>
-			<c:forEach items="${list}" var="f">
-				<div id="item_data" class="row" onclick="location.href='detail.food?code=${f.code}';">
-					<div class='col-md-6 col-lg-12 wow' data-wow-duration='1.4s'>
+			<div id=div_main class="row">
+				<c:forEach items="${list}" var="f">
+					<div class='col-md-6 col-lg-6 wow bounceInUp'
+						data-wow-duration='1.4s' id="item_data" class="row"
+						onclick="location.href='detail.food?code=${f.code}';">
 						<div class='box'>
 							<div class='div_image'>
-								<img class='item_image' src="${f.getImg()}" height="200px">
+								<img class='item_image' src="${f.getImg()}" height="200px"
+									style="position: absoulte; width: 100%; height: 100%;">
 							</div>
 
 							<div class='div_info'>
 								<span class='title'>${f.getName()}</span>
 								<hr>
-								<span>제조사: ${f.getMaker()}</span>
+								<span class ='info_span'><b>제조사   </b> ${f.getMaker()}</span><br> 
+								<span class ='info_span'><b>1회 제공량  </b> ${f.supportpereat} g</span><br>
+								<span class ='info_span'><b>칼로리   </b> ${f.calory} cal</span><br>
+								
 								<hr>
-								<span>원재료: </span>
-								<p style='padding-top: 10px'>${f.getMaterial()}</p>
+								<c:if test="${not empty member}">
+									<div>
+										<span class="allergyinfo"> <c:forTokens
+												var="ma" items="${member.allergy}" delims=",">
+												<c:forTokens var="fa" items="${f.allergy}" delims=",">
+													<c:if test="${ma == fa}">${fa}</c:if>
+												</c:forTokens>
+											</c:forTokens>
+										</span>
+									</div>
+								</c:if>
+
 							</div>
 						</div>
 					</div>
-				</div>
-			</c:forEach>
+				</c:forEach>
+			</div>
 		</div>
 	</section>
 	
