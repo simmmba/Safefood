@@ -140,31 +140,17 @@ body {
 
 	<script type="text/x-template" id="detailQuestiontemplate">
 		<div class="container">
-			<table class="table table-hover">
-				<tbody>
-					<tr>
-						<th scope="row">제목</th>
-						<td>{{question.title}}</td>
-					</tr>
-					<tr>
-						<th scope="row">작성자</th>
-						<td>{{question.name}}</td>
-					</tr>
-					<tr>
-						<th scope="row">작성일</th>
-						<td>{{question.wdate}}</td>
-					</tr>
-
-					<tr>
-						<th scope="row">조회수</th>
-						<td>{{question.count}}</td>
-					</tr>
-
-					<tr>
-						<td colspan="2"><pre>{{question.content}}</pre></td>
-					</tr>
-
-				</tbody>
+			<table class="table" style="color: gray;">
+				<tr>
+					<th colspan="3" style="font-size: 20px; text-align: center;">{{question.title}}</th>
+				</tr>
+				<tr>
+					<td colspan="2">질문자 : {{question.name}}</td>
+					<td style="text-align: right">작성일 : {{question.wdate}}</td>
+				</tr>
+				<tr>
+					<td colspan="3" style="padding-top: 30px; padding-left: 50px; height: 300px;">{{question.content}}</td>
+				</tr>
 			</table>
 			<button v-if="question.name == App.currentId" @click="updateQuestion" class="btn btn-primary">수정</button>
 			<button v-if="question.name == App.currentId" @click="deleteQuestion" class="btn btn-primary">삭제</button>

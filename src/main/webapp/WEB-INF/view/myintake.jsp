@@ -209,7 +209,8 @@
 							 .append($('<td>').html('<button class="btn btn-default" id = "btnDel">&nbsp;&nbsp;<i class="fa fa-minus pr-2 text-default"></i></button>' 
 							 							+ '<span style="width: 20px; display: inline-block;">' + item.count + '</span>'
 							 							+ '<button class="btn btn-default" id = "btnAdd">&nbsp;&nbsp;<i class="fa fa-plus pr-2 text-default"></i></button>'))
-							 .append($('<td>').html('<button class="btn btn-default" id = "btnAdd">&nbsp;&nbsp;<i class="fa fa-plus pr-2 text-default"></i></button>')) 
+							 /* .append($('<td>').html(item.count))
+							 .append($('<td>').html('<button class="btn btn-default" id = "btnAdd">&nbsp;&nbsp;<i class="fa fa-plus pr-2 text-default"></i></button>')) */
 							 .append($('<input type="hidden" id ="hidden_code">').val(item.code))
 							 .append($('<input type="hidden" id ="hidden_date">').val(item.idate))
 							 .appendTo('#intakeTable');
